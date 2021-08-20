@@ -1,12 +1,11 @@
 ---
-title: "Markdown"
-author: "
-  Reporting with R<br>
+title: "Reporting"
+author: "Introduction to R<br>
   <a href='https://therbootcamp.github.io'>
-    Bern R Bootcamp
+    The R Bootcamp
   </a>
   <br>
-  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+  <a href='https://therbootcamp.github.io/RmR_2021Feb/'>
     <i class='fas fa-clock' style='font-size:.9em;'></i>
   </a>&#8239; 
   <a href='https://therbootcamp.github.io'>
@@ -30,6 +29,8 @@ output:
       ratio: '16:9'
 ---
 
+layout: true
+
 <div class="my-footer">
   <span style="text-align:center">
     <span> 
@@ -44,556 +45,1133 @@ output:
     </a>
     <a href="https://therbootcamp.github.io/">
       <font color="#7E7E7E">
-       Reporting mit R | February 2021
+       Introduction to R | September 2021
       </font>
     </a>
     </span>
   </div> 
 
+---
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-# see: https://github.com/yihui/xaringan
-# install.packages("xaringan")
-# see: 
-# https://github.com/yihui/xaringan/wiki
-# https://github.com/gnab/remark/wiki/Markdown
-options(width=110)
-options(digits = 4) 
-knitr::opts_chunk$set(comment = NA)
+options(width = 110)
+options(digits = 4)
+
+# Load packages
+require(tidyverse)
+library(leaflet)
+library(plotly)
+
+# load color set
+source("../../_materials/palette/therbootcamp_palettes.R")
+
+# knitr options
+knitr::opts_chunk$set(dpi = 300, echo = FALSE, warning = FALSE, fig.align = 'center', message= FALSE)
+
+# special print function: avoid if possible
+print2 <- function(x, nlines=10,...) {
+   cat(head(capture.output(print(x,...)), nlines), sep="\n")}
+
+basel <- read.csv("1_Data/basel.csv")
 
 ```
 
-```{r, echo = FALSE}
-knitr::opts_chunk$set(comment=NA, fig.width=6, fig.height=6, echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE, fig.align = 'center')
-```
-
-```{r, echo = FALSE, message = FALSE, warning = FALSE}
-library(tidyverse)
-library(knitr)
-baselers <- read_csv(file = "1_Data/baselers.csv")
-```
-<br><br>
-
-> # How do you get your analyses into a report?
-
----
-
-# A typical Analysis -> Document (copy-paste) workflow
-```{r, echo = FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/unreproducible_workflow.png")
-```
-
-
----
-.pull-left55[
-
-# What is wrong with this approach?
- 
-Many opportunities for <high>human error</high> in transferring results.
-
-> Wait is the p-value .07 or 0.70?
-
-<high>No documentation</high> on exactly how the analysis was conducted.
-> How did I exactly do this analysis again?
-
-<high>Slow</high> 
-
-> You want me to do that analysis again with new data?! Do you know how long that took me?!
-
-## The solution? <high>A Dynamic Report.</high>
-
-]
-
-.pull-right45[
-<br><br><br><br><br><br>
-
-```{r, echo = FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/unreproducible_workflow.png")
-```
-
-]
-
----
-
-## Dynamic report
-
-A <high>Dynamic Report</high> automatically generates output from a combination of code + data, images, and text.
-
-```{r, echo = FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_ProcessHorizontal.png")
-```
-
----
-
-.pull-left55[
-
-## Why are dynamic reports great?
-
-<br>
-<high>Accurate</high>
-
-- No transfer errors from output to final document.
-- The R code always matches the final document. 
-
-<high>Reproducible</high>
-
-- All processes are contained in one pices of code that anyone can examine and run.
-- Original data + transformations, aggregation ... is directly connected to the final output
-
-<high>Efficient</high>
-
-- If you get new data, you can easily repeat your analyses with one click!
-
-]
-
-.pull-right45[
-
-```{r, echo = FALSE, out.width = "80%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_ProcessVertical.png")
-```
-
-]
-
-
----
-.pull-left45[
-
-## What are common output formats for a dynamic report?
-
-
-<br><br>
-
-|  | |
-|:------|:------|
-|Web (HTML) pages |[Websites from Markdown](http://rmarkdown.rstudio.com/rmarkdown_websites.html) |
-|PDF documents | [PDFs from Markdown](http://rmarkdown.rstudio.com/pdf_document_format.html) |
-|Slideshows | [Slide Ninja from xaringan!](https://github.com/yihui/xaringan) |
-|Shiny Apps | [Dynamic web applications](https://shiny.rstudio.com/) |
-|Books | [bookdown.org](http://bookdown.org) |
-|R Packages | [Pkgdown - documentation](https://pkgdown.r-lib.org) |
-
-<br>
-### Underneath everything ...R Markdown
-
-
-]
-
-.pull-right45[
-
-
-```{r, echo = FALSE, out.width="100%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/RMarkdownOutputFormats.png")
-```
-
-]
-
----
-
-## What is Markdown (.md)?
-
-Markdown is a simple, lightweight markup <high>language</high> that allows you to easily write text with special <high>formatting tags</high>, which are then converted to formatted outputs.
-
-
-```{r, echo = FALSE, out.width = "90%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_BasicMarkdown.png")
-```
-
-
-
----
-
-## What is RMarkdown (.Rmd)?
-
-<high>RMarkdown</high> is a combination of standard markdown combined with <high>R Code</high>
-
-
-```{r, echo = FALSE, out.width = "90%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_BasicRMarkdown.png")
-```
-
-
----
-
-## How do I write an R Markdown Document
-
-```{r, echo = FALSE, out.width="80%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/openmarkdown.png")
-```
-
-
----
+# What is Markdown?
 
 .pull-left4[
 
-## Code Chunks in R Markdown
-
-
-Add R code to your document in <high>code chunks</high>
-
-Everything in a code chunk will be evaluated when you "knit" the document
-
-Each chunk can have arguments
-
-|Argument| Description|
-|:-----|:------|
-|`eval` |Should the code be evaluated? |
-|`echo` |Should the code be shown? |
-|`fig.width, fig.height`| Figure sizes|
-
-
-See a list of all chunk options at Yihui's site [here](https://yihui.name/knitr/options/)
-
-]
-
-.pull-right55[
-
-```{r, echo = FALSE, out.width="90%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/chunkoptions.png")
-```
-
-
-]
-
----
-
-# Inline chunks
-
-You can include *inline chunks* where R code is included in a sentence. This allows you to include R output in your text!
-
-<br>
-<br>
-
-```{r, echo = FALSE, fig.cap = "", out.width = "80%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/minichunk_ss_D.png")
-```
-
----
-
-# Inline chunks
-
-```{r, echo = FALSE, out.width = "100%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/minichunk_big_ss.png")
-```
-
----
-
-
-.pull-left4[
-
-<br><br>
-# Keep your project tidy!
-
-<br>
-
-1. All raw data files (.csv, .sav, etc) should be in a folder (e.g.; `1_Data`) in your R Project directory
-
-2. Keep other files such as images (.jpg, .png) in a different  folder (e.g.; `0_Materials` or `4_Images`)
-
-3. Put the .Rmd file in the project's main directory for clean referencing
-
-<br><br>
-
-
-]
-
-.pull-right55[
-<br><br>
-
-<center><h3>Put everything into your project folder!!</h3>
-<center><high>Every</high> file (data, images) necessary to create your RMarkdown document should be somewhere <high>in your R project folder</high>!
-
-```{r, echo = FALSE, out.width="100%", fig.align = 'center'}
-knitr::include_graphics("https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/DynamicReports_ProjectStructure.png?raw=true")
-```
-
-]
-
----
-
-## Your code must be complete!
-
-When you knit a Markdown file, R will <high>forget</high> everything you've done and <high>start from scratch</high> 
-
-
-```{r, echo = FALSE, out.width = "95%"}
-knitr::include_graphics("https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/DynamicReports_badknit.png?raw=true")
-```
-
----
-
-## Your code must be complete!
-
-When you knit a Markdown file, R will <high>forget</high> everything you've done and <high>start from scratch</high> 
-
-You must <high>load all packages</high> with `library()` and <high>define all objects</high> to use them during knitting!
-
-```{r, echo = FALSE, out.width = "95%"}
-knitr::include_graphics("https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/DynamicReports_goodknit.png?raw=true")
-```
-
----
-
-.pull-left45[
-
-## Keep your code complete and tidy
-
-Don't include unnecessary code like random calculations or package installation.
-
-```{r, echo = FALSE, out.width="100%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_BadMarkdown.png")
-```
-
-]
-
-.pull-right45[
-<br><br>
-
-If you want to save some code for yourself, comment it out with \#
-
-```{r, echo = FALSE, out.width="100%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_GoodMarkdown.png")
-```
-
-]
-
----
-
-.pull-left45[
-
-## Rendering output with `knitr`
-
-```{r, out.width = "30%", echo = FALSE}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/knitr_hex.png")
-```
-
-Non-text ouputs such as images and tables need to be <u>rendered</u> using functions from the amazing <high>knitr</high> package.
-
-```{r}
-# Load the knitr package
-library(knitr)
-```
-
-
-| Function|Output|
-|:------|:----|
-|     `kable(df, format)`|Print a dataframe as a table|
-|     `include_graphics(path)`| Include an image (e.g.; .png, .jpg)|
+<ul>
+  <li class="m1"><span>Developed by John Gruber and Aaron Swartz in 2004.<br><br>
+  "<high>easy-to-read</high> and <high>easy-to-write</high> plain text format, [...] convert it to structurally valid XHTML (or HTML)"</span></li> 
+  <li class="m2"><span>Simple <high>Syntax for the layout</high> of documents.</span></li>  
+  <ul>
+    <li><span>Text in bold and italics</span></li>   
+    <li><span>Lists</span></li>  
+    <li><span>Headings</span></li> 
+    <li><span>Links</span></li>
+    <li><span>Pictures</span></li>
+  </ul>
+</ul>
 
 ]
 
 .pull-right5[
-<br><br>
-Render a table with <high>kable()</high>
 
-```{r, echo = TRUE, eval = FALSE, results = 'asis'}
-kable(x = baselers,  # A data frame
-      format = 'markdown')
-```
+<br>
 
-```{r, echo = FALSE, eval = TRUE, results = 'asis'}
-kable(x = baselers %>% slice(1:3) %>% select(1:6),
-      format = 'markdown')
-```
-
-
-Render an image with <high>include_graphics()</high>
-
-```{r, echo = TRUE, out.width = "15%", eval = FALSE}
-include_graphics(path = "images/rlogo.png")
-```
-
-```{r, echo = FALSE, out.width = "30%", fig.align = 'center', fig.width = 10}
-include_graphics(path = "https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rlogo.png")
-```
+<p align = "center">
+  <img src="image/markdown.png" width=400px><br>
+  <font style="font-size:10px">from <a href="https://de.wikipedia.org/wiki/Markdown">wikipedia.org</a></font>
+</p>
 
 ]
 
-
 ---
 
-## Rendering output
+# What is RMarkdown?
 
+.pull-left4[
 
-The `datatable()` function from the `DT` package will include a rich HTML table in your document. See [rstudio.github.io/DT/options.html](https://rstudio.github.io/DT/options.html) for customisation options
-
-```{r}
-library(DT)
-
-datatable(baselers %>% 
-          select(id, sex, age, height, weight, income), # Only these columns
-          options = list(pageLength = 4))               # 4 Rows at a time please
-```
-
----
-
-.pull-left45[
-
-## Managing working directories with RMarkdown
-
-When you knit `Markdown.Rmd`, the working directory will be *changed to the location of* `Markdown.Rmd`.
-
-
-Situation 1: Markdown.Rmd is in the <high>same folder</high> as `*.Rproj`
-
-```{r, echo = FALSE, out.width = "70%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_SameFolder.png")
-```
-
-```{r, eval = FALSE}
-# Load data from 1_Data folder
-read_csv(file = "1_Data/baselers.csv")
-```
-
-Can read data normally because `Markdown.Rmd` is in the same folder as the project.
-
-
-]
-
-.pull-right45[
-<br><br>
-Situation 2: Markdown.Rmd is in a <high>sub folder</high> (e.g.; `4_Markdown`)
-
-
-```{r, echo = FALSE, out.width = "70%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_SubFolder.png")
-```
-
-```{r, eval = FALSE}
-# Load data from 1_Data folder
-read_csv(file = "../1_Data/baselers.csv")
-```
-
-Must include `../` in your path to tell Markdown that the project directory is one folder 'up'
-
-]
-
-
----
-
-.pull-left45[
-
-## Managing working directories with RMarkdown
-
-
-
-If your `MyMarkdown.Rmd` file is in a sub folder like `4_Markdown`...
-
-```{r, echo = FALSE, out.width = "70%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/DynamicReports_SubFolder.png")
-```
-
-Include the following code <high>in the first chunk</high> to tell Markdown that the main project directory is <high>one folder "up"</high>
-
-```{r, echo = TRUE, eval = FALSE}
-# Fix working directory issue
-knitr::opts_knit$set(root.dir = "../")
-```
+<ul>
+  <li class="m1"><span>Markdown is used for <high>layout of dynamic documents</high> with embedded ...</span></li><br> 
+  <ul>
+    <li><span>R code chunks</span></li>
+    <li><span>R inline code</span></li>   
+    <li><span>Output from statistical models</span></li>
+    <li><span>Tables</span></li>
+    <li><span>Visualization</span></li>
+  </ul>
+</ul>
 
 ]
 
 .pull-right5[
+
+<p align = "center">
+  <img src="image/hex.png" height=300><br>
+  <font style="font-size:10px">from <a href="https://rmarkdown.rstudio.com/docs/">rmarkdown.rstudio.com</a></font>
+</p>
+
+]
+
+---
+
+.pull-left3[
+
+# Types of documents
+
+<ul>
+  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
+  <ul>
+    <li><span>Text documents</span></li>
+    <li><span>Presentations</span></li>   
+    <li><span>Dashboards (Cockpits)</span></li>
+    <li><span>Bookd</span></li>
+    <li><span>Web-Pages</span></li>
+  </ul>
+</ul>
+
+
+]
+
+.pull-right6[
+
 <br><br>
-Loading files <high>without</high> root directory fix
+<p align = "center">
+  <img src="image/types.png">
+</p>
 
-```{r, eval = FALSE, echo = TRUE}
-library(tidyverse)
+]
 
-baselers <- read_csv("../1_Data/baselers.csv")
-chickens <- read_csv("../1_Data/chickens.csv")
-```
+---
+.pull-left3[
 
-Loading files <high>with</high> root directory fix
+# Types of documents
 
-<i>Recommended!</i>
+<ul>
+  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
+  <ul>
+    <li><span><high>Text documents</high></span></li>
+    <li><span>Presentations</span></li>   
+    <li><span>Dashboards (Cockpits)</span></li>
+    <li><span>Bookd</span></li>
+    <li><span>Web-Pages</span></li>
+  </ul>
+</ul>
 
-```{r, eval = FALSE, echo = TRUE}
-# Fix working directory issue
-knitr::opts_knit$set(root.dir = "../")
 
-library(tidyverse)
+]
 
-baselers <- read_csv("1_Data/baselers.csv")
-chickens <- read_csv("1_Data/chickens.csv")
-```
+.pull-right6[
 
+<br><br>
+<iframe src="https://therbootcamp.github.io/RmR_2021Feb/_sessions/Markdown/app/airbnb_final.html" width="800" height="500"></iframe>
+
+]
+
+---
+
+.pull-left3[
+
+# Types of documents
+
+<ul>
+  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
+  <ul>
+    <li><span>Text documents</span></li>
+    <li><span><high>Presentations</high></span></li>   
+    <li><span>Dashboards (Cockpits)</span></li>
+    <li><span>Bookd</span></li>
+    <li><span>Web-Pages</span></li>
+  </ul>
+</ul>
+
+
+]
+
+.pull-right6[
+
+<br><br>
+<iframe src="https://therbootcamp.github.io/RmR_2021Feb/_sessions/Markdown/Markdown.html" width="800" height="500"></iframe>
+
+]
+
+---
+
+
+.pull-left3[
+
+# Types of documents
+
+<ul>
+  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
+  <ul>
+    <li><span>Text documents</span></li>
+    <li><span>Presentations</span></li>   
+    <li><span><high>Dashboards (Cockpits)</high></span></li>
+    <li><span>Bookd</span></li>
+    <li><span>Web-Pages</span></li>
+  </ul>
+</ul>
+
+
+
+]
+
+.pull-right6[
+
+<br><br><br><br>
+<p align = "center">
+  <img src="image/dashboard.png">
+</p>
 
 ]
 
 
 ---
 
+# Components of RMarkdown
+
 .pull-left4[
 
-## Output types
+<ul>
+  <li class="m1"><span>A RMarkdown script consists of multiple <high>components</high>.</span></li>
+</ul>
 
-There are *many* different output formats you can create from an R Markdown document
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Component</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>YAML</mono>
+  </td>
+  <td bgcolor="white">
+  <b>Y</b>AML <b>A</b>in't <b>M</b>arkup <b>L</b>anguage<br>
+  <high>Document setup</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>Setup chunk</mono>
+  </td>
+  <td bgcolor="white">
+  <high>Chunk</high> features<br>
+  <high>Packages</high> load<br>
+  <high>Data</high> load
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>Markdown</mono>
+  </td>
+  <td bgcolor="white">
+  <high>Headings</high><br>
+  <high>Text</high> with decoration 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>Code chunk</mono>
+  </td>
+  <td bgcolor="white">
+  R <high>Code</high><br>
+  R <high>Outputs<high>
+  </td> 
+</tr>
+</table>
 
-Some come with RStudio, some are distributed in separate packages:
+]
 
-| Package|Description|
-|:------|:----|
-|     `xaringan`*| Slideshows (like this one!)|
-|     `papaja`*|APA Manuscripts|
-|     `rmdformats`|Many templates|
-|     `prettydoc`|Project documentation|
+.pull-right5[
 
-`* = On GitHub
+<p align = "center">
+  <img src="image/markdown_templ.png" height=400px>
+</p>
+
+]
+
+---
+
+# Pipeline
+
+.pull-left4[
+
+<ul>
+  <li class="m1"><span>One RMarkdown document can be translated into multiple output <high>formats</high>.</span></li><br>
+    <ul>
+    <li><span>PDF</span></li>
+    <li><span>HTML</span></li>   
+    <li><span>Word</span></li>
+    <li><span>PowerPoint</span></li>
+  </ul><br>
+  <li class="m2"><span>During theses steps RMarkdown will be translated <high>multiple times</high>. This process comes with certain restrictions.</span></li><br>
+</ul>
+
+]
+
+.pull-right5[
+
+<p align = "center">
+  <img src="image/pipeline.png">
+</p>
+
+]
+
+---
+
+# HTML Pipeline
+
+.pull-left4[
+
+<ul>
+  <li class="m1"><span>HTML is the <high>universal framework</high> for documents, presentations and dashboards.</span></li>
+  <li class="m2"><span><high>Export to PDF</high> is possible, with minimal restrictions.</span></li><br>
+</ul>
+
+]
+
+.pull-right5[
+
+<p align = "center">
+  <img src="image/pipeline2.png">
+</p>
+
+]
+
+---
+
+# HTML
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span><b>H</b>yper<b>T</b>ext <b>M</b>arkup <b>L</b>anguage.</span></li>
+  <li class="m2"><span>The lingua franca of the <high>World Wide Web</high>.</span></li>
+  <li class="m3"><span>Can be extended with <high>CSS</high> (Cascading Style Sheets) for specialized formats.</span></li>
+</ul>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_templ_html.png">
+</p>
+
+]
+
+---
+
+# Rendering
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>HTML is interpreted by RStudio (or a browsern) and presented as a formatted document.</span></li>
+  <li class="m2"><span><high>Rstudio</high> can show rendered documents in the viewer window. </span></li><br>
+</ul>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans.png">
+</p>
+
+]
+
+---
+
+# Headings
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>Different level headings are represented with one or multiple <mono>#</mono>.</span></li>
+</ul>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Markdown</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono># text</mono>
+  </td>
+  <td bgcolor="white">
+  Level 1
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>## text</mono>
+  </td>
+  <td bgcolor="white">
+  Level 2
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>...</mono>
+  </td>
+  <td bgcolor="white">
+  ...
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>##### text</mono>
+  </td>
+  <td bgcolor="white">
+  Level 5
+  </td> 
+</tr>
+</table>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_2.png">
+</p>
+
+]
+
+---
+
+# Headings
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>Different level headings are represented with one or multiple <mono>#</mono>.</span></li>
+</ul>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Markdown</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono># text</mono>
+  </td>
+  <td bgcolor="white">
+  Level 1
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>## text</mono>
+  </td>
+  <td bgcolor="white">
+  Level 2
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>...</mono>
+  </td>
+  <td bgcolor="white">
+  ...
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>##### text</mono>
+  </td>
+  <td bgcolor="white">
+  Level 5
+  </td> 
+</tr>
+</table>
+
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_3.png">
+</p>
+
+]
+
+---
+
+# Emphasize text
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>The usage of special characters allows <high>text- and code-related</high> emphasis</span></li>
+</ul>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%>
+  <col width="50%">
+  <col width="50%">
+<tr>
+  <td bgcolor="white">
+    <b>Markdown</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;<mono>text</mono>&ast;
+  </td>
+  <td bgcolor="white">
+  italic
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;&ast;<mono>text</mono>&ast;&ast;
+  </td>
+  <td bgcolor="white">
+  bold
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;&ast;&ast;<mono>text</mono>&ast;&ast;&ast;
+  </td>
+  <td bgcolor="white">
+  italic and bold 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &grave;<mono>text</mono>&grave;
+  </td>
+  <td bgcolor="white">
+  code
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &grave;<mono>r "text"</mono>&grave;
+  </td>
+  <td bgcolor="white">
+  inline code
+  </td> 
+</tr>
+</table>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_5.png">
+</p>
+
+]
+
+---
+
+# Emphasize text
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>The usage of special characters allows <high>text- and code-related</high> emphasis</span></li>
+</ul>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%>
+  <col width="50%">
+  <col width="50%">
+<tr>
+  <td bgcolor="white">
+    <b>Markdown</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;<mono>text</mono>&ast;
+  </td>
+  <td bgcolor="white">
+  italic
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;&ast;<mono>text</mono>&ast;&ast;
+  </td>
+  <td bgcolor="white">
+  bold
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;&ast;&ast;<mono>text</mono>&ast;&ast;&ast;
+  </td>
+  <td bgcolor="white">
+  italic and bold 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &grave;<mono>text</mono>&grave;
+  </td>
+  <td bgcolor="white">
+  code
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &grave;<mono>r "text"</mono>&grave;
+  </td>
+  <td bgcolor="white">
+  inline code
+  </td> 
+</tr>
+</table>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_4.png">
+</p>
+
+]
+
+
+---
+
+# Emphasize text
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>The usage of special characters allows <high>text- and code-related</high> emphasis</span></li>
+</ul>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:20px" width=100%>
+  <col width="50%">
+  <col width="50%">
+<tr>
+  <td bgcolor="white">
+    <b>Markdown</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;<mono>text</mono>&ast;
+  </td>
+  <td bgcolor="white">
+  italic
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;&ast;<mono>text</mono>&ast;&ast;
+  </td>
+  <td bgcolor="white">
+  bold
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &ast;&ast;&ast;<mono>text</mono>&ast;&ast;&ast;
+  </td>
+  <td bgcolor="white">
+  italic and bold 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &grave;<mono>text</mono>&grave;
+  </td>
+  <td bgcolor="white">
+  code
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  &grave;<mono>r "text"</mono>&grave;
+  </td>
+  <td bgcolor="white">
+  inline code
+  </td> 
+</tr>
+</table>
+
+]
+
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_6.png">
+</p>
+
+]
+
+
+---
+
+# Inline Code
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span><high>Number and word </high> can be parameterised with inline code .</span></li>
+  <li class="m2"><span>inline code can contain any R code, similar to <high>code <mono>chunks</mono></high></span></li>
+</ul>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_7.png">
+</p>
+
+]
+
+---
+
+# Chunks
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>A <high>code <mono>chunk</mono></high> can contain any R Code.</span></li>
+  <li class="m2"><span>Code chunks are fine tuned with <high>additional arguments</high></span></li>
+</ul>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_8_0.png">
+</p>
+
+]
+
+---
+
+# Chunks
+
+.pull-left3[
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:60px" width=100%>
+  <col width="60%">
+  <col width="40%">
+<tr>
+  <td bgcolor="white">
+    <b>Argument</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>echo=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  show/hide <high>code</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>eval=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  execute/don't execute <high>code</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>include=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <high>output</high> 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>message=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <highm>messages</highm>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>warning=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <highm>warnings</highm>
+  </td> 
+</tr>
+</table>
+
+<p align="center" style="font-size:12px;padding-top:10px"><mono>T/F = TRUE/FALSE</mono></p>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_8.png">
+</p>
+
+]
+
+
+
+---
+
+# Chunks
+
+.pull-left3[
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:60px" width=100%>
+  <col width="60%">
+  <col width="40%">
+<tr>
+  <td bgcolor="white">
+    <b>Argument</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>echo=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  show/hide <high>code</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>eval=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  execute/don't execute <high>code</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>include=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <high>output</high> 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>message=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <highm>messages</highm>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>warning=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <highm>warnings</highm>
+  </td> 
+</tr>
+</table>
+
+<p align="center" style="font-size:12px;padding-top:10px"><mono>T/F = TRUE/FALSE</mono></p>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_9.png">
+</p>
+
+]
+
+
+---
+
+# Chunks
+
+.pull-left3[
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:60px" width=100%>
+  <col width="60%">
+  <col width="40%">
+<tr>
+  <td bgcolor="white">
+    <b>Argument</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>echo=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  show/hide <high>code</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>eval=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  execute/don't execute <high>code</high>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>include=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <high>output</high> 
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>message=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <highm>messages</highm>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>warning=T/F</mono>
+  </td>
+  <td bgcolor="white">
+  include/exclude <highm>warnings</highm>
+  </td> 
+</tr>
+</table>
+
+<p align="center" style="font-size:12px;padding-top:10px"><mono>T/F = TRUE/FALSE</mono></p>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_10.png">
+</p>
+
+]
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>In the setup-chunk global <high>settings for all other chunks </high> can be defined.</span></li>
+</ul>
+
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_11.png">
+</p>
+
+]
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>In the setup-chunk global <high>settings for all other chunks </high> can be defined.</span></li>
+</ul>
+]
+
+.pull-right6[
+
+<br>
+<p align = "center">
+  <img src="image/markdown_trans_12.png">
+</p>
+
+]
+
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>In the setup-chunk global <high>settings for all other chunks </high> can be defined.</span></li>
+</ul>
+
+]
+
+.pull-right6[
+
+
+<p align = "center">
+  <img src="image/markdown_trans_13.png">
+</p>
+
+]
+
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>In the setup-chunk global <high>settings for all other chunks </high> can be defined.</span></li>
+</ul>
+
+]
+
+.pull-right6[
+
+
+<p align = "center">
+  <img src="image/markdown_trans_14.png">
+</p>
+
+]
+
+
+---
+
+# Setup-Chunk
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>In the setup-chunk global <high>settings for all other chunks </high> can be defined.</span></li>
+</ul>
+]
+
+.pull-right6[
+
+<p align = "center">
+  <img src="image/markdown_trans_15.png" height=420px>
+</p>
+
+]
+
+
+---
+
+# Relative path
+
+.pull-left35[
+
+<ul>
+  <li class="m1"><span>Markdown documents do not access the regular <high>working directory</high>.</span></li><br>
+  <li class="m2"><span>Paths in RMarkdown have to be <high>relativ to the .Rmd</high> file.</span></li>
+</ul>
+
+<br>
+```R
+# Read Daten
+read_csv("../1_Data/daten.csv")
+
+# Read CSS (more about that later)
+css: "../2_Assets/styling.csv")
+```
 
 ]
 
 .pull-right55[
 <br>
-### R Markdown templates in R Studio
+<p align = "center">
+  <img src="image/folder.png" height=280px>
+</p>
 
-```{r, echo = FALSE, out.width="100%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_templates.png")
-```
-
-]
-
-
----
-
-## R Markdown Gallery
-
-Overview of available formats: http://rmarkdown.rstudio.com/gallery.html
-
-<iframe src="rmarkdown_gallery.htm" width="800" height="450"></iframe>
-
-
----
-
-.pull-left6[
-
-## Why are dynamic documents so great?
-
-1. <high>Tidy!</high> Data, code, and output are all in the same place.
-
-2. Everything works and is <high>replicable</high>!
-
-3. You can produce <high>great looking documents</high>, from simple PDFs, to webpages, to presentations (like this one!).
-
-4. <high>Update your documents</high> with new data with just one line of code!
-
-
-```{r, echo = FALSE, out.width="50%", fig.align = 'center'}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/RMarkdownOutputFormats.png")
-```
-
-]
-
-.pull-right35[
-
-<br>
-<center><a href="https://bookdown.org/yihui/rmarkdown/"><img src="https://bookdown.org/yihui/rmarkdown/images/cover.png" width="250"></a>
-
-[Yihui Xie's free R Markdown guide](https://bookdown.org/yihui/rmarkdown/)
 ]
 
 ---
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe/_sessions/Reporting/Reporting_practical.html">Practical</a></h1>
+<h1><a href="https://therbootcamp.github.io/RmR_2021Feb/_sessions/Markdown/Markdown_practical.html">Practical</a></h1>
 
