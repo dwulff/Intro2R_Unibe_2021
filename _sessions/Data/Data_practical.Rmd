@@ -47,7 +47,7 @@ library(kableExtra)
 library(readxl)
 library(haven)
 
-baselers = read_csv('1_Data/baselers.csv')
+baselers = read_csv('https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Data/1_Data/baselers.csv')
 ```
 
 
@@ -511,10 +511,9 @@ mean(x = sleep, na.rm = TRUE)
 
 8. Using the `write_csv()` function, write the `sleep` data to a new file called `sleep.csv` in your `1_Data` folder. Now you have the `sleep` data stored as a text file any software can use!
 
-```{r}
+```{r, eval = FALSE}
 # write data to .csv
-write_csv(x = sleep, 
-          path = "1_Data/sleep.csv")
+write_csv("1_Data/sleep.csv")
 ```
 
 
@@ -533,8 +532,9 @@ XX <- read_sas(data_file = "XX")
 
 ```{r}
 # read airbnb_zuerich.sas7bdat
-airbnb_zuerich <- read_sas(data_file = "1_Data/airbnb_zuerich.sas7bdat")
+airbnb_zuerich <- read_sas(data_file = here::here("1_Data/airbnb_zuerich.sas7bdat"))
 ```
+
 
 10. Print `airbnb_zuerich` and then evaluate its dimensions using `dim()`.
 

@@ -48,7 +48,8 @@ library(broom)
 library(rsq)
 library(here)
 
-trial <- read_csv("https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/master/_sessions/_Statistics/1_Data/trial_ACTG175.csv")
+trial <- read_csv("https://github.com/dwulff/Intro2R_Unibe_2021/blob/main/_sessions/Statistics/1_Data/trial_ACTG175.csv")
+
 
 ```
 
