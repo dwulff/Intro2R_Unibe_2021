@@ -36,7 +36,7 @@ knitr::opts_chunk$set(comment = NA,
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = FALSE, 
+                      echo = TRUE, 
                       eval = FALSE, 
                       warning = FALSE)
 
@@ -48,7 +48,8 @@ library(broom)
 library(rsq)
 library(here)
 
-trial <- read_csv("https://github.com/dwulff/Intro2R_Unibe_2021/blob/main/_sessions/Statistics/1_Data/trial_ACTG175.csv")
+trial <- read_csv("https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Statistics/1_Data/trial_ACTG175.csv")
+
 
 
 ```
@@ -74,7 +75,7 @@ By the end of this practical you will know how to:
 1. Conduct a t-test (one sample, two sample, and paired)
 2. Conduct a correlation test and compare to glm
 3. Conduct an ANOVA and compare to glm
-4. Select and run the appopriate test for the appropriate research question.
+4. Select and run the appropriate test for the appropriate research question.
 
 ## Tasks
 
@@ -86,7 +87,7 @@ By the end of this practical you will know how to:
 # Done!
 ```
 
-2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `LinearModels_II_practical.R` in the `2_Code` folder.  
+2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `Statistics_practical.R` in the `2_Code` folder.  
 
 ```{r}
 # Done!
@@ -110,14 +111,14 @@ XX <- read_csv(file = "XX/XX")
 ```
 
 ```{r}
-# Load trial_act.csv from the 1_Data folder
+# Load trial_ACTG175.csv from the 1_Data folder as a new object called trial
 
 trial <- read_csv(file = "1_Data/trial_ACTG175.csv")
 ```
 
 5. Take a look at the first few rows of the dataset(s) by printing it/them to the console, it should look like the table below:
 
-```{r, eval = TRUE, echo = FALSE}
+```{r, eval = TRUE}
 knitr::kable(trial %>% slice(1:5))
 ```
 
@@ -160,7 +161,16 @@ View(trial)
 1. Using the code below, create a plot showing the relationship between age and CD4 T cell count at baseline. Based on this plot, do you expect to find a relationship between the two variables? (Hint: See all of the possible named colors in R by running `colors()`. Then change the color of your histogram to your favorite one!)
 
 ```{r, eval = FALSE, echo = TRUE}
-ggplot(data = trial, mapping = aes(x = age, y = cd4_baseline)) + 
+ggplot(data = trial, mapping = aes(x = age, y = cd40)) + 
+      geom_point(alpha = .2, col = "darkblue") +
+  labs(title = "ACTG175 Trial",
+       subtitle = "Baseline age and CD4 T cell count at baseline ",
+       x = "Age (age)",
+       y = "CD4 T cell count at baseline (cd4_baseline)")
+```
+
+```{r}
+ggplot(data = trial, mapping = aes(x = age, y = cd40)) + 
       geom_point(alpha = .2, col = "darkblue") +
   labs(title = "ACTG175 Trial",
        subtitle = "Baseline age and CD4 T cell count at baseline ",
@@ -180,7 +190,7 @@ XXX <- cor.test(formula = ~ XXX + XXX,
 ```{r}
 # Correlation between patient's age at baseline and CD4 T cell count at baseline
 
-age_cd4_baseline_test <- cor.test(formula = ~ age + cd4_baseline,
+age_cd4_baseline_test <- cor.test(formula = ~ age + cd40,
                           data = trial)
 ```
 
@@ -248,7 +258,6 @@ age_cd4_baseline_tidy <- tidy(xxx)
 
 ```{r}
 # Create a 'tidy' version of my age_cd4_baseline_test object
-
 age_cd4_baseline_tidy <- tidy(age_cd4_baseline_test)
 ```
 
@@ -273,7 +282,7 @@ tidy(XXX)
 
 ```{r}
 # GLM predicting a patient's CD4 T cell count at baseline form their age at baseline 
-age_cd4_baseline_glm <- glm(formula = cd4_baseline ~ age,
+age_cd4_baseline_glm <- glm(formula = cd40 ~ age,
                     data = trial)
 
 # Print 'tidy' results
@@ -288,14 +297,25 @@ tidy(age_cd4_baseline_glm)
 1. Using the code below, create a plot showing the distribution of CD4 T cell counts at baseline (`cd4_baseline`) depending on whether or not patients were symptomatic. Based on this plot, do you expect to find that symptomatic patients generally have higher (or lower) CD4 T cell counts?
 
 ```{r, eval= FALSE, echo = TRUE}
-ggplot(data = trial, mapping = aes(x = symptomatic, y = cd4_baseline, col = symptomatic)) + 
-  stat_summary(geom = "bar", fun.y = "mean", fill = "white", col = "black") +
+ggplot(data = trial, mapping = aes(x = symptom, y = cd40, col = symptom)) + 
+  stat_summary(geom = "point", fun = "mean", fill = "white", col = "black") +
   geom_jitter(width = .1, alpha = .1) +
   labs(title = "ACTG175 Trial",
        subtitle = "Baseline CD4 T cell count and symptoms",
-       x = "Are patients symptomatic? (symptomatic)",
-       y = "CD4 T cell count at baseline (cd4_baseline)") +
-  guides(col = FALSE)
+       x = "Are patients symptomatic? (symptom)",
+       y = "CD4 T cell count at baseline (cd40)") +
+  guides(col = 'none')
+```
+
+```{r}
+ggplot(data = trial, mapping = aes(x = symptom, y = cd40, col = symptom)) + 
+  stat_summary(geom = "point", fun = "mean", fill = "white", col = "black") +
+  geom_jitter(width = .1, alpha = .1) +
+  labs(title = "ACTG175 Trial",
+       subtitle = "Baseline CD4 T cell count and symptoms",
+       x = "Are patients symptomatic? (symptom)",
+       y = "CD4 T cell count at baseline (cd40)") +
+  guides(col = 'none')
 ```
 
 2. Using the `t.test()` function, create an object called `symptomatic_cd4_baseline_test` which conducts a two-sample t-test comparing patients' CD4 T cell count at baseline (`cd4_baseline`) between patients that are symptomatic and those that are not (`symptomatic`)
@@ -310,7 +330,7 @@ XXX <- t.test(formula = XXX ~ XXX,
 ```{r}
 # T-test comparing CD4 T cell counts at baseline bewteen symptomatic and non-symptomatic patients
 
-symptomatic_cd4_baseline_test <- t.test(formula = cd4_baseline ~ symptomatic,
+symptomatic_cd4_baseline_test <- t.test(formula = cd40 ~ symptom,
                            data = trial)
 ```
 
@@ -403,7 +423,7 @@ tidy(XXX)
 
 ```{r}
 # GLM predicting a patient's CD4 T cell count at baseline form their age at baseline 
-symptomatic_cd4_baseline_glm <- glm(formula = cd4_baseline ~ symptomatic,
+symptomatic_cd4_baseline_glm <- glm(formula = cd40 ~ symptom,
                         data = trial)
 
 # Print 'tidy' results
@@ -415,17 +435,17 @@ tidy(symptomatic_cd4_baseline_glm)
 > Research Question:
 > Was there a difference between the treatment molecule in the number of days until the first occurrence of one of the following major negative events: (i) a decline in CD4 T cell count of at least 50 (ii) an event indicating progression to AIDS, or (iii) death?
 
-1. Using the code below, create a plot showing the distribution of the number of days until a major negative event (`days`) for each treatment molecule `molecule` Based on this plot, do you expect to find that there were differences in treatment molecules?
+1. Using the code below, create a plot showing the distribution of the number of days until a major negative event (`days`) for each treatment arm. Based on this plot, do you expect to find that there were differences in treatment molecules?
 
 ```{r, eval= FALSE, echo = TRUE}
-ggplot(data = trial, mapping = aes(x = molecule, y = days, col = molecule)) + 
-  stat_summary(geom = "bar", fun.y = "mean", fill = "white", col = "black") +
+ggplot(data = trial, mapping = aes(x = arms, y = days, col = arms)) + 
+  stat_summary(geom = "point", fun = "mean", fill = "white", col = "black") +
   geom_jitter(width = .2, alpha = .2) +
   labs(title = "ACTG175 Trial",
        subtitle = "Did the molecule affect days until negative events?",
        x = "Treatment Arm (molecule)",
        y = "Number of days until a major negative event (days)") +
-  guides(col = FALSE)
+  guides(col = 'none')
 ```
 
 2. Using the `aov()` function, create an object called `days_molecule_aov` which conducts an ANOVA comparing the number of days until a negative event (`days`) between treatment molecule (`molecule`).
@@ -440,7 +460,7 @@ XXX <- aov(formula = XXX ~ XXX,
 ```{r}
 # ANOVA comparing number of days until a negative event between treatment molecule
 
-days_molecule_aov <- aov(formula = days ~ molecule,
+days_molecule_aov <- aov(formula = days ~ arms,
                       data = trial)
 ```
 
@@ -488,7 +508,7 @@ days_molecule_tidy <- tidy(xxx)
 days_molecule_tidy <- tidy(days_molecule_aov)
 ```
 
-9. Now, print your `days_molecule_tidy` object, how do the results look?
+6. Now, print your `days_molecule_tidy` object, how do the results look?
 
 ```{r}
 days_molecule_tidy
@@ -496,7 +516,7 @@ days_molecule_tidy
 
 ##### Post-hoc tests
 
-10. In order to compare pair-wise differences between groups after conducting an ANOVA, you need to conduct post-hoc tests. Using the `TukeyHSD()` function, conduct pair-wise tests to see which pairs of treatment molecule differ in `days`. Save the result to an object called `days_molecule_aov_post`
+7. In order to compare pair-wise differences between groups after conducting an ANOVA, you need to conduct post-hoc tests. Using the `TukeyHSD()` function, conduct pair-wise tests to see which pairs of treatment molecule differ in `days`. Save the result to an object called `days_molecule_aov_post`
 `
 ```{r, eval = FALSE, echo = TRUE}
 # Conduct pair-wise tests comparing every pair of treatment
@@ -512,20 +532,20 @@ XXX <- TukeyHSD(XXX)
 days_molecule_aov_post <- TukeyHSD(days_molecule_aov)
 ```
 
-11. Print your `days_molecule_aov_post` object, what do you see?
+8. Print your `days_molecule_aov_post` object, what do you see?
 
-12. Print 'tidy' results from your `days_molecule_aov_post` object using the `tidy()` function
+9. Print 'tidy' results from your `days_molecule_aov_post` object using the `tidy()` function
 
 ```{r, eval = FALSE, echo = TRUE}
 # Print 'tidy' version of days_molecule_aov_post
 tidy(XXX)
 ```
 
-13. Based on what you've seen, what are your conclusions? Which treatment molecule seem to differ?
+10. Based on what you've seen, what are your conclusions? Which treatment molecule seem to differ?
 
 ##### ANOVA as Linear Model
 
-10. Conduct the same analysis you did before, but this time use the `glm()` function. Use the code skeleton below to help you. Do you get the same results as you did using `aov()`? Which outputs are the same and which are different?
+11. Conduct the same analysis you did before, but this time use the `glm()` function. Use the code skeleton below to help you. Do you get the same results as you did using `aov()`? Which outputs are the same and which are different?
 
 ```{r, eval = FALSE, echo = TRUE}
 # GLM predicting number of days until a major negative event (days) as a function of treatment arm (molecule)
@@ -541,7 +561,7 @@ tidy(XXX)
 
 ```{r}
 # GLM predicting number of days until a major negative event (days) as a function of treatment arm (molecule)
-days_molecule_glm <- glm(formula = days ~ molecule,
+days_molecule_glm <- glm(formula = days ~ arms,
                      data = trial)
 
 # Print object
@@ -565,7 +585,7 @@ days_glm <- glm(formula = XXX ~ XXX + XXX + XXX ...,
 ```{r}
 # Predict days based on many variables
 
-days_glm <- glm(formula = days ~ molecule + gender + age + weight_kg + drug_history + race + cd4_baseline + cd8_baseline,
+days_glm <- glm(formula = days ~ arms + gender + age + wtkg + drugs + race + cd40 + cd80,
                 data = trial)
 ```
 
@@ -632,6 +652,11 @@ ggplot(data = tibble(days_glm_absresid), aes(x = days_glm_absresid)) +
 ```{r, eval = FALSE, echo = TRUE}
 # Calculate the mean absolute residuals of the model
 mean(abs(resid(XXX)))
+```
+
+```{r}
+# Calculate the mean absolute residuals of the model
+mean(abs(resid(days_glm)))
 ```
 
 ### X - Advanced: Choose your own test!
@@ -979,12 +1004,7 @@ tidy(my_aov)  # Show tidy results
 
 |File | Rows | Columns |
 |:----|:-----|:------|
-|[trial_ACTG175.csv](https://raw.githubusercontent.com/therbootcamp/SwR_2019Apr/master/1_Data/trial_ACTG175.csv?token=AIFo1HP25ZzPdraeqxgLB9CrcSTQDN3Pks5cqOGGwA%3D%3D) | 2139 | 27 |
-
-```{r, echo = FALSE, out.width = "80%", eval = TRUE}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/SwR_2019Apr/master/src/img/hammer_actg175_ss.jpg?token=AIFo1AUoJyymRihyXhI2vWK4Ace3H2hoks5csFmDwA%3D%3D")
-```
-
+|[trial_ACTG175.csv](https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Statistics/1_Data/trial_ACTG175.csv) | 2139 | 27 |
 
 The `trial_ACTG175.csv` data from the ACTG 175 clinical trial. ACTG 175 was a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.
 

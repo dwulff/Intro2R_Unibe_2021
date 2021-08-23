@@ -194,7 +194,7 @@ pre code {
 <li>Conduct a t-test (one sample, two sample, and paired)</li>
 <li>Conduct a correlation test and compare to glm</li>
 <li>Conduct an ANOVA and compare to glm</li>
-<li>Select and run the appopriate test for the appropriate research question.</li>
+<li>Select and run the appropriate test for the appropriate research question.</li>
 </ol>
 </div>
 <div id="tasks" class="section level2">
@@ -202,9 +202,15 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder</p></li>
-<li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>LinearModels_II_practical.R</code> in the <code>2_Code</code> folder.</p></li>
-<li><p>Using <code>library()</code> load the packages below (if you don’t have them, you’ll need to install them first).</p></li>
+<li>Open your <code>BaselRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder</li>
+</ol>
+<pre class="r"><code># Done!</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>Statistics_practical.R</code> in the <code>2_Code</code> folder.</li>
+</ol>
+<pre class="r"><code># Done!</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Using <code>library()</code> load the packages below (if you don’t have them, you’ll need to install them first).</li>
 </ol>
 <pre class="r"><code># Load packages necessary for this script
 library(tidyverse)
@@ -216,40 +222,237 @@ library(rsq)</code></pre>
 <pre class="r"><code># Load trial_ACTG175.csv from the 1_Data folder as a new object called trial
 
 XX &lt;- read_csv(file = &quot;XX/XX&quot;)</code></pre>
+<pre class="r"><code># Load trial_ACTG175.csv from the 1_Data folder as a new object called trial
+
+trial &lt;- read_csv(file = &quot;1_Data/trial_ACTG175.csv&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Take a look at the first few rows of the dataset(s) by printing it/them to the console, it should look like the table below:</li>
 </ol>
-<table>
+<pre class="r"><code>knitr::kable(trial %&gt;% slice(1:5))</code></pre>
+<table style="width:100%;">
+<colgroup>
+<col width="3%" />
+<col width="1%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="3%" />
+<col width="3%" />
+<col width="1%" />
+<col width="3%" />
+<col width="3%" />
+<col width="2%" />
+<col width="3%" />
+<col width="5%" />
+<col width="8%" />
+<col width="5%" />
+<col width="7%" />
+<col width="3%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="4%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="2%" />
+<col width="12%" />
+</colgroup>
 <thead>
 <tr class="header">
-<th align="left">&lt;!DOCTYPE html&gt;</th>
+<th align="right">pidnum</th>
+<th align="right">age</th>
+<th align="right">wtkg</th>
+<th align="left">hemo</th>
+<th align="left">homo</th>
+<th align="left">drugs</th>
+<th align="right">karnof</th>
+<th align="left">oprior</th>
+<th align="left">z30</th>
+<th align="left">zprior</th>
+<th align="right">preanti</th>
+<th align="left">race</th>
+<th align="left">gender</th>
+<th align="left">str2</th>
+<th align="left">strat</th>
+<th align="left">symptom</th>
+<th align="left">treat</th>
+<th align="left">offtrt</th>
+<th align="right">cd40</th>
+<th align="right">cd420</th>
+<th align="right">cd496</th>
+<th align="left">r</th>
+<th align="right">cd80</th>
+<th align="right">cd820</th>
+<th align="right">cens</th>
+<th align="right">days</th>
+<th align="left">arms</th>
 </tr>
 </thead>
 <tbody>
+<tr class="odd">
+<td align="right">10056</td>
+<td align="right">48</td>
+<td align="right">89.8</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="right">100</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="right">0</td>
+<td align="left">White</td>
+<td align="left">Female</td>
+<td align="left">Naive</td>
+<td align="left">None</td>
+<td align="left">Asymptomatic</td>
+<td align="left">Other</td>
+<td align="left">No</td>
+<td align="right">422</td>
+<td align="right">477</td>
+<td align="right">660</td>
+<td align="left">Observed</td>
+<td align="right">566</td>
+<td align="right">324</td>
+<td align="right">0</td>
+<td align="right">948</td>
+<td align="left">zidovudine and zalcitabine</td>
+</tr>
+<tr class="even">
+<td align="right">10059</td>
+<td align="right">61</td>
+<td align="right">49.4</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="left">No</td>
+<td align="right">90</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="right">895</td>
+<td align="left">White</td>
+<td align="left">Female</td>
+<td align="left">Experienced</td>
+<td align="left">More than 52 Weeks</td>
+<td align="left">Asymptomatic</td>
+<td align="left">Other</td>
+<td align="left">No</td>
+<td align="right">162</td>
+<td align="right">218</td>
+<td align="right">NA</td>
+<td align="left">Missing</td>
+<td align="right">392</td>
+<td align="right">564</td>
+<td align="right">1</td>
+<td align="right">1002</td>
+<td align="left">didanosine</td>
+</tr>
+<tr class="odd">
+<td align="right">10089</td>
+<td align="right">45</td>
+<td align="right">88.5</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="right">90</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="right">707</td>
+<td align="left">White</td>
+<td align="left">Male</td>
+<td align="left">Experienced</td>
+<td align="left">More than 52 Weeks</td>
+<td align="left">Asymptomatic</td>
+<td align="left">Other</td>
+<td align="left">Yes</td>
+<td align="right">326</td>
+<td align="right">274</td>
+<td align="right">122</td>
+<td align="left">Observed</td>
+<td align="right">2063</td>
+<td align="right">1893</td>
+<td align="right">0</td>
+<td align="right">961</td>
+<td align="left">didanosine</td>
+</tr>
+<tr class="even">
+<td align="right">10093</td>
+<td align="right">47</td>
+<td align="right">85.3</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="right">100</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="right">1399</td>
+<td align="left">White</td>
+<td align="left">Male</td>
+<td align="left">Experienced</td>
+<td align="left">More than 52 Weeks</td>
+<td align="left">Asymptomatic</td>
+<td align="left">Other</td>
+<td align="left">No</td>
+<td align="right">287</td>
+<td align="right">394</td>
+<td align="right">NA</td>
+<td align="left">Missing</td>
+<td align="right">1590</td>
+<td align="right">966</td>
+<td align="right">0</td>
+<td align="right">1166</td>
+<td align="left">didanosine</td>
+</tr>
+<tr class="odd">
+<td align="right">10124</td>
+<td align="right">43</td>
+<td align="right">66.7</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">No</td>
+<td align="right">100</td>
+<td align="left">No</td>
+<td align="left">Yes</td>
+<td align="left">Yes</td>
+<td align="right">1352</td>
+<td align="left">White</td>
+<td align="left">Male</td>
+<td align="left">Experienced</td>
+<td align="left">More than 52 Weeks</td>
+<td align="left">Asymptomatic</td>
+<td align="left">Zidovudine only</td>
+<td align="left">No</td>
+<td align="right">504</td>
+<td align="right">353</td>
+<td align="right">660</td>
+<td align="left">Observed</td>
+<td align="right">870</td>
+<td align="right">782</td>
+<td align="right">0</td>
+<td align="right">1090</td>
+<td align="left">zidovudine</td>
+</tr>
 </tbody>
 </table>
-|
-<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark">
-<div class="line-block"></div>
-|
-<head>
-<div class="line-block"></div>
-|
-<meta charset="utf-8">
-<div class="line-block"></div>
-<p>|<link rel="dns-prefetch" href="https://github.githubassets.com"> | |<link rel="dns-prefetch" href="https://avatars.githubusercontent.com"> |</p>
 <pre class="r"><code># Print trial object
 XXX</code></pre>
+<pre class="r"><code>trial</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Use the <code>summary()</code> function to print more details on the columns of the datasets.</li>
 </ol>
 <pre class="r"><code># Show summary information from trial
 summary(XXX)</code></pre>
+<pre class="r"><code>summary(trial)</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Use the <code>View()</code> function to view the entire dataframe(s) in window(s)</li>
 </ol>
 <pre class="r"><code># View trial dataset in new window
 View(XXX)</code></pre>
+<pre class="r"><code>View(trial)</code></pre>
 </div>
 <div id="b---correlation" class="section level3">
 <h3>B - Correlation</h3>
@@ -259,7 +462,13 @@ View(XXX)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using the code below, create a plot showing the relationship between age and CD4 T cell count at baseline. Based on this plot, do you expect to find a relationship between the two variables? (Hint: See all of the possible named colors in R by running <code>colors()</code>. Then change the color of your histogram to your favorite one!)</li>
 </ol>
-<pre class="r"><code>ggplot(data = trial, mapping = aes(x = age, y = cd4_baseline)) + 
+<pre class="r"><code>ggplot(data = trial, mapping = aes(x = age, y = cd40)) + 
+      geom_point(alpha = .2, col = &quot;darkblue&quot;) +
+  labs(title = &quot;ACTG175 Trial&quot;,
+       subtitle = &quot;Baseline age and CD4 T cell count at baseline &quot;,
+       x = &quot;Age (age)&quot;,
+       y = &quot;CD4 T cell count at baseline (cd4_baseline)&quot;)</code></pre>
+<pre class="r"><code>ggplot(data = trial, mapping = aes(x = age, y = cd40)) + 
       geom_point(alpha = .2, col = &quot;darkblue&quot;) +
   labs(title = &quot;ACTG175 Trial&quot;,
        subtitle = &quot;Baseline age and CD4 T cell count at baseline &quot;,
@@ -272,31 +481,54 @@ View(XXX)</code></pre>
 
 XXX &lt;- cor.test(formula = ~ XXX + XXX,
                 data = XXX)</code></pre>
+<pre class="r"><code># Correlation between patient&#39;s age at baseline and CD4 T cell count at baseline
+
+age_cd4_baseline_test &lt;- cor.test(formula = ~ age + cd40,
+                          data = trial)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Print the <code>age_cd4_baseline_test</code> object to see summary outputs.</p></li>
-<li><p>Apply the <code>names()</code> function to your <code>age_cd4_baseline_test</code> object to see all of its named elements</p></li>
+<li>Print the <code>age_cd4_baseline_test</code> object to see summary outputs.</li>
+</ol>
+<pre class="r"><code>age_cd4_baseline_test</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Apply the <code>names()</code> function to your <code>age_cd4_baseline_test</code> object to see all of its named elements</li>
 </ol>
 <pre class="r"><code># See all named elements of age_cd4_baseline_test
 names(XXX)</code></pre>
+<pre class="r"><code># See all named elements of age_cd4_baseline_test
+names(age_cd4_baseline_test)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Using the <code>XXX$XXX</code> notation, print only the correlation estimate (<code>estimate</code>) in your <code>age_cd4_baseline_test</code> object. What does this value tell you?</li>
 </ol>
 <pre class="r"><code># Print correlation coefficient estimate in the age_cd4_baseline_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print correlation coefficient estimate
+age_cd4_baseline_test$estimate</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Again using the <code>XXX$XXX</code> notation, print only the p value (<code>p.value</code>) in your <code>age_cd4_baseline_test</code> object. What does this value tell you?</li>
 </ol>
 <pre class="r"><code># Print the p value of the correlation coefficient in the age_cd4_baseline_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print the p value in the age_cd4_baseline_test object
+age_cd4_baseline_test$conf.int</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Again using the <code>XXX$XXX</code> notation, print only the confidence interval (<code>conf.int</code>) in your <code>age_cd4_baseline_test</code> object. What does this value tell you?</li>
 </ol>
 <pre class="r"><code># Print the confidence interval of the correlation coefficient in the age_cd4_baseline_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print the confidence interval in the age_cd4_baseline_test object
+age_cd4_baseline_test$conf.int</code></pre>
 <ol start="8" style="list-style-type: decimal">
-<li><p>Using the <code>tidy()</code> function (from the <code>broom</code> package), create a ‘tidy’ version of your <code>age_cd4_baseline_test</code> object called <code>age_cd4_baseline_tidy</code></p></li>
-<li><p>Now, print your <code>age_cd4_baseline_tidy</code> object, how do the results look?</p></li>
+<li>Using the <code>tidy()</code> function (from the <code>broom</code> package), create a ‘tidy’ version of your <code>age_cd4_baseline_test</code> object called <code>age_cd4_baseline_tidy</code></li>
 </ol>
+<pre class="r"><code># Create a &#39;tidy&#39; version of my age_cd4_baseline_test object
+
+age_cd4_baseline_tidy &lt;- tidy(xxx)</code></pre>
+<pre class="r"><code># Create a &#39;tidy&#39; version of my age_cd4_baseline_test object
+age_cd4_baseline_tidy &lt;- tidy(age_cd4_baseline_test)</code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li>Now, print your <code>age_cd4_baseline_tidy</code> object, how do the results look?</li>
+</ol>
+<pre class="r"><code>age_cd4_baseline_tidy</code></pre>
 <div id="correlation-as-linear-model" class="section level5">
 <h5>Correlation as Linear Model</h5>
 <ol start="10" style="list-style-type: decimal">
@@ -308,6 +540,12 @@ age_cd4_baseline_glm &lt;- glm(formula = XXX ~ XXX,
 
 # Print &#39;tidy&#39; results
 tidy(XXX)</code></pre>
+<pre class="r"><code># GLM predicting a patient&#39;s CD4 T cell count at baseline form their age at baseline 
+age_cd4_baseline_glm &lt;- glm(formula = cd40 ~ age,
+                    data = trial)
+
+# Print &#39;tidy&#39; results
+tidy(age_cd4_baseline_glm)</code></pre>
 </div>
 </div>
 <div id="c---t-test" class="section level3">
@@ -318,14 +556,22 @@ tidy(XXX)</code></pre>
 <ol style="list-style-type: decimal">
 <li>Using the code below, create a plot showing the distribution of CD4 T cell counts at baseline (<code>cd4_baseline</code>) depending on whether or not patients were symptomatic. Based on this plot, do you expect to find that symptomatic patients generally have higher (or lower) CD4 T cell counts?</li>
 </ol>
-<pre class="r"><code>ggplot(data = trial, mapping = aes(x = symptomatic, y = cd4_baseline, col = symptomatic)) + 
-  stat_summary(geom = &quot;bar&quot;, fun.y = &quot;mean&quot;, fill = &quot;white&quot;, col = &quot;black&quot;) +
+<pre class="r"><code>ggplot(data = trial, mapping = aes(x = symptom, y = cd40, col = symptom)) + 
+  stat_summary(geom = &quot;point&quot;, fun = &quot;mean&quot;, fill = &quot;white&quot;, col = &quot;black&quot;) +
   geom_jitter(width = .1, alpha = .1) +
   labs(title = &quot;ACTG175 Trial&quot;,
        subtitle = &quot;Baseline CD4 T cell count and symptoms&quot;,
-       x = &quot;Are patients symptomatic? (symptomatic)&quot;,
-       y = &quot;CD4 T cell count at baseline (cd4_baseline)&quot;) +
-  guides(col = FALSE)</code></pre>
+       x = &quot;Are patients symptomatic? (symptom)&quot;,
+       y = &quot;CD4 T cell count at baseline (cd40)&quot;) +
+  guides(col = &#39;none&#39;)</code></pre>
+<pre class="r"><code>ggplot(data = trial, mapping = aes(x = symptom, y = cd40, col = symptom)) + 
+  stat_summary(geom = &quot;point&quot;, fun = &quot;mean&quot;, fill = &quot;white&quot;, col = &quot;black&quot;) +
+  geom_jitter(width = .1, alpha = .1) +
+  labs(title = &quot;ACTG175 Trial&quot;,
+       subtitle = &quot;Baseline CD4 T cell count and symptoms&quot;,
+       x = &quot;Are patients symptomatic? (symptom)&quot;,
+       y = &quot;CD4 T cell count at baseline (cd40)&quot;) +
+  guides(col = &#39;none&#39;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using the <code>t.test()</code> function, create an object called <code>symptomatic_cd4_baseline_test</code> which conducts a two-sample t-test comparing patients’ CD4 T cell count at baseline (<code>cd4_baseline</code>) between patients that are symptomatic and those that are not (<code>symptomatic</code>)</li>
 </ol>
@@ -333,36 +579,55 @@ tidy(XXX)</code></pre>
 
 XXX &lt;- t.test(formula = XXX ~ XXX,
               data = XXX)</code></pre>
+<pre class="r"><code># T-test comparing CD4 T cell counts at baseline bewteen symptomatic and non-symptomatic patients
+
+symptomatic_cd4_baseline_test &lt;- t.test(formula = cd40 ~ symptom,
+                           data = trial)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Print the <code>symptomatic_cd4_baseline_test</code> object to see summary outputs.</p></li>
-<li><p>Apply the <code>names()</code> function to your <code>symptomatic_cd4_baseline_test</code> object to see all of its named elements</p></li>
+<li>Print the <code>symptomatic_cd4_baseline_test</code> object to see summary outputs.</li>
+</ol>
+<pre class="r"><code>age_cd4_baseline_test</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Apply the <code>names()</code> function to your <code>symptomatic_cd4_baseline_test</code> object to see all of its named elements</li>
 </ol>
 <pre class="r"><code># See all named elements of symptom_cd4_baseline_test
 names(XXX)</code></pre>
+<pre class="r"><code># See all named elements of symptomatic_cd4_baseline_test
+names(symptomatic_cd4_baseline_test)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Using the <code>XXX$XXX</code> notation, print only the correlation estimate (<code>estimate</code>) in your <code>symptomatic_cd4_baseline_test</code> object. What does the result tell you?</li>
 </ol>
 <pre class="r"><code># Print parameter estimates in the symptomatic_cd4_baseline_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print parameter estimates in the symptomatic_cd4_baseline_test object
+symptomatic_cd4_baseline_test$estimate</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Again using the <code>XXX$XXX</code> notation, print only the p value (<code>p.value</code>) in your <code>symptomatic_cd4_baseline_test</code> object. What does this value tell you?</li>
 </ol>
 <pre class="r"><code># Print the p value of the symptomatic_cd4_baseline_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print the p value in the symptomatic_cd4_baseline_test object
+symptomatic_cd4_baseline_test$p.value</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Again using the <code>XXX$XXX</code> notation, print only the confidence interval (<code>conf.int</code>) in your <code>symptomatic_cd4_baseline_test</code> object. What does this value tell you?</li>
 </ol>
 <pre class="r"><code># Print the confidence interval in the symptomatic_cd4_baseline_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print the confidence interval in the symptomatic_cd4_baseline_test object
+symptomatic_cd4_baseline_test$conf.int</code></pre>
 <ol start="8" style="list-style-type: decimal">
 <li>Using the <code>tidy()</code> function (from the <code>broom</code> package), create a ‘tidy’ version of your <code>symptomatic_cd4_baseline_test</code> object called <code>symptomatic_cd4_baseline_tidy</code></li>
 </ol>
 <pre class="r"><code># Create a &#39;tidy&#39; version of my symptomatic_cd4_baseline_test object
 
 symptomatic_cd4_baseline_tidy &lt;- tidy(xxx)</code></pre>
+<pre class="r"><code># Create a &#39;tidy&#39; version of my symptomatic_cd4_baseline_test object
+
+symptomatic_cd4_baseline_tidy &lt;- tidy(symptomatic_cd4_baseline_test)</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Now, print your <code>symptomatic_cd4_baseline_tidy</code> object, how do the results look?</li>
 </ol>
+<pre class="r"><code>symptomatic_cd4_baseline_tidy</code></pre>
 <div id="t-test-as-linear-model" class="section level5">
 <h5>T-test as Linear Model</h5>
 <ol start="10" style="list-style-type: decimal">
@@ -374,6 +639,12 @@ symptomatic_cd4_baseline_glm &lt;- glm(formula = XXX ~ XXX,
 
 # Print &#39;tidy&#39; results
 tidy(XXX)</code></pre>
+<pre class="r"><code># GLM predicting a patient&#39;s CD4 T cell count at baseline form their age at baseline 
+symptomatic_cd4_baseline_glm &lt;- glm(formula = cd40 ~ symptom,
+                        data = trial)
+
+# Print &#39;tidy&#39; results
+tidy(symptomatic_cd4_baseline_glm)</code></pre>
 </div>
 </div>
 <div id="d---anova" class="section level3">
@@ -382,16 +653,16 @@ tidy(XXX)</code></pre>
 <p>Research Question: Was there a difference between the treatment molecule in the number of days until the first occurrence of one of the following major negative events: (i) a decline in CD4 T cell count of at least 50 (ii) an event indicating progression to AIDS, or (iii) death?</p>
 </blockquote>
 <ol style="list-style-type: decimal">
-<li>Using the code below, create a plot showing the distribution of the number of days until a major negative event (<code>days</code>) for each treatment molecule <code>molecule</code> Based on this plot, do you expect to find that there were differences in treatment molecules?</li>
+<li>Using the code below, create a plot showing the distribution of the number of days until a major negative event (<code>days</code>) for each treatment arm. Based on this plot, do you expect to find that there were differences in treatment molecules?</li>
 </ol>
-<pre class="r"><code>ggplot(data = trial, mapping = aes(x = molecule, y = days, col = molecule)) + 
-  stat_summary(geom = &quot;bar&quot;, fun.y = &quot;mean&quot;, fill = &quot;white&quot;, col = &quot;black&quot;) +
+<pre class="r"><code>ggplot(data = trial, mapping = aes(x = arms, y = days, col = arms)) + 
+  stat_summary(geom = &quot;point&quot;, fun = &quot;mean&quot;, fill = &quot;white&quot;, col = &quot;black&quot;) +
   geom_jitter(width = .2, alpha = .2) +
   labs(title = &quot;ACTG175 Trial&quot;,
        subtitle = &quot;Did the molecule affect days until negative events?&quot;,
        x = &quot;Treatment Arm (molecule)&quot;,
        y = &quot;Number of days until a major negative event (days)&quot;) +
-  guides(col = FALSE)</code></pre>
+  guides(col = &#39;none&#39;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using the <code>aov()</code> function, create an object called <code>days_molecule_aov</code> which conducts an ANOVA comparing the number of days until a negative event (<code>days</code>) between treatment molecule (<code>molecule</code>).</li>
 </ol>
@@ -399,48 +670,67 @@ tidy(XXX)</code></pre>
 
 XXX &lt;- aov(formula = XXX ~ XXX,
               data = XXX)</code></pre>
+<pre class="r"><code># ANOVA comparing number of days until a negative event between treatment molecule
+
+days_molecule_aov &lt;- aov(formula = days ~ arms,
+                      data = trial)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Print the <code>days_molecule_aov</code> object to see summary outputs.</p></li>
-<li><p>Apply the <code>names()</code> function to your <code>days_molecule_aov</code> object to see all of its named elements</p></li>
+<li>Print the <code>days_molecule_aov</code> object to see summary outputs.</li>
+</ol>
+<pre class="r"><code>days_molecule_aov</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Apply the <code>names()</code> function to your <code>days_molecule_aov</code> object to see all of its named elements</li>
 </ol>
 <pre class="r"><code># See all named elements of days_molecule_aov
 names(XXX)</code></pre>
+<pre class="r"><code># See all named elements of symptom_cd4_baseline_test
+names(days_molecule_aov)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Using the <code>XXX$XXX</code> notation, print the coefficients in your <code>days_molecule_aov</code> object. What do these values mean?</li>
 </ol>
 <pre class="r"><code># Print coefficients in the days_molecule_aov object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print coefficients in the days_molecule_aov object
+days_molecule_aov$coefficients</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Using the <code>tidy()</code> function (from the <code>broom</code> package), create a ‘tidy’ version of your <code>days_molecule_aov</code> object called <code>days_molecule_tidy</code></li>
 </ol>
 <pre class="r"><code># Create a &#39;tidy&#39; version of my symptom_cd4_baseline_test days_molecule_aov
 
 days_molecule_tidy &lt;- tidy(xxx)</code></pre>
-<ol start="9" style="list-style-type: decimal">
+<pre class="r"><code># Create a &#39;tidy&#39; version of my days_molecule_aov object
+
+days_molecule_tidy &lt;- tidy(days_molecule_aov)</code></pre>
+<ol start="6" style="list-style-type: decimal">
 <li>Now, print your <code>days_molecule_tidy</code> object, how do the results look?</li>
 </ol>
+<pre class="r"><code>days_molecule_tidy</code></pre>
 <div id="post-hoc-tests" class="section level5">
 <h5>Post-hoc tests</h5>
-<ol start="10" style="list-style-type: decimal">
+<ol start="7" style="list-style-type: decimal">
 <li>In order to compare pair-wise differences between groups after conducting an ANOVA, you need to conduct post-hoc tests. Using the <code>TukeyHSD()</code> function, conduct pair-wise tests to see which pairs of treatment molecule differ in <code>days</code>. Save the result to an object called <code>days_molecule_aov_post</code> `</li>
 </ol>
 <pre class="r"><code># Conduct pair-wise tests comparing every pair of treatment
 #  molecule (molecule) on days until a major negative event (days)
 
 XXX &lt;- TukeyHSD(XXX)</code></pre>
-<ol start="11" style="list-style-type: decimal">
+<pre class="r"><code># Conduct pair-wise tests comparing every pair of treatment
+#  molecule (molecule) on days until a major negative event (days)
+
+days_molecule_aov_post &lt;- TukeyHSD(days_molecule_aov)</code></pre>
+<ol start="8" style="list-style-type: decimal">
 <li><p>Print your <code>days_molecule_aov_post</code> object, what do you see?</p></li>
 <li><p>Print ‘tidy’ results from your <code>days_molecule_aov_post</code> object using the <code>tidy()</code> function</p></li>
 </ol>
 <pre class="r"><code># Print &#39;tidy&#39; version of days_molecule_aov_post
 tidy(XXX)</code></pre>
-<ol start="13" style="list-style-type: decimal">
+<ol start="10" style="list-style-type: decimal">
 <li>Based on what you’ve seen, what are your conclusions? Which treatment molecule seem to differ?</li>
 </ol>
 </div>
 <div id="anova-as-linear-model" class="section level5">
 <h5>ANOVA as Linear Model</h5>
-<ol start="10" style="list-style-type: decimal">
+<ol start="11" style="list-style-type: decimal">
 <li>Conduct the same analysis you did before, but this time use the <code>glm()</code> function. Use the code skeleton below to help you. Do you get the same results as you did using <code>aov()</code>? Which outputs are the same and which are different?</li>
 </ol>
 <pre class="r"><code># GLM predicting number of days until a major negative event (days) as a function of treatment arm (molecule)
@@ -452,6 +742,15 @@ XXX
 
 # Print &#39;tidy&#39; results
 tidy(XXX)</code></pre>
+<pre class="r"><code># GLM predicting number of days until a major negative event (days) as a function of treatment arm (molecule)
+days_molecule_glm &lt;- glm(formula = days ~ arms,
+                     data = trial)
+
+# Print object
+days_molecule_glm
+
+# Print &#39;tidy&#39; results
+tidy(days_molecule_glm)</code></pre>
 </div>
 </div>
 <div id="f---regression" class="section level3">
@@ -463,14 +762,20 @@ tidy(XXX)</code></pre>
 
 days_glm &lt;- glm(formula = XXX ~ XXX + XXX + XXX ...,
                 data = XXX)</code></pre>
+<pre class="r"><code># Predict days based on many variables
+
+days_glm &lt;- glm(formula = days ~ arms + gender + age + wtkg + drugs + race + cd40 + cd80,
+                data = trial)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using <code>tidy()</code> look at the summary results. Which variables seem to be able to predict the number of days until a major negative event?</li>
 </ol>
 <pre class="r"><code>tidy(XXX)</code></pre>
+<pre class="r"><code>tidy(days_glm)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Using <code>rsq()</code> calculate the r-squared value of your model. Was it high or low? Recall that r-squared can range anywhere from 0 (meaning the model explains <em>none</em> of the variance in <code>days</code>), all the way up to 1 (meaning the model expllains <em>all</em> of the variance in <code>days</code>).</li>
 </ol>
 <pre class="r"><code>rsq(XXX)</code></pre>
+<pre class="r"><code>rsq(days_glm)</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Using the code below, visualise the residuals from the model. What does this mean?</li>
 </ol>
@@ -507,6 +812,8 @@ ggplot(data = tibble(days_glm_absresid), aes(x = days_glm_absresid)) +
 </ol>
 <pre class="r"><code># Calculate the mean absolute residuals of the model
 mean(abs(resid(XXX)))</code></pre>
+<pre class="r"><code># Calculate the mean absolute residuals of the model
+mean(abs(resid(days_glm)))</code></pre>
 </div>
 <div id="x---advanced-choose-your-own-test" class="section level3">
 <h3>X - Advanced: Choose your own test!</h3>
@@ -560,9 +867,16 @@ ggplot(data = molecule_gender, mapping = aes(x = molecule, y = male_p)) +
 
 XXX &lt;- chisq.test(x = factor(trial$XXX),
                   y = factor(trial$XXX))</code></pre>
+<pre class="r"><code># Chi-square test comparing the frequencies of each gender for each molecule
+
+gender_molecule_test &lt;- chisq.test(x = factor(trial$gender),
+                              y = factor(trial$molecule))</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Print the <code>gender_molecule_test</code> object to see summary outputs.</p></li>
-<li><p>Apply the <code>names()</code> function to your <code>gender_molecule_test</code> object to see all of its named elements</p></li>
+<li>Print the <code>gender_molecule_test</code> object to see summary outputs.</li>
+</ol>
+<pre class="r"><code>gender_molecule_test</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Apply the <code>names()</code> function to your <code>gender_molecule_test</code> object to see all of its named elements</li>
 </ol>
 <pre class="r"><code># See all named elements of gender_molecule_test
 names(XXX)</code></pre>
@@ -573,20 +887,28 @@ names(gender_molecule_test)</code></pre>
 </ol>
 <pre class="r"><code># Print observed frequencies in the gender_molecule_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print observed frequencies in the gender_molecule_test object
+gender_molecule_test$observed</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Using the <code>XXX$XXX</code> notation, print the <em>expected</em> frequencies in your <code>gender_molecule_test</code> object. What do these values mean?</li>
 </ol>
 <pre class="r"><code># Print expected frequencies in the gender_molecule_test object
 XXX$XXX</code></pre>
+<pre class="r"><code># Print expected frequencies in the gender_molecule_test object
+gender_molecule_test$expected</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Using the <code>tidy()</code> function (from the <code>broom</code> package), create a ‘tidy’ version of your <code>gender_molecule_test</code> object called <code>gender_molecule_tidy</code></li>
 </ol>
 <pre class="r"><code># Create a &#39;tidy&#39; version of my gender_molecule_test called gender_molecule_tidy
 
 gender_molecule_tidy &lt;- tidy(xxx)</code></pre>
+<pre class="r"><code># Create a &#39;tidy&#39; version of my gender_arm_test object
+
+gender_molecule_tidy &lt;- tidy(gender_molecule_test)</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Now, print your <code>gender_molecule_tidy</code> object, how do the results look?</li>
 </ol>
+<pre class="r"><code>gender_molecule_tidy</code></pre>
 <div id="chi-square-as-linear-model" class="section level5">
 <h5>Chi-square as Linear Model</h5>
 <ol start="10" style="list-style-type: decimal">
@@ -612,6 +934,16 @@ molecule_gender_counts &lt;- trial %&gt;%
 molecule_gender_glm &lt;- glm(formula = XXX ~ XXX * XXX, # Model counts by the interaction of molecule and gender
                        family = &quot;poisson&quot;,        # Use poisson model family to specify we are modelling counts
                        data = XXX)
+
+# Print summary results as an anova table
+anova(molecule_gender_glm, 
+      test = &#39;Rao&#39;)   # Show a &#39;Rao&quot; score test</code></pre>
+<pre class="r"><code># Create linear model predicting counts as a function of the 
+#  interaction between molecule and gender
+
+molecule_gender_glm &lt;- glm(formula = counts ~ molecule * gender, 
+                           family = &quot;poisson&quot;, 
+                           data = molecule_gender_counts)
 
 # Print summary results as an anova table
 anova(molecule_gender_glm, 
@@ -790,13 +1122,12 @@ tidy(my_aov)  # Show tidy results
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"><a href="https://raw.githubusercontent.com/therbootcamp/SwR_2019Apr/master/1_Data/trial_ACTG175.csv?token=AIFo1HP25ZzPdraeqxgLB9CrcSTQDN3Pks5cqOGGwA%3D%3D">trial_ACTG175.csv</a></td>
+<td align="left"><a href="https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Statistics/1_Data/trial_ACTG175.csv">trial_ACTG175.csv</a></td>
 <td align="left">2139</td>
 <td align="left">27</td>
 </tr>
 </tbody>
 </table>
-<p><img src="https://raw.githubusercontent.com/therbootcamp/SwR_2019Apr/master/src/img/hammer_actg175_ss.jpg?token=AIFo1AUoJyymRihyXhI2vWK4Ace3H2hoks5csFmDwA%3D%3D" width="80%" style="display: block; margin: auto;" /></p>
 <p>The <code>trial_ACTG175.csv</code> data from the ACTG 175 clinical trial. ACTG 175 was a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter.</p>
 <p>The trial is documented in Hammer SM, et al. (1996), “A trial comparing nucleoside monotherapy with combination therapy in HIV-infected adults with CD4 cell counts from 200 to 500 per cubic millimeter.”, New England Journal of Medicine, 335:1081–1090. The full publication can be found at <a href="https://www.nejm.org/doi/full/10.1056/NEJM199610103351501" class="uri">https://www.nejm.org/doi/full/10.1056/NEJM199610103351501</a></p>
 <p>The data were originally obtained from the <code>speff2trial</code> package.</p>
