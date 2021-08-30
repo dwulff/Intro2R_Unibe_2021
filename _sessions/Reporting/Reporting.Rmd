@@ -1173,5 +1173,5 @@ css: "../2_Assets/styling.csv")
 
 class: middle, center
 
-<h1><a href="https://therbootcamp.github.io/RmR_2021Feb/_sessions/Markdown/Markdown_practical.html">Practical</a></h1>
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Markdown/Markdown_practical.html">Practical</a></h1>
 
