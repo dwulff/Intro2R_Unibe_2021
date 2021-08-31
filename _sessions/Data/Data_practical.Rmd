@@ -725,10 +725,10 @@ max(stocks$increase)
 # read/write delim-separated -------------------
 
 # read chickens data
-chickens <- read_csv(file = "1_Data/chickens.csv")
+chickens <- read_csv(file = "1_Data/example.csv")
 
 # fix header of chickens_nohead.csv with known column names
-chickens <- read_csv(file = "1_Data/chickens_nohead.csv",
+chickens <- read_csv(file = "1_Data/example_nohead.csv",
                      col_names = c("weight", "time", "chick", "diet"))
 
 # fix NA values of chickens_na.csv
@@ -737,7 +737,9 @@ chickens <- read_csv(file = "1_Data/chickens_na.csv",
 
 # write clean data to disc
 write_csv(x = chickens, 
-          path = "1_Data/chickens_clean.csv")
+          path = "1_Data/example_clean.csv")
+
+chickens_no <- chickens %>% rename(X1 = weight, X2 = Time, X3 = Chick)
 
 # fix types -------------------
 # Note: the survey data is fictional!
@@ -751,13 +753,13 @@ survey <- type_convert(survey)
 # other formats -------------------
 
 # .xlsx (Excel)
-chickens <- read_excel("1_Data/chickens.xlsx")
+chickens <- read_excel("1_Data/example.xlsx")
 
 # .sav (SPSS)
-chickens <- read_spss("1_Data/chickens.sav")
+chickens <- read_spss("1_Data/example.sav")
 
 # .sad7bdata (SAS)
-chickens <- read_sas("1_Data/chickens.sas7bdat")
+chickens <- read_sas("1_Data/example.sas7bdat")
 
 ```
 
