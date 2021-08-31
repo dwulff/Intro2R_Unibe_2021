@@ -11,24 +11,38 @@
 
 
 
-<title>Wrangling_practical.utf8</title>
+<title>Wrangling</title>
 
+<script src="Wrangling_practical_files/header-attrs-2.10/header-attrs.js"></script>
 <script src="Wrangling_practical_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Wrangling_practical_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="Wrangling_practical_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="Wrangling_practical_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="Wrangling_practical_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="Wrangling_practical_files/navigation-1.1/tabsets.js"></script>
 <link href="Wrangling_practical_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="Wrangling_practical_files/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="practical.css" type="text/css" />
 
@@ -77,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -97,6 +82,9 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
@@ -109,7 +97,6 @@ summary {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -173,10 +160,23 @@ summary {
 
 
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
+<h1 class="title toc-ignore">Wrangling</h1>
+<h4 class="author"><table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'>
+<col width='10%'>
+<col width='10%'>
+<tr style="border:none">
+<td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
+<font style='font-style:normal'>Introduction to R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>Bern R Bootcamp</font> </a>
+</td>
+<td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
+<img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
+</td>
+</tr>
+</table></h4>
 
 </div>
 
@@ -185,7 +185,7 @@ summary {
 <img src="image/trial.jpg" alt="Trulli" style="width:100%;height:280px"> <br> <font style="font-size:10px">from <a href="https://parkinsonsnewstoday.com/2016/02/24/promising-respiratory-drug-focus-of-new-clinical-trial-for-parkinsons-disease">parkinsonsnewstoday.com</a></font>
 </p>
 <div id="section" class="section level1 tabset">
-<h1></h1>
+<h1 class="tabset"></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>In this practical you’ll practice “data wrangling” with the <code>dplyr</code> and <code>tidyr</code> packages (part of the `tidyverse collection of packages).</p>
@@ -227,7 +227,7 @@ trial_act &lt;- read_csv(file = &quot;XX&quot;)</code></pre>
 </ol>
 <pre class="r"><code># Print trial_act object
 trial_act</code></pre>
-<pre><code># A tibble: 2,139 x 27
+<pre><code># A tibble: 2,139 × 27
    pidnum   age  wtkg  hemo  homo drugs karnof oprior   z30 zprior preanti  race
     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
  1  10056    48  89.8     0     0     0    100      0     0      1       0     0
@@ -349,7 +349,7 @@ trial_act &lt;- trial_act %&gt;%
   select(XXX)</code></pre>
 <pre class="r"><code>trial_act %&gt;% 
   select(age_y)</code></pre>
-<pre><code># A tibble: 2,139 x 1
+<pre><code># A tibble: 2,139 × 1
    age_y
    &lt;dbl&gt;
  1    48
@@ -496,7 +496,7 @@ trial_act &lt;- trial_act %&gt;%
  arrange(age_y)
 
 trial_act</code></pre>
-<pre><code># A tibble: 2,139 x 34
+<pre><code># A tibble: 2,139 × 34
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 940533    12      41.4     1     0     0    100      0     0      1       0
@@ -522,7 +522,7 @@ trial_act</code></pre>
  arrange(desc(age_y))
 
 trial_act</code></pre>
-<pre><code># A tibble: 2,139 x 34
+<pre><code># A tibble: 2,139 × 34
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1  11438    70      73.9     0     1     0    100      0     1      1     674
@@ -550,7 +550,7 @@ trial_act</code></pre>
  arrange(arms, age_y)
 
 trial_act</code></pre>
-<pre><code># A tibble: 2,139 x 34
+<pre><code># A tibble: 2,139 × 34
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 960014    13      48.5     1     0     0    100      0     0      1       0
@@ -579,7 +579,7 @@ trial_act</code></pre>
   filter(XXX == &quot;XXX&quot;)</code></pre>
 <pre class="r"><code>trial_act %&gt;%
   filter(gender_char == &quot;male&quot;)</code></pre>
-<pre><code># A tibble: 1,771 x 34
+<pre><code># A tibble: 1,771 × 34
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 960014    13      48.5     1     0     0    100      0     0      1       0
@@ -605,7 +605,7 @@ trial_act</code></pre>
   filter(gender_char == &quot;male&quot;)
 
 trial_act_male</code></pre>
-<pre><code># A tibble: 1,771 x 34
+<pre><code># A tibble: 1,771 × 34
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 960014    13      48.5     1     0     0    100      0     0      1       0
@@ -629,7 +629,7 @@ trial_act_male</code></pre>
 </ol>
 <pre class="r"><code>trial_act %&gt;%
   filter(age_y &lt; 60)</code></pre>
-<pre><code># A tibble: 2,110 x 34
+<pre><code># A tibble: 2,110 × 34
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 960014    13      48.5     1     0     0    100      0     0      1       0
@@ -671,7 +671,7 @@ trial_act_male</code></pre>
 <li>Print your new <code>trial_act</code> dataframe. Do you now see the demographic data?</li>
 </ol>
 <pre class="r"><code>trial_act</code></pre>
-<pre><code># A tibble: 2,139 x 36
+<pre><code># A tibble: 2,139 × 36
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 960014    13      48.5     1     0     0    100      0     0      1       0
@@ -698,7 +698,7 @@ trial_act_male</code></pre>
   select(`pidnum`, `arms`, `cd40`, `cd420`, `cd496`)</code></pre>
 <pre class="r"><code># Data is in a &#39;wide&#39; format
 CD4_wide</code></pre>
-<pre><code># A tibble: 2,139 x 5
+<pre><code># A tibble: 2,139 × 5
    pidnum  arms  cd40 cd420 cd496
     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1 960014     0   283   271    NA
@@ -715,7 +715,7 @@ CD4_wide</code></pre>
 <p>Our goal is to convert this data to a ‘long’ format, where each row represents a single CD4 T cell count for a specific patient, like this:</p>
 <pre class="r"><code># This is the same data in &#39;long&#39; format
 CD4_long</code></pre>
-<pre><code># A tibble: 6,417 x 4
+<pre><code># A tibble: 6,417 × 4
    pidnum  arms time  value
     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
  1 960014     0 cd40    283
@@ -740,7 +740,7 @@ CD4_long</code></pre>
 <li>Print your <code>CD4_long</code> dataframe! Do you now see that each row is a specific observation for a patient?</li>
 </ol>
 <pre class="r"><code>CD4_long</code></pre>
-<pre><code># A tibble: 6,417 x 4
+<pre><code># A tibble: 6,417 × 4
    pidnum  arms time  value
     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;
  1 960014     0 cd40    283
@@ -763,7 +763,7 @@ CD4_long</code></pre>
 <pre class="r"><code>CD4_long %&gt;%
   pivot_wider(names_from = &#39;time&#39;, 
               values_from = &#39;value&#39;)</code></pre>
-<pre><code># A tibble: 2,139 x 5
+<pre><code># A tibble: 2,139 × 5
    pidnum  arms  cd40 cd420 cd496
     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
  1 960014     0   283   271    NA
@@ -794,7 +794,7 @@ CD4_long</code></pre>
          cd40 &gt; 250 &amp; cd40 &lt; 400)
 
 trial_A</code></pre>
-<pre><code># A tibble: 126 x 36
+<pre><code># A tibble: 126 × 36
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 630023    26      86.2     0     0     1     90      0     0      1       0
@@ -823,7 +823,7 @@ trial_A</code></pre>
   ))
 
 trial_act</code></pre>
-<pre><code># A tibble: 2,139 x 37
+<pre><code># A tibble: 2,139 × 37
    pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
     &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
  1 960014    13      48.5     1     0     0    100      0     0      1       0
@@ -857,7 +857,7 @@ trial_act</code></pre>
   )
 
 trial_B</code></pre>
-<pre><code># A tibble: 8 x 37
+<pre><code># A tibble: 8 × 37
   pidnum age_y weight_kg  hemo  homo drugs karnof oprior   z30 zprior preanti
    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
 1 220489    45      70.9     0     0     1    100      0     0      1       0
@@ -1202,7 +1202,7 @@ baselers &lt;- baselers %&gt;%
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1220,7 +1220,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
