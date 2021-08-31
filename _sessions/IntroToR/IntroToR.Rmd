@@ -17,7 +17,7 @@ author: "Introduction to R<br>
   <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
     <i class='fab fa-linkedin' style='font-size: .9em;'></i>
   </a>"
-date: "June 2020"
+date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -45,7 +45,7 @@ layout: true
     </a>
     <a href="https://therbootcamp.github.io/">
       <font color="#7E7E7E">
-       Introduction to R | June 2020
+       Introduction to R | September 2021
       </font>
     </a>
     </span>
@@ -893,7 +893,7 @@ See also <a href="http://style.tidyverse.org/">style.tidyverse.org/</a>
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe/1_Data/BernRBootcamp_Day1.zip">Downloads</a></h1>
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/1_Data/BernRBootcamp_Day1.zip">Downloads</a></h1>
 
 ---
 

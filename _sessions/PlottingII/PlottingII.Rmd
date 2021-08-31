@@ -17,7 +17,7 @@ author: "Introduction to R<br/>
   <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
     <i class='fab fa-linkedin' style='font-size: .9em;'></i>
   </a>"
-date: "June 2020"
+date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -45,7 +45,7 @@ layout: true
     </a>
     <a href="https://therbootcamp.github.io/">
       <font color="#7E7E7E">
-       R Bootcamp Bern | June 2020
+       R Bootcamp Bern | September 2021
       </font>
     </a>
     </span>
@@ -1190,4 +1190,4 @@ ggsave(filename = "myplot.png",
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe/_sessions/PlottingII/PlottingII_practical.html">Practical</a></h1>
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/PlottingII/PlottingII_practical.html">Practical</a></h1>

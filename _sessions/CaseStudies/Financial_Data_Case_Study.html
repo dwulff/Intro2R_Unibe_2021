@@ -13,22 +13,36 @@
 
 <title>Case study: Finance</title>
 
+<script src="Financial_Data_Case_Study_files/header-attrs-2.10/header-attrs.js"></script>
 <script src="Financial_Data_Case_Study_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Financial_Data_Case_Study_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="Financial_Data_Case_Study_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="Financial_Data_Case_Study_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="Financial_Data_Case_Study_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="Financial_Data_Case_Study_files/navigation-1.1/tabsets.js"></script>
 <link href="Financial_Data_Case_Study_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="Financial_Data_Case_Study_files/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="practical.css" type="text/css" />
 
@@ -77,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -97,6 +82,9 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
@@ -109,7 +97,6 @@ summary {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -173,7 +160,7 @@ summary {
 
 
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -198,7 +185,7 @@ summary {
 <img width="100%" src="image/finance.png" margin=0><br> <font style="font-size:10px">adapted from <a href="https://static.memrise.com/uploads/course_photos/3146044000150629230223.jpg">static.memrise.com</a></font>
 </p>
 <div id="section" class="section level1 tabset">
-<h1></h1>
+<h1 class="tabset"></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>In this case study, you will analyse historic data of three major stock indices, the <strong>Dow Jones</strong>, the <strong>DAX</strong>, and the <strong>Nikkei</strong>, and the exchange rates between the <strong>US dollar</strong>, the <strong>Euro</strong>, and the <strong>Yen</strong>. Using this data, you will address several questions.</p>
@@ -247,7 +234,7 @@ yen_usd &lt;- read_delim(file = &#39;1_Data/yen-dollar.txt&#39;, delim = &#39;\t
 </ol>
 <pre class="r"><code># print exchange rate data sets
 eur_usd </code></pre>
-<pre><code># A tibble: 6,545 x 2
+<pre><code># A tibble: 6,545 × 2
    `04 Jan 1999` `1.186669`
    &lt;chr&gt;              &lt;dbl&gt;
  1 05 Jan 1999         1.18
@@ -262,7 +249,7 @@ eur_usd </code></pre>
 10 18 Jan 1999         1.16
 # … with 6,535 more rows</code></pre>
 <pre class="r"><code>yen_usd</code></pre>
-<pre><code># A tibble: 8,764 x 2
+<pre><code># A tibble: 8,764 × 2
    `02 Jan 1990` `0.006838`
    &lt;chr&gt;              &lt;dbl&gt;
  1 03 Jan 1990      0.00686
@@ -310,7 +297,7 @@ financial &lt;- dow %&gt;%
   select(Date,Close) %&gt;% 
   inner_join(dax %&gt;% select(Date, Close), by = &#39;Date&#39;)
 financial</code></pre>
-<pre><code># A tibble: 7,577 x 3
+<pre><code># A tibble: 7,577 × 3
    Date       Close.x Close.y
    &lt;date&gt;       &lt;dbl&gt;   &lt;dbl&gt;
  1 1987-12-30   1950.   1005.
@@ -334,7 +321,7 @@ financial &lt;- dow %&gt;%
              by = &#39;Date&#39;,
              suffix = c(&#39;_dow&#39;,&#39;_dax&#39;))
 financial</code></pre>
-<pre><code># A tibble: 7,577 x 3
+<pre><code># A tibble: 7,577 × 3
    Date       Close_dow Close_dax
    &lt;date&gt;         &lt;dbl&gt;     &lt;dbl&gt;
  1 1987-12-30     1950.     1005.
@@ -430,7 +417,7 @@ aggregate_change &lt;- financial %&gt;%
     mean_nik_change = sum(Close_nik_change, na.rm = TRUE)
 )
 aggregate_change</code></pre>
-<pre><code># A tibble: 20 x 4
+<pre><code># A tibble: 20 × 4
     year mean_dow_change mean_dax_change mean_nik_change
    &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;           &lt;dbl&gt;
  1  1999            NA             1529.          5903. 
@@ -473,7 +460,7 @@ Close_nik_change            0.169            0.318            1.000</code></pre>
     cor_dow_nik = cor(Close_dow_change, Close_nik_change, use = &#39;complete.obs&#39;),
     cor_dax_nik = cor(Close_dax_change, Close_nik_change, use = &#39;complete.obs&#39;)
 )</code></pre>
-<pre><code># A tibble: 20 x 4
+<pre><code># A tibble: 20 × 4
     year cor_dow_dax cor_dow_nik cor_dax_nik
    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
  1  1999       0.453      0.0730       0.192
@@ -513,7 +500,7 @@ Rate_yen_change           0.391           1.000</code></pre>
     cor_dow_dax = cor(Close_dow - Close_dax, Rate_eur, use = &#39;complete.obs&#39;),
     cor_dow_nik = cor(Close_dow - Close_nik, Rate_yen, use = &#39;complete.obs&#39;)
   )</code></pre>
-<pre><code># A tibble: 1 x 2
+<pre><code># A tibble: 1 × 2
   cor_dow_dax cor_dow_nik
         &lt;dbl&gt;       &lt;dbl&gt;
 1      0.0869       0.569</code></pre>
@@ -526,7 +513,7 @@ Rate_yen_change           0.391           1.000</code></pre>
     cor_dow_dax = cor(Close_dow - Close_dax, Rate_eur, use = &#39;complete.obs&#39;),
     cor_dow_nik = cor(Close_dow - Close_nik, Rate_yen, use = &#39;complete.obs&#39;)
   )</code></pre>
-<pre><code># A tibble: 20 x 3
+<pre><code># A tibble: 20 × 3
     year cor_dow_dax cor_dow_nik
    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
  1  1999      -0.639     -0.501 
@@ -706,7 +693,7 @@ Rate_yen_change           0.391           1.000</code></pre>
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -724,7 +711,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

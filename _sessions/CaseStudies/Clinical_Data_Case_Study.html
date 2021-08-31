@@ -13,22 +13,36 @@
 
 <title>Case study: Clinical</title>
 
+<script src="Clinical_Data_Case_Study_files/header-attrs-2.10/header-attrs.js"></script>
 <script src="Clinical_Data_Case_Study_files/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="Clinical_Data_Case_Study_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="Clinical_Data_Case_Study_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="Clinical_Data_Case_Study_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="Clinical_Data_Case_Study_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="Clinical_Data_Case_Study_files/navigation-1.1/tabsets.js"></script>
 <link href="Clinical_Data_Case_Study_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="Clinical_Data_Case_Study_files/highlightjs-9.12.0/highlight.js"></script>
 
-<style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -41,32 +55,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 <link rel="stylesheet" href="practical.css" type="text/css" />
 
@@ -77,10 +66,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -97,6 +82,9 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
@@ -109,7 +97,6 @@ summary {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -173,7 +160,7 @@ summary {
 
 
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -198,7 +185,7 @@ summary {
 <img width="100%" src="image/clinical.jpg" margin=0><br> <font style="font-size:10px">adapted from <a href="http://www.formerfda.com/wp-content/uploads/2014/08/clinical-trials.jpg">formerfda.com</a></font>
 </p>
 <div id="section" class="section level1 tabset">
-<h1></h1>
+<h1 class="tabset"></h1>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
 <p>In this case study, we will look at the results of a clinical trial exploring the effectiveness of a new medication called dimarta on reducing histamine in patients with a disease that leads to chronically high histamine levels. In the study, 300 patients were assigned to one of three different treatment arms. One arm was given a placebo. The other arm was given adiclax – the standard of care for the disease. Finally, the third arm was given dimarta. There were two main measures of interest in the trial: patient’s changes in histamine from the beginning to the end of the trial, and their change in quality of life (measured by self report).</p>
@@ -229,7 +216,7 @@ biomarker_df &lt;- read_csv(&quot;1_Data/dimarta_biomarker.csv&quot;)</code></pr
 <li>Get a first impression of the objects you just created by exploring them with a mixture of the <code>View()</code>, <code>head()</code>, <code>names()</code>, and <code>str()</code> functions. Were they all loaded correctly?</li>
 </ol>
 <pre class="r"><code>trial_df</code></pre>
-<pre><code># A tibble: 300 x 6
+<pre><code># A tibble: 300 × 6
    PatientID   arm histamine_start histamine_end qol_start qol_end
    &lt;chr&gt;     &lt;dbl&gt;           &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
  1 txdjezeo      1            58.6          67.0         3       3
@@ -244,7 +231,7 @@ biomarker_df &lt;- read_csv(&quot;1_Data/dimarta_biomarker.csv&quot;)</code></pr
 10 xocueqqe      3            48.6          55.2         1       1
 # … with 290 more rows</code></pre>
 <pre class="r"><code>demographics_df</code></pre>
-<pre><code># A tibble: 300 x 5
+<pre><code># A tibble: 300 × 5
    PatientID   age gender site   diseasestatus
    &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        
  1 pkyivajv     36      0 Tokyo  Mid          
@@ -259,7 +246,7 @@ biomarker_df &lt;- read_csv(&quot;1_Data/dimarta_biomarker.csv&quot;)</code></pr
 10 fjjrnsnt     43      1 London Mid          
 # … with 290 more rows</code></pre>
 <pre class="r"><code>biomarker_df</code></pre>
-<pre><code># A tibble: 900 x 3
+<pre><code># A tibble: 900 × 3
    PatientID Biomarker BiomarkerStatus
    &lt;chr&gt;     &lt;chr&gt;     &lt;lgl&gt;          
  1 ygazqssv  dw        FALSE          
@@ -321,7 +308,7 @@ biomarker_wide_df &lt;- biomarker_df %&gt;%
 <li>View <code>dimarta_df</code> to make sure the data look correct! The data should have one row for each patient, and 13 separate columns, including <code>dw</code>, <code>ms</code>, and <code>np</code></li>
 </ol>
 <pre class="r"><code>dimarta_df</code></pre>
-<pre><code># A tibble: 300 x 14
+<pre><code># A tibble: 300 × 14
    PatientID StudyArm histamine_start histamine_end qol_start qol_end   age
    &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
  1 txdjezeo  placebo             58.6          67.0         3       3    39
@@ -349,7 +336,7 @@ biomarker_wide_df &lt;- biomarker_df %&gt;%
   summarise(
     Counts = n()    
   )</code></pre>
-<pre><code># A tibble: 2 x 2
+<pre><code># A tibble: 2 × 2
   gender_c Counts
   &lt;chr&gt;     &lt;int&gt;
 1 female      140
@@ -362,7 +349,7 @@ biomarker_wide_df &lt;- biomarker_df %&gt;%
   summarise(
     Counts = n()    
   )</code></pre>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   StudyArm Counts
   &lt;chr&gt;     &lt;int&gt;
 1 adiclax     100
@@ -374,7 +361,7 @@ biomarker_wide_df &lt;- biomarker_df %&gt;%
 <pre class="r"><code>dimarta_df %&gt;%
   group_by(StudyArm, gender_c) %&gt;%
     mutate(Counts = n())</code></pre>
-<pre><code># A tibble: 300 x 15
+<pre><code># A tibble: 300 × 15
 # Groups:   StudyArm, gender_c [6]
    PatientID StudyArm histamine_start histamine_end qol_start qol_end   age
    &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
@@ -409,7 +396,7 @@ biomarker_wide_df &lt;- biomarker_df %&gt;%
 # Look at result
 dimarta_df %&gt;% 
   select(qol_change)</code></pre>
-<pre><code># A tibble: 300 x 1
+<pre><code># A tibble: 300 × 1
    qol_change
         &lt;dbl&gt;
  1          0
@@ -434,7 +421,7 @@ dimarta_df %&gt;%
     ms_percent = mean(ms),
     np_percent = mean(np)
   )</code></pre>
-<pre><code># A tibble: 1 x 3
+<pre><code># A tibble: 1 × 3
   dw_mean ms_percent np_percent
     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;
 1   0.257       0.19      0.233</code></pre>
@@ -448,7 +435,7 @@ dimarta_df %&gt;%
     age_mean = mean(age),
     age_sd = sd(age)
   )</code></pre>
-<pre><code># A tibble: 3 x 3
+<pre><code># A tibble: 3 × 3
   site   age_mean age_sd
   &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
 1 London     39.9   5.86
@@ -463,7 +450,7 @@ dimarta_df %&gt;%
   summarise(
     histamine_change_mean = mean(histamine_change, na.rm = TRUE)
   )</code></pre>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   site   histamine_change_mean
   &lt;chr&gt;                  &lt;dbl&gt;
 1 London                  1.99
@@ -478,7 +465,7 @@ dimarta_df %&gt;%
   summarise(
     histamine_change_mean = mean(histamine_change, na.rm = TRUE)
   )</code></pre>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   StudyArm histamine_change_mean
   &lt;chr&gt;                    &lt;dbl&gt;
 1 adiclax                  0.210
@@ -493,7 +480,7 @@ dimarta_df %&gt;%
   summarise(
     qol_change_mean = mean(qol_change, na.rm = TRUE)
   )</code></pre>
-<pre><code># A tibble: 3 x 2
+<pre><code># A tibble: 3 × 2
   StudyArm qol_change_mean
   &lt;chr&gt;              &lt;dbl&gt;
 1 adiclax             0.06
@@ -760,7 +747,7 @@ dimarta_df %&gt;%
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -778,7 +765,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

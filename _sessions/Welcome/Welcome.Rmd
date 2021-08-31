@@ -18,7 +18,7 @@ author: "
   <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
     <i class='fab fa-linkedin' style='font-size: .9em;'></i>
   </a>"
-date: "June 2020"
+date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
@@ -46,7 +46,7 @@ layout: true
     </a>
     <a href="https://therbootcamp.github.io/">
       <font color="#7E7E7E">
-       Introduction to R | June 2020
+       Introduction to R | September 2021
       </font>
     </a>
     </span>
@@ -62,14 +62,14 @@ layout: true
 Click the "Start Bootcamp" link in Ilias!
 
 
-<font size="6" color="#F62D73"><a href="https://dwulff.github.io/Intro2R_Unibe/"><b>www.therbootcamp.com</b></a></font><br><br>
+<font size="6" color="#F62D73"><a href="https://dwulff.github.io/Intro2R_Unibe_2021/"><b>www.therbootcamp.com</b></a></font><br><br>
 
 ]
 
 .pull-right5[
 
 <br><br>
-<iframe src="https://dwulff.github.io/Intro2R_Unibe/" width="500" height="500"></iframe>
+<iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/" width="500" height="500"></iframe>
 
 ]
 
@@ -137,7 +137,7 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 <high>All available online</high>. Follow along, and don't worry about memorizing
 
 <br><br>
-<a href="https://dwulff.github.io/Intro2R_Unibe/">This is a Link to our materials</a>.
+<a href="https://dwulff.github.io/Intro2R_Unibe_2021/">This is a Link to our materials</a>.
 <br><br>
 
 <high>Be interactive! Ask questions!</high>
@@ -188,9 +188,9 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 .pull-right5[
 <br>
 
-  <iframe src="https://dwulff.github.io/Intro2R_Unibe/_sessions/Data/Data_practical.html" height="480px" width = "500px"></iframe>
+  <iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html" height="480px" width = "500px"></iframe>
 
-  Example practical:<a href="https://dwulff.github.io/Intro2R_Unibe/_sessions/Data/Data_practical.html"> Data </a>
+  Example practical:<a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Data/Data_practical.html"> Data </a>
 
 ]
 
@@ -294,6 +294,6 @@ Sometimes, you may find yourself in need of some <high>intensive help</high>. <b
 
 class: middle, center
 
-<h1><a href=https://dwulff.github.io/Intro2R_Unibe/index.html>Schedule</a></h1>
+<h1><a href=https://dwulff.github.io/Intro2R_Unibe_2021/index.html>Schedule</a></h1>
 
 
