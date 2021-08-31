@@ -1,4 +1,4 @@
-# June 2020
+# September 2021
 # http://therbootcamp.github.io
 
 # Skript um alle nötigen Pakete zu installieren
@@ -16,7 +16,8 @@ Bootcamp_package_installation <- function() {
     
     # Tidyverse --------------
     
-    "tidyverse"
+    "tidyverse",
+    "lubridate"
     
   )
   
@@ -28,9 +29,9 @@ Bootcamp_package_installation <- function() {
     "ggmap",
     "plotly",
     "viridis",
-    "ggthemes"
+    "ggthemes",
+    "gridExtra"
     )
-  
   
   message("Welcome to the R Bootcamp!")
   message("We will now install some packages - this could take a while ...")
