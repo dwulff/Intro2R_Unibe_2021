@@ -60,51 +60,46 @@ wein <- read_csv("1_Data/wein.csv")
 
 ## Überblick
 
-Am Ende des Practicals wirst du wissen...
+At the end of this practical you will be able to ...
 
-1. Wie du kategoriale Variablen als Prädiktoren in einer Regression verwendest und interpretierst. 
-2. Wie du Interaktionen integrierst und warum es wichtig sein kann die Variablen zu standardisieren.
+1. use categorical variables as predictors in a regression 
+2. know how to add an interaction effect and understand why it might be important to standardize your variables
 
 ## Aufgaben
 
 ### A - Setup
 
-1. Öffne dein `TheRBootcamp` R project. 
+2. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
 
-2. Öffne ein neues R Skript. Schreibe deinen Namen, das Datum und "Lineare Modelle II Practical" als Kommentare an den Anfang des Skripts.
+3. Using `library()` load the set of packages for this practical listed in the Functions section above.
 
 ```{r, eval = FALSE, echo = TRUE}
-## NAME
-## DATUM
-## Lineare Modelle II Practical
+## Name
+## Date
+## Statistics Practical
+
+library(XX)     
+library(XX)
 ```
 
-3. Speichere das neue Skript unter dem Namen `lineare_modelle_II_practical.R` im `2_Code` Ordner.
-
-4. Lade das Paket `tidyverse`.
-
-```{r}
-library(tidyverse)
-```
-
-5. Verwende die `read_csv()` Funktion um wiederum `wein.csv` einzulesen.
+4. For this practical we will use a dataset called `wein.csv` which you will now import with  `read_csv()`.
 
 ```{r, echo = T, eval = T, message = F}
 # Lese Daten ein
 wein <- read_csv(file = "1_Data/wein.csv")
 ```
 
-6. Führe den Code unten wieder aus, um sicherzustellen, dass alle `character` Variablen als Faktoren vorliegen, was den statistischen Modellen hilft kategoriale Variablen richtig zu interpretieren. 
+6. Execute the code below to ensure that all `character` variables are converte to factors. This will help the statistical model to interpret categorical variables correctly. 
 
 ```{r, echo = TRUE}
-# Konvertiere alle character zu factor
+# convert character to factor
 wein <- wein %>% mutate_if(is.character, factor)
 ```
 
 
-### B - Gruppenvergleiche: <i>t</i>-Test versus Regression
+### B - Comparing groups: <i>t</i>-test versus regression
 
-1. In diesem Abschnitt geht es darum den Effekt der `Farbe` (Prädiktor) des Weins, rot oder weiss, auf die `Qualität` des Weines zu prüfen. Verwende hierzu zunächst den Code unten um zwei Vektoren zu erstellen, die jeweils die Qualitätswerte für weisse und rote Weine beinhalten. 
+1. In this part we will inspect the effect of `Farbe` (color) of the wine, red or white, as a predictor for  `Qualität` (quality). Use the code below to generate two vectors that include quality ratings for white and red wine. 
 
 ```{r, echo = TRUE}
 # Qualitätsvektoren nach Farbe
@@ -112,7 +107,7 @@ weiss <- wein %>% filter(Farbe == 'weiss') %>% pull(Qualität)
 rot <- wein %>% filter(Farbe == 'rot') %>% pull(Qualität)
 ```
 
-2. Verwende nun das `t.test()` Template unten um die beiden Vektoren mit einem <i>t</i>-Test miteinander zu vergleichen. Du brauchst das Ergebnis nicht zu speichern. 
+2. Use the `t.test()` template below to compare the two vectors with a <i>t</i>-test. You do not have to save the result.
 
 ```{r, eval = FALSE, echo = TRUE}
 # t-test
@@ -124,9 +119,9 @@ t.test(x = XX, y = XX)
 t.test(x = weiss, y = rot)
 ```
 
-3. Was verrät dir der Output des <i>t</i>-Tests über den Unterschied weisser und roter Weine in der wahrgenommenen Qualität? Die Antwort findest du in der zweiten Zeile (beginnend mit `t=..`) zusammen mit der letzten Zeile.  
+3. What does the output tell of the <i>t</i>-tests tell you about the difference between white and red wine in perceived quality? You will find the answer in the second line of the output that starts with `t=..` and in the last line.  
 
-4. Weisse Weine wurden `0.241886` (Differenz der beiden Mittelwerte) Punkte als qualitativ wertiger wahrgenommen und dieser Unterschied ist signifikant. Versuche nun das selbe Ergebnis mit einer Regression zu erzielen. Prädiziere hierzu `Qualität` durch `Farbe`.
+4. White wine got a higher rating with `0.2419` (difference of the two means) points more than red wine, this difference is significant. Now, try to get the same result with a regression. Predict `Qualität` with `Farbe`.
 
 ```{r, eval = FALSE, echo = TRUE}
 # Regression
@@ -140,22 +135,22 @@ wein_lm <- lm(formula = Qualität ~ Farbe,
               data = wein)
 ```
 
-5. Printe zunächst einmal das Objekt und betrachte die Regressionsgewichte. Kommt dir die eine oder andere Zahl bekannt vor?
+5. Print the object and inspect the regression weights. Do you recognize some of these numbers?
 
-6. Genau, das Regressionsgewicht für `Farbe` spiegelt exakt den Unterschied der beiden Mittelwerte wieder. Was repräsentiert dann der Intercept?: Den Wert derjenigen Kategorie, der R den Wert 0 zugewiesen hat. Dies ist bei ursprünglich `character` Variablen per Default diejenige Kategorie die alphabetisch früher kommt, d.h., `'rot' < 'weiss'`.   
+6. Exactly! The regression weight for `Farbe` is the mean difference of red and white wines. What does the intercept represent? It represents the value of the category that got assigned 0 by R. As this variable is `character` the default behavior is assigned to the category that comes earlier in the alphabet, i.e., `'rot' < 'weiss'`.   
 
-7. Lasse dir jetzt die `summary()` für das Modell ausgeben und vergleiche Freiheitsgrade, <i>t</i>- und p-Wert mit denen aus dem <i>t</i>-Test. 
+7. Now use the `summary()` function on your model object and compare the degrees of freedom, <i>t</i>- and p-value with the ones from the <i>t</i>-test above. 
 
 ```{r}
 # summary
 summary(wein_lm)
 ```
 
-8. Die Werte im t-Test stimmen trotz der gleichen Schätzwerte für die Gewichte nicht ganz überein. Dies liegt daran, dass die `t.test()` Funktion per Default eine Variante rechnet die erlaubt, dass die Varianzen in den beiden Gruppen (rot und weiss) unterschiedlich sind. Die Regression dagegen geht stets davon aus, dass diese gleich sind, was wir im Detail in der Session zu robuste Statistiken besprechen werden. Rechne den <i>t</i>-Test noch einmal, diesmal mit dem zusätzlichen Argument `var.equal = TRUE`.   
+8. The values from the t-test do not exactly match the estimations for the weights in the regression. This stems from the fact that the `t.test()` function allows the variance of the groups (rot and weiss) to be different. In contracts regression always assumes that the variances between groups are the same, we will talk about this more in the robust statistics session. Re-calculate the <i>t</i>-test with the argumente `var.equal = TRUE`.   
 
 ```{r, eval = FALSE, echo = TRUE}
 # t-test
-t.test(x = XX, y = XX, var.equal = )
+t.test(x = XX, y = XX, var.equal = XX)
 ```
 
 ```{r}
@@ -163,7 +158,7 @@ t.test(x = XX, y = XX, var.equal = )
 t.test(x = weiss, y = rot, var.equal = TRUE)
 ```
 
-9. Ordnung ist eingekehrt. Alle Werte im <i>t</i>-Test und der Regression sollten jetzt identisch sein, was daran liegt, dass die beiden Modelle nun exakt identisch sind. 
+9. Order has been resumed! All values in teh <i>t</i>-test and the regression should be identical now. 
 
 ### C - Gruppenvergleiche: Kodierung
 
