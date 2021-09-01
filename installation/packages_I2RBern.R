@@ -15,10 +15,8 @@ Bootcamp_package_installation <- function() {
     # "devtools",
     
     # Tidyverse --------------
-    
     "tidyverse",
     "lubridate"
-    
   )
   
   # Optional packages
