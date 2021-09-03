@@ -228,6 +228,8 @@ Sometimes, you may find yourself in need of some <high>intensive help</high>. <b
   <tr>    
   <td>
   <p align = 'center'>RStudio<br><br>
+
+  
   <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/rstudio_cheat_ss.png?raw=true" height="180"></a></p>
   </td>
  

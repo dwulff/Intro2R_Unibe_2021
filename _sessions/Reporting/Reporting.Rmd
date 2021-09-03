@@ -147,7 +147,7 @@ basel <- read.csv("1_Data/basel.csv")
     <li><span>Text documents</span></li>
     <li><span>Presentations</span></li>   
     <li><span>Dashboards (Cockpits)</span></li>
-    <li><span>Bookd</span></li>
+    <li><span>Books</span></li>
     <li><span>Web-Pages</span></li>
   </ul>
 </ul>
@@ -175,7 +175,7 @@ basel <- read.csv("1_Data/basel.csv")
     <li><span><high>Text documents</high></span></li>
     <li><span>Presentations</span></li>   
     <li><span>Dashboards (Cockpits)</span></li>
-    <li><span>Bookd</span></li>
+    <li><span>Books</span></li>
     <li><span>Web-Pages</span></li>
   </ul>
 </ul>
@@ -202,7 +202,7 @@ basel <- read.csv("1_Data/basel.csv")
     <li><span>Text documents</span></li>
     <li><span><high>Presentations</high></span></li>   
     <li><span>Dashboards (Cockpits)</span></li>
-    <li><span>Bookd</span></li>
+    <li><span>Books</span></li>
     <li><span>Web-Pages</span></li>
   </ul>
 </ul>
@@ -213,7 +213,7 @@ basel <- read.csv("1_Data/basel.csv")
 .pull-right6[
 
 <br><br>
-<iframe src="https://therbootcamp.github.io/RmR_2021Feb/_sessions/Markdown/Markdown.html" width="800" height="500"></iframe>
+<iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting.html" width="800" height="500"></iframe>
 
 ]
 
@@ -230,7 +230,7 @@ basel <- read.csv("1_Data/basel.csv")
     <li><span>Text documents</span></li>
     <li><span>Presentations</span></li>   
     <li><span><high>Dashboards (Cockpits)</high></span></li>
-    <li><span>Bookd</span></li>
+    <li><span>Books</span></li>
     <li><span>Web-Pages</span></li>
   </ul>
 </ul>

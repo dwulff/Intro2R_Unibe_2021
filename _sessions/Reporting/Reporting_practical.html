@@ -203,7 +203,7 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>bernrbootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the Datasets section above are in your <code>2_Data</code> folder</p></li>
+<li><p>Open your <code>BernRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the Datasets section above are in your <code>2_Data</code> folder</p></li>
 <li><p>Because R Markdown looks quite a bit different from standard R code, the best way to look at examples is to see a new R Markdown document in action. In RStudio, click File – New File – R Markdown</p></li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_A.png" width="60%" style="display: block; margin: auto;" /></p>
@@ -212,30 +212,22 @@ pre code {
 </ol>
 <p><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_B.png" width="60%" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
-<li>A new file that looks like this should open up. This is your first R Markdown document!</li>
+<li><p>A new file with the information you just entered will pop up. This is your first R Markdown document!</p></li>
+<li><p>Save your markdown file <em>in your main project directory</em> (not a sub-folder – you’ll put it there later!) under the name <code>reporting_practical.Rmd</code></p></li>
+<li><p>Now <em>knit</em> your document to an HTML file. To do this, click the <em>knit</em> button (or use the Command|Ctrl + Shift + K shortcut)</p></li>
+<li><p>Now you should see your final, HTML document!</p></li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_C.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="5" style="list-style-type: decimal">
-<li><p>Save your markdown file <em>in your main project directory</em> (not a sub-folder – you’ll put it there later!) under the name <code>dynamicreports_practical.Rmd</code></p></li>
-<li><p>Now <em>knit</em> your document to an HTML file. To do this, click the <em>knit</em> button (or use the Command + Shift + K shortcut)</p></li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_D.png" width="60%" style="display: block; margin: auto;" /></p>
-<ol start="7" style="list-style-type: decimal">
-<li>Now you should see your final, HTML document! Scroll up and down the document and see how she looks!</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_E.png" width="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="b---heres-your-goal" class="section level3">
 <h3>B - Here’s your goal!</h3>
-<p>In this practical you will create as much of <a href="https://dwulff.github.io/Intro2R_Unibe/_sessions/Reporting/Reporting_answers.html">this html document</a> as you can! Open the document and keep it open in a separate window as you work through the practical!</p>
+<ol style="list-style-type: decimal">
+<li>In this practical you will create as much of <a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting_answers.html">this html document</a> as you can! Open the document and keep it open in a separate window as you work through the practical!</li>
+</ol>
 </div>
 <div id="c---load-packages-data-and-set-default-chunk-options" class="section level3">
 <h3>C - Load packages, data and set default chunk options</h3>
 <ol style="list-style-type: decimal">
-<li>The first chunk in your document already has the label <code>setup</code>. This is your setup chunk. This is a good place to load your packages and import your data. Inside of this chunk, write the comment <code># Load Packages -------------</code>. Then, using the <code>library()</code> function, load the packages listed in the <code>Packages</code> section above.</li>
-</ol>
-<p><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/setup_chunk.jpg" width="50%" style="display: block; margin: auto;" /></p>
-<ol start="2" style="list-style-type: decimal">
+<li><p>The first chunk in your document already has the label <code>setup</code>. This is your setup chunk. This is a good place to load your packages and import your data. Inside of this chunk, write the comment <code># Load Packages -------------</code>. Then, using the <code>library()</code> function, load the packages listed in the <code>Packages</code> section above.</p></li>
 <li><p>Knit your document! Make sure you don’t get any errors!</p></li>
 <li><p>Now it’s time to load your datafiles. In the <em>same</em> <code>setup</code> chunk, load the <code>Mcdonalds</code> dataset.</p></li>
 </ol>
@@ -275,7 +267,7 @@ options(digits = 2)  # Round all output to 2 digits</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Create a new third level header with the text “Overview” using three hashtags <code>### Overview</code></p></li>
 <li><p>Knit the document!</p></li>
-<li><p>Create a new code chunk by either clicking the “Insert - R” button, or by using the “Command + Option + I”" shortcut on Mac</p></li>
+<li><p>Create a new code chunk by either clicking the “Insert - R” button, or by using the “Command|Ctrl + Option + I”" shortcut on Mac</p></li>
 <li><p>Now it’s time to add an image to your document! In the chunk you just created, use the following template to include an image of a burger in your document. You can find the image here: <a href="https://dwulff.github.io/Intro2R_Unibe/_sessions/PlottingI/image/burgers.jpg">link</a>. (Tip: Use right click and copy link address to copy the link)</p></li>
 </ol>
 <pre class="r"><code># Include a buger image
