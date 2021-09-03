@@ -347,7 +347,9 @@ hwy_resid
 
 |Datei | Zeile | Spalte |
 |:----|:-----|:------|
-|[wine.csv](https://raw.githubusercontent.com/therbootcamp/SmR_2020Mai/master/TheRBootcamp/1_Data/wine.csv) | 6497 | 13 |
+|[wine.csv](https://github.com/dwulff/Intro2R_Unibe_2021/raw/main/_sessions/Statistics/1_Data/wine.csv) | 6497 | 13 |
+
+
 
 #### wine.csv
 

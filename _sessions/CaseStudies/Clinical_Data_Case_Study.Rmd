@@ -35,7 +35,7 @@ knitr::opts_chunk$set(comment = NA,
                       fig.width = 6, 
                       fig.height = 6,
                       fig.align = 'center',
-                      echo = TRUE, 
+                      echo = FALSE, 
                       eval = TRUE, 
                       warning = FALSE,
                       message = FALSE)
@@ -134,10 +134,6 @@ Save your markdown file *in your main project directory* under the name `dimarta
 3. At the top of the script load the `tidyverse` package. 
 
 4. From time to time - don't forget to `Knit` your code with the Knit-Button.
-
-```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "60%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_D.png")
-```
 
 ### B - Data I/O
 
