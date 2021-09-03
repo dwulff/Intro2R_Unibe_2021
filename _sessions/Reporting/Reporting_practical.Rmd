@@ -61,7 +61,7 @@ mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBoot
 By the end of this practical you will know how to:
 
 1. Create a new R Markdown file (`.Rmd`)
-2. "Knit" an R Markdown file to an `.html` or `.pdf` report
+2. "Knit" an R Markdown file to a `.html` report
 3. Format text using formatting tags
 4. Create code chunks
 5. Add plots and tables
@@ -92,7 +92,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therboot
 
 4. A new file with the information you just entered will pop up. This is your first R Markdown document!
 
-5. Save your markdown file *in your main project directory* (not a sub-folder -- you'll put it there later!) under the name `reporting_practical.Rmd`
+5. Save your markdown file in `2_Code` under the name `reporting_practical.Rmd`
 
 6. Now *knit* your document to an HTML file. To do this, click the *knit* button (or use the Command|Ctrl + Shift + K shortcut)
 
@@ -155,7 +155,7 @@ options(digits = 2)  # Round all output to 2 digits
 
 
 ```{r, out.width = "30%", fig.cap="Source: Wikipedia", echo = TRUE, eval = FALSE}
-# Include a buger image
+# Include a burger image
 
 include_graphics(path = "XXX")
 ```

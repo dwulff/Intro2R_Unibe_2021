@@ -1,58 +1,18 @@
 ---
 title: "Next steps"
-author: "
-  Introduction to R<br>
-  <a href='https://therbootcamp.github.io'>
-    Bern R Bootcamp
-  </a>
-  <br>
-  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
-    <i class='fas fa-clock' style='font-size:.9em;'></i>
-  </a>&#8239; 
-  <a href='https://therbootcamp.github.io'>
-    <i class='fas fa-home' style='font-size:.9em;' ></i>
-  </a>&#8239;
-  <a href='mailto:therbootcamp@gmail.com'>
-    <i class='fas fa-envelope' style='font-size: .9em;'></i>
-  </a>&#8239;
-  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
-    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
-  </a>"
-date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
-    lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
-      
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
 ---
 
-layout: true
-
-<div class="my-footer">
-  <span style="text-align:center">
-    <span> 
-      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
-    </span>
-    <a href="https://therbootcamp.github.io/">
-      <span style="padding-left:82px"> 
-        <font color="#7E7E7E">
-          www.therbootcamp.com
-        </font>
-      </span>
-    </a>
-    <a href="https://therbootcamp.github.io/">
-      <font color="#7E7E7E">
-       Introduction to R | September 2021
-      </font>
-    </a>
-    </span>
-  </div> 
-  
 ---
 
 ```{r setup, include=FALSE}
@@ -78,7 +38,7 @@ In 3 days, 9 sessions, and 21 hours you have come a long way.
 
 .pull-right4[
 
-<img src="https://dwulff.github.io/Intro2R_Unibe/_sessions/Welcome/image/schedule.png" height="580" align="center">
+<img src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Welcome/image/schedule.png" height="580" align="center">
 ]
 
 ---
@@ -265,7 +225,7 @@ The web is a great place to learn about R.
     <p align="center"><br>
     <a href="https://www.schulte-mecklenbeck.com/"><img border="0" alt="W3Schools" src="https://therbootcamp.github.io/img/team/3.png" height="230" style="border-radius:50%"></a><br>
     <p align="center">
-    <font size = 5>Dr. Michael Schulte-<br>Mecklenbeck</font><br><br>
+    <font size = 5>Prof. Dr. Michael Schulte-<br>Mecklenbeck</font><br><br>
     <a href="www.schulte-mecklenbeck.com"><b>schulte-mecklenbeck.com</b></a><br>
     <a href="https://github.com/schultem"><b>github.com/schultem</b></a><br><br>
     </p>

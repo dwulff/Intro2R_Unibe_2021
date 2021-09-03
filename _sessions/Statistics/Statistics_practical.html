@@ -232,19 +232,6 @@ red &lt;- wine %&gt;% filter(Color == &#39;red&#39;) %&gt;% pull(Quality)</code>
 </ol>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX)</code></pre>
-<pre class="r"><code># t-test
-t.test(x = white, y = red)</code></pre>
-<pre><code>
-    Welch Two Sample t-test
-
-data:  white and red
-t = 10, df = 2951, p-value &lt;2e-16
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- 0.195 0.289
-sample estimates:
-mean of x mean of y 
-     5.88      5.64 </code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>What does the output of the <i>t</i>-tests tell you about the difference between white and red wine in perceived quality? You will find the answer in the second line of the output that starts with <code>t=..</code> and in the last line.</p></li>
 <li><p>White wine got a higher rating with <code>0.2419</code> (difference of the two means) points more than red wine, this difference is significant. Now, try to get the same result with a regression. Predict <code>Quality</code> with <code>Color</code>.</p></li>
@@ -252,52 +239,14 @@ mean of x mean of y
 <pre class="r"><code># Regression
 wine_lm &lt;- lm(formula = XX ~ XX, 
               data = XX)</code></pre>
-<pre class="r"><code># Regression
-wine_lm &lt;- lm(formula = Quality ~ Color, 
-              data = wine)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li><p>Print the object and inspect the regression weights. Do you recognize some of these numbers?</p></li>
 <li><p>Exactly! The regression weight for <code>Color</code> is the mean difference of red and white wines. What does the intercept represent? It represents the value of the category that got assigned 0 by R. As this variable is <code>character</code> the default is assigned to the category that comes earlier in the alphabet, i.e., <code>'red' &lt; 'white'</code>.</p></li>
 <li><p>Now use the <code>summary()</code> function on your model object and compare the degrees of freedom, <i>t</i>- and p-values with the ones from the <i>t</i>-test above.</p></li>
-</ol>
-<pre class="r"><code># summary
-summary(wine_lm)</code></pre>
-<pre><code>
-Call:
-lm(formula = Quality ~ Color, data = wine)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--2.878 -0.878  0.122  0.364  3.122 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   5.6360     0.0217  259.92   &lt;2e-16 ***
-Colorwhite    0.2419     0.0250    9.69   &lt;2e-16 ***
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 0.867 on 6495 degrees of freedom
-Multiple R-squared:  0.0142,    Adjusted R-squared:  0.0141 
-F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>The values from the t-test do not exactly match the estimations for the weights in the regression. This stems from the fact that the <code>t.test()</code> function allows the variance of the groups (red and white) to be different. In contrast regression always assumes that the variances between groups are the same. Re-calculate the <i>t</i>-test with the argument <code>var.equal = TRUE</code>.</li>
+<li><p>The values from the t-test do not exactly match the estimations for the weights in the regression. This stems from the fact that the <code>t.test()</code> function allows the variance of the groups (red and white) to be different. In contrast regression always assumes that the variances between groups are the same. Re-calculate the <i>t</i>-test with the argument <code>var.equal = TRUE</code>.</p></li>
 </ol>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX, var.equal = XX)</code></pre>
-<pre class="r"><code># t-test
-t.test(x = white, y = red, var.equal = TRUE)</code></pre>
-<pre><code>
-    Two Sample t-test
-
-data:  white and red
-t = 10, df = 6495, p-value &lt;2e-16
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- 0.193 0.291
-sample estimates:
-mean of x mean of y 
-     5.88      5.64 </code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Order has been resumed! All values in the <i>t</i>-test and the regression should be identical now.</li>
 </ol>
@@ -320,72 +269,20 @@ wine_dummy &lt;- lm(formula = XX ~ XX,
 # Regression effekt
 wine_effect &lt;- lm(formula = XX ~ XX, 
                   data = XX)</code></pre>
-<pre class="r"><code># Regression dummy
-wine_dummy &lt;- lm(formula = Quality ~ Color_dummy, 
-                 data = wine)
-
-# Regression effekt
-wine_effect &lt;- lm(formula = Quality ~ Color_effect, 
-                  data = wine)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li><p>Print these objects now and compare the weights. The dummy coding weights should be familiar. How do they compare to the effect coding? Do you see the connection?</p></li>
 <li><p>The weights for color using effect coding is exactly half of the weight for dummy coding, to compensate for this change the intercept changed for exactly the same value. Verify the weights with the calculations done in the code snippet below.</p></li>
 </ol>
 <pre class="r"><code># Dummy-Kodierung
-mean(red) # intercept</code></pre>
-<pre><code>[1] 5.64</code></pre>
-<pre class="r"><code>mean(white) - mean(red) # gewicht Color</code></pre>
-<pre><code>[1] 0.242</code></pre>
-<pre class="r"><code># EffekKodierung
-(mean(red) + mean(white))/2 # intercept</code></pre>
-<pre><code>[1] 5.76</code></pre>
-<pre class="r"><code>mean(white) - (mean(red) + mean(white))/2 # gewicht Color</code></pre>
-<pre><code>[1] 0.121</code></pre>
+mean(red) # intercept
+mean(white) - mean(red) # gewicht Color
+
+# EffekKodierung
+(mean(red) + mean(white))/2 # intercept
+mean(white) - (mean(red) + mean(white))/2 # gewicht Color</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Compare the models now with <code>summary()</code>. Where can you find differences, what stays the same?</li>
-</ol>
-<pre class="r"><code># Regression dummy
-summary(wine_dummy)</code></pre>
-<pre><code>
-Call:
-lm(formula = Quality ~ Color_dummy, data = wine)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--2.878 -0.878  0.122  0.364  3.122 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   5.6360     0.0217  259.92   &lt;2e-16 ***
-Color_dummy   0.2419     0.0250    9.69   &lt;2e-16 ***
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 0.867 on 6495 degrees of freedom
-Multiple R-squared:  0.0142,    Adjusted R-squared:  0.0141 
-F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
-<pre class="r"><code># Regression effekt
-summary(wine_effect)</code></pre>
-<pre><code>
-Call:
-lm(formula = Quality ~ Color_effect, data = wine)
-
-Residuals:
-   Min     1Q Median     3Q    Max 
--2.878 -0.878  0.122  0.364  3.122 
-
-Coefficients:
-             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)    5.7570     0.0125  461.04   &lt;2e-16 ***
-Color_effect   0.1209     0.0125    9.69   &lt;2e-16 ***
----
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-
-Residual standard error: 0.867 on 6495 degrees of freedom
-Multiple R-squared:  0.0142,    Adjusted R-squared:  0.0141 
-F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>The coding (dummy or effect) has, with the exception of the weights scaling and the standard error, no influence on the <i>t</i>-value and the <i>p</i>-value. Only the intercept changes dramatically, because in the effect coding the intercept is further away from zero.</li>
+<li><p>Compare the models now with <code>summary()</code>. Where can you find differences, what stays the same?</p></li>
+<li><p>The coding (dummy or effect) has, with the exception of the weights scaling and the standard error, no influence on the <i>t</i>-value and the <i>p</i>-value. Only the intercept changes dramatically, because in the effect coding the intercept is further away from zero.</p></li>
 </ol>
 </div>
 <div id="d---interactions" class="section level3">
@@ -396,9 +293,6 @@ F-statistic: 93.8 on 1 and 6495 DF,  p-value: &lt;2e-16</code></pre>
 <pre class="r"><code># Regression mit Interaktion
 wine_lm &lt;- lm(formula = XX ~ XX * XX, 
               data = XX)</code></pre>
-<pre class="r"><code># Regression mit Interaktion
-wine_lm &lt;- lm(formula = Quality ~ Color * Alcohol, 
-              data = wine)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Print the object and inspect the weights. How do you interpret these values?</p></li>
 <li><p>You can interprete the weights in the following manner: Considering <code>Alcohol</code> and the interaction white wines are rated <code>.7</code> points better than red wines. Considering <code>Color</code> and the interaction results an increase of one volume percent results in an increase of perceived quality of <code>.36</code>. Considering <code>Color</code> and <code>Alcohol</code> the interaction, i.e., the product of the two predictors, leads to a change of <code>-.05</code>. This means that the effect of <code>Alcohol</code> considering white wine is reduced for exactly this value. In other words, the effect of <code>Color</code> for wine with a lot of alcohol is smaller. Use the code below to visualize your results. Yellow means white wine, black red wine.</p></li>
@@ -410,9 +304,6 @@ ggplot(data = wine,
   geom_jitter(width=2,height=1.5,size=.1) + theme_minimal() + theme(legend.position = &#39;none&#39;) +
   geom_smooth(data = wine %&gt;% filter(Color == &#39;white&#39;), method = &#39;lm&#39;) + 
   geom_smooth(data = wine %&gt;% filter(Color == &#39;red&#39;), method = &#39;lm&#39;)</code></pre>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
-`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Statistics_practical_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li><p>Using <code>summary()</code> check the <i>t</i>-values and p-values. Which predictors are significant?</p></li>
 <li><p>Yes - all three predictors are significant! <i>t</i>- and p-values are the most extreme for <code>Alcohol</code>, but the weight for <code>Alcohol</code> is halfed. How can you explain this?</p></li>
@@ -424,12 +315,6 @@ scale_it = function(x) (x - mean(x))/sd(x)
 # Regression mit skalierten Prädiktoren
 wine_lm &lt;- lm(formula = XX ~ XX * XX, 
               data = XX %&gt;% mutate_if(is.numeric, scale_it))</code></pre>
-<pre class="r"><code># Skalierungsfunktion
-scale_it = function(x) (x - mean(x))/sd(x)
-
-# Regression mit skalierten Prädiktoren
-wine_lm &lt;- lm(formula = Quality ~ Color * Alcohol, 
-              data = wine %&gt;% mutate_if(is.numeric, scale_it))</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li><p>Print the object and inspect the weights. All values changed quite substantially. Especially <code>Alcohol</code> doubled its weight. How do you interpret these new weights, keeping in mind, that the scaling results in all variables having a standard deviation of 1?</p></li>
 <li><p>After scaling the weight can be interpreted as the changes in the standard deviation. For examples, a change of 1 standard deviation in <code>Alcohol</code> results in a change of <code>.4928</code> standard deviations in <code>Quality</code>. The intercept shows the biggest changes, how do you interpret this change?</p></li>
@@ -442,9 +327,6 @@ ggplot(data = wine %&gt;% mutate_if(is.numeric, scale_it),
   geom_jitter(width=2,height=1.5,size=.1) + theme_minimal() + theme(legend.position = &#39;none&#39;) +
   geom_smooth(data = wine %&gt;% mutate_if(is.numeric, scale_it) %&gt;% filter(Color == &#39;white&#39;), method = &#39;lm&#39;) + 
   geom_smooth(data = wine %&gt;% mutate_if(is.numeric, scale_it) %&gt;% filter(Color == &#39;red&#39;), method = &#39;lm&#39;)</code></pre>
-<pre><code>`geom_smooth()` using formula &#39;y ~ x&#39;
-`geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="Statistics_practical_files/figure-html/unnamed-chunk-22-1.png" width="576" style="display: block; margin: auto;" /></p>
 <ol start="10" style="list-style-type: decimal">
 <li><p>Using <code>summary()</code> identify what changed regarding <i>t</i>-, p-values, standard error and R-squared?</p></li>
 <li><p>The main changes can be found for the variable <code>Color</code>, which was not scaled! Before scaling of <code>Alcohol</code>, <code>Color</code> was nearly perfectly correlated with the interaction, leading to an inflated standard error. Scaling reduced this correlation and the standard error is now of the level of the other predictors. In most models it is worth scaling the predictors (sometimes also the criterion), given that you are interested in the weights and significance levels.</p></li>

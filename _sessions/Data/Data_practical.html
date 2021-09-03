@@ -302,118 +302,38 @@ XX &lt;- c(XX, XX, ...)
 
 # Print the vector id
 XX</code></pre>
-<pre class="r"><code># Create an id vector 
-id &lt;- 1:10 # shortcut to creating the sequence from 1 to 10
-
-# Print the vector
-id</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Using the <code>class()</code> function, check the class of your <code>id</code> vector. Is it <code>"numeric"</code>?</li>
 </ol>
 <pre class="r"><code># Show the class of an object XX
 class(XX)</code></pre>
-<pre class="r"><code># Show the class of the id vector
-class(id)</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Using the <code>length()</code> function, find out the length of your <code>id</code> vector. Does it have length 10? If not, make sure you defined it correctly!</li>
 </ol>
 <pre class="r"><code># Show the length of the id vector
 length(XX)</code></pre>
-<pre class="r"><code># Show the length of the id vector
-length(id)</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Create a character vector called <code>sex</code> that shows the sex values. Make sure to use quotation marks "" to enclose each element to tell R that the data are of type <code>"character"</code>! When you finish, print the object to see it!</li>
 </ol>
 <pre class="r"><code># Create a character vector sex
 XX &lt;- c(&quot;XX&quot;, &quot;XX&quot;, &quot;...&quot;)</code></pre>
-<pre class="r"><code># Create a sex vector 
-sex &lt;- c(&quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;)
-
-# Print the vector
-sex</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Using the <code>class()</code> function, check the class of your <code>sex</code> vector. Is it <code>"character"</code>?</li>
+<li><p>Using the <code>class()</code> function, check the class of your <code>sex</code> vector. Is it <code>"character"</code>?</p></li>
+<li><p>Using the <code>length()</code> function, find out the length of your <code>sex</code> object. Does it have length 10? If not, make sure you defined it correctly!</p></li>
+<li><p>Using the same steps as before, create a <code>age</code> and <code>height</code> vector.</p></li>
+<li><p>Look at the weight data, you’ll notice it contains an missing value. Create a vector called <code>weight</code> containing these data, following the same steps as before, making sure to specify the missing value as <code>NA</code> (no quotation marks).</p></li>
 </ol>
-<pre class="r"><code># Show the class of the sex vector
-class(sex)</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>Using the <code>length()</code> function, find out the length of your <code>sex</code> object. Does it have length 10? If not, make sure you defined it correctly!</li>
-</ol>
-<pre class="r"><code># Show the length of the sex vector
-length(sex)</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>Using the same steps as before, create a <code>age</code> and <code>height</code> vector.</li>
-</ol>
-<pre class="r"><code># Create a age vector 
-age &lt;- c(44, 65, 31, 27, 24, 63, 71, 41, 43, 31)
-
-# Print the age vector
-age
-
-# Show the class of the age vector
-class(age)
-
-# Show the length of the age vector
-length(age)
-
-# Create a height vector 
-height &lt;- c(174.3, 180.3, 168.3, 209, 176.7, 186.6, 151.6, 155.7, 176.1, 166.1)
-
-# Print the height vector
-height
-
-# Show the class of the height vector
-class(height)
-
-# Show the length of the height vector
-length(height)</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Look at the weight data, you’ll notice it contains an missing value. Create a vector called <code>weight</code> containing these data, following the same steps as before, making sure to specify the missing value as <code>NA</code> (no quotation marks).</li>
-</ol>
-<pre class="r"><code># Create a weight vector 
-weight &lt;- c(113.4, 75.2, 55.5, 93.8, NA, 67.4, 83.3, 67.8, 69.3, 66.3)
-
-# Print the weight vector
-weight
-
-# Show the class of the weight vector
-class(weight)
-
-# Show the length of the weight vector
-length(weight)</code></pre>
 </div>
 <div id="c---functions" class="section level3">
 <h3>C - Functions</h3>
 <ol style="list-style-type: decimal">
-<li>Using the <code>table()</code> function, find out how many males and females are in the data. You should find 7 males and 3 females!</li>
+<li><p>Using the <code>table()</code> function, find out how many males and females are in the data. You should find 7 males and 3 females!</p></li>
+<li><p>Using the <code>mean()</code> function, calculate the mean <code>age</code>. It should be 44!</p></li>
+<li><p>Try calculating the mean value of <code>sex</code>. What happens? Why?</p></li>
+<li><p>Try calculating the mean <code>weight</code>. You should get an <code>NA</code> value. Why?</p></li>
+<li><p>Look at the help menu for the <code>mean()</code> function (using <code>?mean</code>) to look for an argument that will help you with your problem.</p></li>
+<li><p>Using the correct argument for the mean function, calculate the mean weight ignoring <code>NA</code> values. It should be 76.89!</p></li>
 </ol>
-<pre class="r"><code># Count types in sex
-table(sex)</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li>Using the <code>mean()</code> function, calculate the mean <code>age</code>. It should be 44!</li>
-</ol>
-<pre class="r"><code># Compute mean of age
-mean(age)</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Try calculating the mean value of <code>sex</code>. What happens? Why?</li>
-</ol>
-<pre class="r"><code># Compute mean of sex
-mean(sex)</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Try calculating the mean <code>weight</code>. You should get an <code>NA</code> value. Why?</li>
-</ol>
-<pre class="r"><code># Compute mean of sex
-mean(weight)</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>Look at the help menu for the <code>mean()</code> function (using <code>?mean</code>) to look for an argument that will help you with your problem.</li>
-</ol>
-<pre class="r"><code># Inspect help for mean
-?mean</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>Using the correct argument for the mean function, calculate the mean weight ignoring <code>NA</code> values. It should be 76.89!</li>
-</ol>
-<pre class="r"><code># Compute mean weight, ignoring NAs 
-mean(weight, na.rm = TRUE)</code></pre>
 </div>
 <div id="d---read-write-delim-separated-text-files" class="section level3">
 <h3>D - Read &amp; write delim-separated text files</h3>
@@ -423,77 +343,41 @@ mean(weight, na.rm = TRUE)</code></pre>
 </ol>
 <pre class="r"><code># place cursor in-between &quot;&quot; and hit tab
 diamonds_path &lt;- &quot;&quot;</code></pre>
-<pre class="r"><code># place cursor in-between and hit tab
-diamonds_path &lt;- &quot;1_Data/diamonds.csv&quot;</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>Now use the Using <code>diamonds_path</code> insdide the <code>read_csv()</code> function to read in the <code>diamonds.csv</code> dataset. Store it as a new object called <code>diamonds</code>.</li>
 </ol>
 <pre class="r"><code># read diamonds data
 diamonds &lt;- read_csv(file = XX)</code></pre>
-<pre class="r"><code># read diamonds data
-diamonds &lt;- read_csv(file = diamonds_path)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Print the <code>diamonds</code> data and inspect the column names in the header line. Something’s wrong!</li>
-</ol>
-<pre class="r"><code># print diamonds
-diamonds</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Fix the header by reading in the data again using the <code>col_names</code>-argument. Assign to <code>col_names</code> a character vector containing the correct column names: <code>carat</code>, <code>cut</code>, <code>color</code>, <code>clarity</code>, <code>depth</code>, <code>table</code>, <code>price</code>.</li>
+<li><p>Print the <code>diamonds</code> data and inspect the column names in the header line. Something’s wrong!</p></li>
+<li><p>Fix the header by reading in the data again using the <code>col_names</code>-argument. Assign to <code>col_names</code> a character vector containing the correct column names: <code>carat</code>, <code>cut</code>, <code>color</code>, <code>clarity</code>, <code>depth</code>, <code>table</code>, <code>price</code>.</p></li>
 </ol>
 <pre class="r"><code># read diamonds data with specified col_names
 diamonds &lt;- read_csv(file = &quot;XX&quot;, 
                      col_names = c(&#39;name_1&#39;,&#39;name_2&#39;,&#39;...&#39;))  # Vector of column names</code></pre>
-<pre class="r"><code># read diamonds data with specified col_names
-diamonds &lt;- read_csv(file = diamonds_path,
-                     col_names = c(&quot;carat&quot;, &quot;cut&quot;, &quot;color&quot;, &quot;clarity&quot;, &quot;depth&quot;, &quot;table&quot;, &quot;price&quot;))</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Re-inspect the header by printing the data. Has the header been fixed?</li>
-</ol>
-<pre class="r"><code># print diamonds
-diamonds</code></pre>
-<ol start="6" style="list-style-type: decimal">
+<li><p>Re-inspect the header by printing the data. Has the header been fixed?</p></li>
 <li><p>Now pay attention to the classes of the individuals columns (variables). Have all classes been identified correctly? What about the <code>carat</code> column? It should be <code>numeric</code>, right?</p></li>
 <li><p>Let’s see what went wrong. Select and print the <code>carat</code> variable to identify the one entry that caused the variable to become a <code>character</code> vector (Hint: look for a comma between entry 10 and 20).</p></li>
-</ol>
-<pre class="r"><code># print the carat column
-diamonds$carat</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Change the incorrectly formated entry in <code>carat</code> by replacing <code>XX</code> with the index of the incorrect value (i.e., the correct number between 10 and 20) and <code>YY</code> with the correct entry with a period (<code>.</code>) instead of a comma (<code>,</code>) in the code below.</li>
+<li><p>Change the incorrectly formated entry in <code>carat</code> by replacing <code>XX</code> with the index of the incorrect value (i.e., the correct number between 10 and 20) and <code>YY</code> with the correct entry with a period (<code>.</code>) instead of a comma (<code>,</code>) in the code below.</p></li>
 </ol>
 <pre class="r"><code># Change the value at position XX to YY
 diamonds$carat[XX] &lt;- YY</code></pre>
-<pre class="r"><code># Change the value at position XX to YY
-diamonds$carat[17] &lt;- 0.37</code></pre>
 <ol start="9" style="list-style-type: decimal">
 <li>Ok you fixed the value but <code>carat</code> is still <code>character</code>. We can fix it with the <code>type_convert()</code> function. Apply the <code>type_convert()</code> function to the <code>diamonds</code> data to have R fix all the data types. Make sure to assign the result back to <code>diamonds</code> so that you change the object!</li>
 </ol>
 <pre class="r"><code># re-infer data types
 diamonds &lt;- type_convert(diamonds)</code></pre>
 <ol start="10" style="list-style-type: decimal">
-<li>Print the <code>diamonds</code> object and look at the column types. Has the type of <code>carat</code> changed to <code>double</code>?</li>
-</ol>
-<pre class="r"><code># print diamonds data set
-diamonds</code></pre>
-<ol start="11" style="list-style-type: decimal">
-<li>Write the, now, properly formatted diamonds data to your data folder as a <code>.csv</code> file using the name <code>diamonds_clean.csv</code>. Don’t forget to include both the file name and the folder (separated by <code>/</code>) in the character string specifying the <code>path</code> argument.</li>
+<li><p>Print the <code>diamonds</code> object and look at the column types. Has the type of <code>carat</code> changed to <code>double</code>?</p></li>
+<li><p>Write the, now, properly formatted diamonds data to your data folder as a <code>.csv</code> file using the name <code>diamonds_clean.csv</code>. Don’t forget to include both the file name and the folder (separated by <code>/</code>) in the character string specifying the <code>path</code> argument.</p></li>
 </ol>
 <pre class="r"><code># write clean diamonds data to disc
 write_csv(x = XX, path = &quot;XX&quot;)</code></pre>
-<pre class="r"><code># write clean diamonds data to disc
-write_csv(x = diamonds, &quot;1_Data/diamonds_clean.csv&quot;)</code></pre>
 <ol start="12" style="list-style-type: decimal">
-<li>Read <code>diamonds_clean.csv</code> back into R as a new object called <code>diamonds_clean</code>. Then, print the object and verify that this time the types been correctly identified from the start.</li>
+<li><p>Read <code>diamonds_clean.csv</code> back into R as a new object called <code>diamonds_clean</code>. Then, print the object and verify that this time the types been correctly identified from the start.</p></li>
+<li><p>The data is now ready for analysis. Explore it a bit by calculating a few statistics. For instance, what is the average <code>carat</code> or <code>price</code> (use <code>mean()</code>)? What <code>cut</code> and <code>clarity</code> levels exist and how often do they occur (use <code>table()</code> on both variables)? You can learn more about the variable values from the help file <code>?diamonds</code>.</p></li>
 </ol>
-<pre class="r"><code># read clean diamonds data from disc
-diamonds_clean &lt;- read_csv(file = &quot;1_Data/diamonds_clean.csv&quot;)</code></pre>
-<ol start="13" style="list-style-type: decimal">
-<li>The data is now ready for analysis. Explore it a bit by calculating a few statistics. For instance, what is the average <code>carat</code> or <code>price</code> (use <code>mean()</code>)? What <code>cut</code> and <code>clarity</code> levels exist and how often do they occur (use <code>table()</code> on both variables)? You can learn more about the variable values from the help file <code>?diamonds</code>.</li>
-</ol>
-<pre class="r"><code># simple stats of diamonds
-mean(diamonds$carat)
-mean(diamonds$price)
-table(diamonds$cut)
-table(diamonds$clarity)</code></pre>
 </div>
 <div id="e---logical-vectors-and" class="section level3">
 <h3>E - Logical Vectors and <code>$</code></h3>
@@ -504,37 +388,17 @@ table(diamonds$clarity)</code></pre>
 # which dimaonds cost more than 10,000
 
 ZZ &lt;- diamonds$XX &gt; YY</code></pre>
-<pre class="r"><code># Create a logical vector expensive indicating
-# which dimaonds cost more than 10,000
-
-expensive &lt;- diamonds$price &gt; 10000</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Print your <code>expensive</code> vector to the console. Do you see only TRUE and FALSE values? If so, do the first few values match those in the <code>price</code> variable?</li>
-</ol>
-<pre class="r"><code># print expensive
-expensive</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Add your <code>expensive</code> vector to the diamonds data frame using <code>data_frame$variable_name &lt;- variable</code>. See below?</li>
+<li><p>Print your <code>expensive</code> vector to the console. Do you see only TRUE and FALSE values? If so, do the first few values match those in the <code>price</code> variable?</p></li>
+<li><p>Add your <code>expensive</code> vector to the diamonds data frame using <code>data_frame$variable_name &lt;- variable</code>. See below?</p></li>
 </ol>
 <pre class="r"><code># add vector to data frame
 XX$YY &lt;- ZZ</code></pre>
-<pre class="r"><code># add vector to data frame
-diamonds$expensive &lt;- expensive</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Using the <code>table()</code> function, create a table showing how many of the diamonds are expensive how many are not. Select the variable directly from the data frame using <code>$</code>.</li>
+<li><p>Using the <code>table()</code> function, create a table showing how many of the diamonds are expensive how many are not. Select the variable directly from the data frame using <code>$</code>.</p></li>
+<li><p>Using the <code>mean()</code> function, determine the percentage of the diamonds that are expensive, i.e., <code>mean(expensive)</code>. Should this have worked?</p></li>
+<li><p>What percent diamonds weigh more than 1 <code>carat</code> (i.e., more than .2 gram)?</p></li>
 </ol>
-<pre class="r"><code># count expensive diamonds
-table(diamonds$expensive)</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>Using the <code>mean()</code> function, determine the percentage of the diamonds that are expensive, i.e., <code>mean(expensive)</code>. Should this have worked?</li>
-</ol>
-<pre class="r"><code># percentage of expensive diamonds
-mean(diamonds$expensive)</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>What percent diamonds weigh more than 1 <code>carat</code> (i.e., more than .2 gram)?</li>
-</ol>
-<pre class="r"><code># percentage of diamonds heavier than 1 carat
-mean(diamonds$carat &gt; 1)</code></pre>
 </div>
 <div id="f---read-other-file-formats" class="section level3">
 <h3>F - Read other file formats</h3>
@@ -545,28 +409,16 @@ mean(diamonds$carat &gt; 1)</code></pre>
 <li>Using <code>read_excel()</code>, read in the <code>titanic.xls</code> dataset as a new object called <code>titanic</code> (Make sure you have alredy loaded the <code>readxl</code> package at the beginning of your script).</li>
 </ol>
 <pre class="r"><code>titanic &lt;- read_excel(path = &quot;XX&quot;)</code></pre>
-<pre class="r"><code># Read titanic data
-titanic &lt;- read_excel(&quot;1_Data/titanic.xls&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Print <code>titanic</code> and evaluate its dimensions using <code>dim()</code>.</li>
-</ol>
-<pre class="r"><code># print and show dimenisons
-titanic
-dim(titanic)</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Using <code>table()</code>, how many people survived (variable <code>survived</code>) in each cabin class (variable <code>pclass</code>)?</li>
+<li><p>Print <code>titanic</code> and evaluate its dimensions using <code>dim()</code>.</p></li>
+<li><p>Using <code>table()</code>, how many people survived (variable <code>survived</code>) in each cabin class (variable <code>pclass</code>)?</p></li>
 </ol>
 <pre class="r"><code># determine survival rate by cabin class
 table(titanic$XX, 
       titanic$XX)</code></pre>
-<pre class="r"><code># determine survival rate by cabin class
-table(titanic$pclass, titanic$survived)</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Using <code>write_csv()</code>, write the <code>titanic</code> dataframe as a new comma separated text file called <code>titanic.csv</code> in your <code>1_Data</code> folder. Now you have the data saved as a text file any software can use!</li>
 </ol>
-<pre class="r"><code># write data to .csv
-write_csv(x = titanic, 
-          path = &quot;1_Data/titanic.csv&quot;)</code></pre>
 </div>
 <div id="spss" class="section level4">
 <h4>SPSS</h4>
@@ -575,24 +427,11 @@ write_csv(x = titanic,
 <li>Using <code>read_spss()</code> read in the sleep data set <code>sleep.sav</code> of staff at he University of Melbourne as a new object called <code>sleep</code>. (Make sure that you have first loaded the <code>haven</code> package).</li>
 </ol>
 <pre class="r"><code>XX &lt;- read_spss(file = &quot;XX&quot;)</code></pre>
-<pre class="r"><code># Read sleep data
-sleep &lt;- read_spss(file = &quot;1_Data/sleep.sav&quot;)</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>Print your <code>sleep</code> object and evaluate its dimensions using <code>dim()</code>.</li>
+<li><p>Print your <code>sleep</code> object and evaluate its dimensions using <code>dim()</code>.</p></li>
+<li><p>How many drinks do staff at the University of Melbourne consumer per day (variable <code>alcohol</code>). To do this, use the <code>mean()</code> function, while taking care of missing values using the <code>na.rm</code> argument.</p></li>
+<li><p>Using the <code>write_csv()</code> function, write the <code>sleep</code> data to a new file called <code>sleep.csv</code> in your <code>1_Data</code> folder. Now you have the <code>sleep</code> data stored as a text file any software can use!</p></li>
 </ol>
-<pre class="r"><code># print and show dimensions
-sleep
-dim(sleep)</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>How many drinks do staff at the University of Melbourne consumer per day (variable <code>alcohol</code>). To do this, use the <code>mean()</code> function, while taking care of missing values using the <code>na.rm</code> argument.</li>
-</ol>
-<pre class="r"><code># compute mean number of drinks
-mean(x = sleep, na.rm = TRUE)</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Using the <code>write_csv()</code> function, write the <code>sleep</code> data to a new file called <code>sleep.csv</code> in your <code>1_Data</code> folder. Now you have the <code>sleep</code> data stored as a text file any software can use!</li>
-</ol>
-<pre class="r"><code># write data to .csv
-write_csv(&quot;1_Data/sleep.csv&quot;)</code></pre>
 </div>
 </div>
 <div id="g---creating-data-frames" class="section level3">
@@ -602,49 +441,16 @@ write_csv(&quot;1_Data/sleep.csv&quot;)</code></pre>
 </ol>
 <pre class="r"><code># Create data frame ten_df containing vectors id, age, sex, height, and weight.
 XX &lt;- data.frame(XX, XX, XX, XX, XX, XX) </code></pre>
-<pre class="r"><code># Create ten_df data frame from vectors
-ten_df &lt;- data.frame(id, age, sex, height, weight) </code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Print your <code>ten_df</code> object to see how it looks! Does it contain all of the vectors?</li>
+<li><p>Print your <code>ten_df</code> object to see how it looks! Does it contain all of the vectors?</p></li>
+<li><p>Using the <code>dim()</code> function, print the number of rows and columns in your data frame. Do you get 10 rows and 5 columns?</p></li>
+<li><p>What is the class of your <code>ten_df</code> object? Use the <code>class()</code> function to find out!</p></li>
+<li><p>Use the <code>summary()</code> function to print descriptive statistics from each column of <code>ten_df</code></p></li>
+<li><p>Using the <code>$</code> operator, print the <code>age</code> column from the <code>ten_df</code> data frame.</p></li>
+<li><p>Calculate the maximum <code>age</code> value from the <code>ten_df</code> data frame using <code>max()</code>. Do you get the same result from when you calculated it from the original vector <code>age</code>?</p></li>
+<li><p>Instead of creating a data frame of the data using the <code>data.frame()</code> function, try creating a tibble called <code>ten_tibble</code> using the <code>tibble()</code> function. <code>tibble</code>s are a more modern, leaner variant of data frame that we prefer over classic <code>data.frame</code>. You can use the exact same arguments you used before.</p></li>
+<li><p>Print your new <code>ten_tibble</code> object, how does it look different from <code>ten_df</code>? Try calculating the maximum <code>age</code> from this object. Is it different from what you got before?</p></li>
 </ol>
-<pre class="r"><code># Print ten_df
-ten_df</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li>Using the <code>dim()</code> function, print the number of rows and columns in your data frame. Do you get 10 rows and 5 columns?</li>
-</ol>
-<pre class="r"><code># Inspect dimensions
-dim(ten_df)</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>What is the class of your <code>ten_df</code> object? Use the <code>class()</code> function to find out!</li>
-</ol>
-<pre class="r"><code># Inspect class
-class(ten_df)</code></pre>
-<ol start="5" style="list-style-type: decimal">
-<li>Use the <code>summary()</code> function to print descriptive statistics from each column of <code>ten_df</code></li>
-</ol>
-<pre class="r"><code># Inspect class
-summary(ten_df)</code></pre>
-<ol start="6" style="list-style-type: decimal">
-<li>Using the <code>$</code> operator, print the <code>age</code> column from the <code>ten_df</code> data frame.</li>
-</ol>
-<pre class="r"><code># Inspect age
-ten_df$age</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li>Calculate the maximum <code>age</code> value from the <code>ten_df</code> data frame using <code>max()</code>. Do you get the same result from when you calculated it from the original vector <code>age</code>?</li>
-</ol>
-<pre class="r"><code># Get max
-max(ten_df$age)</code></pre>
-<ol start="8" style="list-style-type: decimal">
-<li>Instead of creating a data frame of the data using the <code>data.frame()</code> function, try creating a tibble called <code>ten_tibble</code> using the <code>tibble()</code> function. <code>tibble</code>s are a more modern, leaner variant of data frame that we prefer over classic <code>data.frame</code>. You can use the exact same arguments you used before.</li>
-</ol>
-<pre class="r"><code># create tibble
-ten_tibble = tibble(id, age, sex, height, weight)</code></pre>
-<ol start="9" style="list-style-type: decimal">
-<li>Print your new <code>ten_tibble</code> object, how does it look different from <code>ten_df</code>? Try calculating the maximum <code>age</code> from this object. Is it different from what you got before?</li>
-</ol>
-<pre class="r"><code># print tibble
-ten_tibble
-max(ten_tibble$age) == max(ten_df$age)</code></pre>
 </div>
 <div id="x---challenges" class="section level3">
 <h3>X - Challenges</h3>
@@ -653,8 +459,6 @@ max(ten_tibble$age) == max(ten_df$age)</code></pre>
 </ol>
 <pre class="r"><code># Determine the frequency of a case in a vector
 sum(XX == XX)</code></pre>
-<pre class="r"><code># Determine the frequency of a case in a vector
-sum(ten_tibble$sex == &quot;male&quot;)</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>You can use logical vectors to select rows from a data frame based on certain criteria. using the following template, get the id values of Baselers who are younger than 30:</li>
 </ol>
@@ -663,21 +467,10 @@ young_30 &lt;- XX$XX &lt; 30
 
 # Print the ids of baselers younger than 30
 XX$XX[young_30]</code></pre>
-<pre class="r"><code># Create a logical vector indicating which baselers are younger than 30
-young_30 &lt;- ten_tibble$age &lt; 30
-
-# Print the ids of baselers younger than 30
-ten_tibble$id[young_30]</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Use a combination of logical vectors and the <code>mean()</code> function to answer the question: “What is the mean age of Baselers who are heavier than 80kg?”</li>
+<li><p>Use a combination of logical vectors and the <code>mean()</code> function to answer the question: “What is the mean age of Baselers who are heavier than 80kg?”</p></li>
+<li><p>What are the id values of Baselers who are male <em>and</em> are shorter than 165cm? (Hint: You will need to use the logical AND operator <code>&amp;</code> to combine multiple logical vectors)</p></li>
 </ol>
-<pre class="r"><code># Mean age of baselers heavier than 80kg
-mean(ten_tibble$age[ten_tibble$weight &gt; 80])</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>What are the id values of Baselers who are male <em>and</em> are shorter than 165cm? (Hint: You will need to use the logical AND operator <code>&amp;</code> to combine multiple logical vectors)</li>
-</ol>
-<pre class="r"><code># Mean age of baselers heavier than 80kg
-ten_tibble$id[ten_tibble$sex == &quot;male&quot; &amp; ten_tibble$height &lt; 165]</code></pre>
 </div>
 </div>
 <div id="examples" class="section level2">
@@ -766,8 +559,6 @@ chickens &lt;- read_sas(&quot;1_Data/example.sas7bdat&quot;)</code></pre>
 </div>
 <div id="datasets" class="section level2">
 <h2>Datasets</h2>
-<pre class="r"><code>library(tidyverse)
-library(haven)</code></pre>
 <table>
 <colgroup>
 <col width="8%" />

@@ -16,7 +16,9 @@ Bootcamp_package_installation <- function() {
     
     # Tidyverse --------------
     "tidyverse",
-    "lubridate"
+    "knitr",
+    "rmarkdown",
+    "DT"
   )
   
   # Optional packages

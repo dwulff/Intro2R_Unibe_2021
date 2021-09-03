@@ -1,57 +1,20 @@
 ---
 title: "Reporting"
-author: "Introduction to R<br>
-  <a href='https://therbootcamp.github.io'>
-    The R Bootcamp
-  </a>
-  <br>
-  <a href='https://therbootcamp.github.io/RmR_2021Feb/'>
-    <i class='fas fa-clock' style='font-size:.9em;'></i>
-  </a>&#8239; 
-  <a href='https://therbootcamp.github.io'>
-    <i class='fas fa-home' style='font-size:.9em;' ></i>
-  </a>&#8239;
-  <a href='mailto:therbootcamp@gmail.com'>
-    <i class='fas fa-envelope' style='font-size: .9em;'></i>
-  </a>&#8239;
-  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
-    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
-  </a>"
-date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
-    lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
 ---
 
-layout: true
-
-<div class="my-footer">
-  <span style="text-align:center">
-    <span> 
-      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
-    </span>
-    <a href="https://therbootcamp.github.io/">
-      <span style="padding-left:82px"> 
-        <font color="#7E7E7E">
-          www.therbootcamp.com
-        </font>
-      </span>
-    </a>
-    <a href="https://therbootcamp.github.io/">
-      <font color="#7E7E7E">
-       Introduction to R | September 2021
-      </font>
-    </a>
-    </span>
-  </div> 
-
 ---
+
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
@@ -163,91 +126,6 @@ basel <- read.csv("1_Data/basel.csv")
 </p>
 
 ]
-
----
-.pull-left3[
-
-# Types of documents
-
-<ul>
-  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
-  <ul>
-    <li><span><high>Text documents</high></span></li>
-    <li><span>Presentations</span></li>   
-    <li><span>Dashboards (Cockpits)</span></li>
-    <li><span>Books</span></li>
-    <li><span>Web-Pages</span></li>
-  </ul>
-</ul>
-
-
-]
-
-.pull-right6[
-
-<br><br>
-<iframe src="https://therbootcamp.github.io/RmR_2021Feb/_sessions/Markdown/app/airbnb_final.html" width="800" height="500"></iframe>
-
-]
-
----
-
-.pull-left3[
-
-# Types of documents
-
-<ul>
-  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
-  <ul>
-    <li><span>Text documents</span></li>
-    <li><span><high>Presentations</high></span></li>   
-    <li><span>Dashboards (Cockpits)</span></li>
-    <li><span>Books</span></li>
-    <li><span>Web-Pages</span></li>
-  </ul>
-</ul>
-
-
-]
-
-.pull-right6[
-
-<br><br>
-<iframe src="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting.html" width="800" height="500"></iframe>
-
-]
-
----
-
-
-.pull-left3[
-
-# Types of documents
-
-<ul>
-  <li class="m1"><span>RMarkdown allows the creation of different <high>document types</high>.</span></li><br>
-  <ul>
-    <li><span>Text documents</span></li>
-    <li><span>Presentations</span></li>   
-    <li><span><high>Dashboards (Cockpits)</high></span></li>
-    <li><span>Books</span></li>
-    <li><span>Web-Pages</span></li>
-  </ul>
-</ul>
-
-
-
-]
-
-.pull-right6[
-
-<br><br><br><br>
-<p align = "center">
-  <img src="image/dashboard.png">
-</p>
-
-]
-
 
 ---
 
@@ -1147,19 +1025,16 @@ basel <- read.csv("1_Data/basel.csv")
 
 <ul>
   <li class="m1"><span>Markdown documents do not access the regular <high>working directory</high>.</span></li><br>
-  <li class="m2"><span>Paths in RMarkdown have to be <high>relativ to the .Rmd</high> file.</span></li>
+  <li class="m2"><span>Paths in RMarkdown have to be <high>relative to the .Rmd</high> file.</span></li>
 </ul>
 
 <br>
 ```R
-# Read Daten
+# Read Data
 read_csv("../1_Data/daten.csv")
-
-# Read CSS (more about that later)
-css: "../2_Assets/styling.csv")
 ```
 
-]=  
+] 
 
 .pull-right55[
 <br>
