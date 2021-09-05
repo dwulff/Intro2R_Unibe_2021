@@ -3,7 +3,7 @@ title: "Plotting I"
 author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Introduction to R</font><br>
+      <font style='font-style:normal'>Introduction to Data Science with R</font><br>
       <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
@@ -17,7 +17,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
         <i class='fab fa-linkedin' style='font-size: .9em;'></i>
       </a>
       <a href='https://therbootcamp.github.io'>
-        <font style='font-style:normal'>Bern R Bootcamp</font>
+        <font style='font-style:normal'>The R Bootcamp</font>
       </a>
     </td>
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
@@ -70,7 +70,7 @@ In this practical you'll practice plotting data with the amazing `ggplot2` packa
 
 ### A - Setup
 
-1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
+1. Open your `TheRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
 
 ```{r}
 # Done!
@@ -94,7 +94,7 @@ library(XX)
 library(tidyverse)
 ```
 
-4. For this practical, we'll use the `mcondalds.csv` data set, which contains nutrition information about items from McDonalds. Using `read_csv()`, load the data into R and store it as a new object called `mcdonalds`.
+4. In this practical, you will analyze the `mcondalds.csv` data set, which contains nutrition information about items from McDonalds. Using `read_csv()`, load the data into R and store it as a new object called `mcdonalds`.
 
 ```{r}
 mcdonalds <- read_csv("1_Data/mcdonalds.csv")

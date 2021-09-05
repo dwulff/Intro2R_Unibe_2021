@@ -14,7 +14,6 @@ output:
 ---
 
 ---
-
   
 ```{r, eval = FALSE, echo = FALSE}
 # Code to knit slides
@@ -67,104 +66,6 @@ Group data and calculate and summary stats
 <br>
 <p align="center">
 <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/organise_transform_aggregate.png" height = "530px">
-</p>
-
-]
-
----
-
-
-# The Pipe!  <high>`%>%`</high>
-
-.pull-left4[
-
-`dplyr` makes extensive use of a new operator called the <high><i>Pipe</i> `%>%`</high><br>
-
-Read the <high><i>Pipe</i> `%>%`</high> as "And Then..."
-
-<br>
-
-```{r, eval = FALSE, echo = TRUE}
-# Start with data
-data %>% # AND THEN...
-  
-DO_SOMETHING %>% # AND THEN...
-  
-DO_SOMETHING %>% # AND THEN...
-  
-DO_SOMETHING %>% # AND THEN...
-
-```
-
-]
-
-.pull-right55[
-
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/MagrittePipe.jpg/300px-MagrittePipe.jpg" width = "400px"><br>
-<br><i>This is not a pipe. But <mono>%>%</mono> is!</i>
-</p>
-
-]
-
-
-
----
-
-# The Pipe!  <high>`%>%`</high>
-
-.pull-left4[
-
-```{r}
-#  Vector of `scores`
-score <- c(8, 4, 6, 3, 7, 3)
-score
-
-# Mean: Base-R-way
-mean(x = score)
-
-# Mean: Tidyverse-style (with %>%)
-score %>%  # AND THEN 
-  mean()  
-```
-
-
-]
-
-.pull-right55[
-
-<p align="center">
-  <img src="image/pipe.png" height = "400px">
-</p>
-
-]
-
----
-
-# The Pipe! <high>`%>%`</high>
-
-.pull-left4[
-
-```{r}
-#  Vector of `scores`
-score <- c(8, 4, 6, 3, 7, 3)
-score
-
-# Mean: Base-R-way
-round(mean(x = score), digits = 1)
-
-# Mean: Tidyverse-style (with %>%)
-score %>%     # AND THEN
-  mean() %>%  # AND THEN
-  round(digits = 1)
-```
-
-]
-
-.pull-right55[
-
-<p align="center">
-  <img src="image/pipe.png" height = "400px">
 </p>
 
 ]

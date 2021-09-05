@@ -3,7 +3,7 @@ title: "Wrangling"
 author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Introduction to R</font><br>
+      <font style='font-style:normal'>Introduction to Data Science with R</font><br>
       <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
@@ -17,7 +17,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
         <i class='fab fa-linkedin' style='font-size: .9em;'></i>
       </a>
       <a href='https://therbootcamp.github.io'>
-        <font style='font-style:normal'>Bern R Bootcamp</font>
+        <font style='font-style:normal'>The R Bootcamp</font>
       </a>
     </td>
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
@@ -40,6 +40,10 @@ knitr::opts_chunk$set(comment = NA,
                       warning = FALSE)
 
 options(digits = 3)
+
+trial_act <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
+
+trial_act_demo <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv")
 ```
 
 <p align="center" width="100%">
@@ -56,7 +60,7 @@ options(digits = 3)
 
 ## Overview
 
-In this practical you'll practice "data wrangling" with the `dplyr` and `tidyr` packages (part of the `tidyverse collection of packages).
+In this practical you'll practice "data wrangling" with the `dplyr` and `tidyr` packages.
 
 By the end of this practical you will know how to:
 
@@ -71,65 +75,45 @@ By the end of this practical you will know how to:
 
 ### A - Setup
 
-1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder
-
-```{r}
-# Done!
-```
+1. Open your `TheRBootcamp` R project. It should have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
 
 2. Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called `wrangling_practical.R` in the `2_Code` folder.  
 
-```{r}
-# Done!
-```
-
 3. Using `library()` load the set of packages for this practical listed in the packages section above.
 
-```{r, message = FALSE, warning = FALSE, echo = FALSE, eval = TRUE}
-library(tidyverse)
+```{r, eval = FALSE, echo = TRUE}
+## Name
+## Date
+## Data practical
+
+library(XX)     
+library(XX)
+library(XX)
+library(XX)
 ```
 
-4. For this practical, we'll use the `trial_act` data, this is the result of a randomized clinical trial comparing the effects of different medications on adults infected with the human immunodeficiency virus (You can learn more about the trial [here](https://www.nejm.org/doi/full/10.1056/NEJM199610103351501)). Using the following template, load the data into R and store it as a new object called `trial_act`.
+4. In this practical, you will analyze the `trial_act` data. Using the following template, load both the original and demo data into R and store it as a new object called `trial_act` and `trial_act_demo`.
 
 ```{r, echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
 # Load trial_act.csv from the data folder in your working directory
 
 trial_act <- read_csv(file = "XX")
+trial_act_demo <- read_csv(file = "XX")
 ```
 
 ```{r, eval = FALSE}
 trial_act <- read_csv(file = "1_Data/trial_act.csv")
-```
-
-5. Using the same code structure, load the `trial_act_demo_fake.csv` data as a new dataframe called `trial_act_demo`
-
-```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-trial_act <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
-
-trial_act_demo <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv")
-```
-
-```{r, eval = FALSE}
 trial_act_demo <- read_csv(file = "1_Data/trial_act_demo_fake.csv")
 ```
 
-```{r, message = FALSE, echo = FALSE, eval = TRUE, warning = FALSE}
-library(tidyverse)
-```
-
-6. Take a look at the first few rows of the datasets by printing them to the console.
+5. Take a look at the first few rows of the data sets by printing them to the console.
 
 ```{r, echo = TRUE}
 # Print trial_act object
 trial_act
+trial_act_demo
 ```
 
-7. Use the the `summary()` function to print more details on the columns of the datasets.
-
-```{r}
-summary(trial_act)
-summary(trial_act_demo)
-```
 
 ### B - Change column names with rename()
 
@@ -618,9 +602,7 @@ trial_act_demo <- read_csv("https://raw.githubusercontent.com/therbootcamp/Basel
 |[trial_act.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv) | 2139 | 27 |
 |[trial_act_demo_fake.csv](https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act_demo_fake.csv)| 2139 | 3|
 
-The `trial_act` data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults
-infected with the human immunodeficiency virus type I whose CD4 T cell counts were between
-200 and 500 per cubic millimeter.
+The `trial_act` data set contains a randomized clinical trial to compare monotherapy with zidovudine or didanosine with combination therapy with zidovudine and didanosine or zidovudine and zalcitabine in adults infected with the human immunodeficiency virus type I whose CD4 T cell counts were between 200 and 500 per cubic millimeter. You can learn more about the trial [here](https://www.nejm.org/doi/full/10.1056/NEJM199610103351501))
 
 |File | Rows |
 |:-------------|:-------------------------------------|
