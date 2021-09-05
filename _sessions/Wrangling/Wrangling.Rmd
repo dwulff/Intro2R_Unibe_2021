@@ -18,7 +18,7 @@ output:
 ```{r, eval = FALSE, echo = FALSE}
 # Code to knit slides
 xaringan::inf_mr('_sessions/D1S2_Wrangling/Wrangling.Rmd')
-baselers <- read_csv("https://raw.githubusercontent.com/therbootcamp/baselers/master/inst/extdata/baselers.txt")
+
 
 
 ```
@@ -29,7 +29,7 @@ options(width=110)
 options(digits = 4) 
 knitr::opts_chunk$set(comment = NA)
 library(tidyverse)
-baselers <- read_csv("https://raw.githubusercontent.com/therbootcamp/baselers/master/inst/extdata/baselers.txt")
+
 ```
 
 
@@ -143,11 +143,11 @@ Transformation functions are used to <high>alter the content</high> of a `tibble
 .pull-right5[
 
 ```{r, echo = F}
-options(tibble.width = 60)   # Baselers data
+options(tibble.width = 60)  
 ```
 
 ```{r}
-patients   # Baselers data
+patients   # Patient data
 ```
 
 
@@ -784,15 +784,15 @@ DATA %>%
 .pull-right5[
 
 ```{r}
-baselers %>%
+combined %>%
   
   # Group by sex
-  group_by(sex) %>%
+  group_by(arm_lab) %>%
   
   # Calculate summary stats
   summarise(
     age_mean = mean(age),
-    height_median = median(height)
+    age_sd = sd(age)
   )
 ```
 
@@ -824,10 +824,10 @@ options(tibble.width=50, tibble.print_max=5, tibble.print_min=5, tibble.max_extr
 
 
 ```{r}
-baselers %>%
+combined %>%
   
   # Group by sex
-  group_by(sex) %>%
+  group_by(arm_lab) %>%
   
   # Calculate stats
   summarise(
