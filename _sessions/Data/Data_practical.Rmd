@@ -4,8 +4,8 @@ subtitle: ""
 author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Introduction to R</font><br>
-      <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+      <font style='font-style:normal'>Introduction to Data Science R</font><br>
+      <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
       <a href='https://therbootcamp.github.io'>
@@ -18,7 +18,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
         <i class='fab fa-linkedin' style='font-size: .9em;'></i>
       </a>
       <a href='https://therbootcamp.github.io'>
-        <font style='font-style:normal'>Bern R Bootcamp</font>
+        <font style='font-style:normal'>The R Bootcamp</font>
       </a>
     </td>
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
@@ -74,10 +74,21 @@ In this practical you'll learn how to work with basic data objects and functions
 
 ### A - Getting setup
 
-1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`.
+1. Open your `TheRBootcamp` R project. Make sure that the data files listed in the `Datasets` tab are in your `1_Data` folder.
 
-2. Open a new R script and save it as a new file called `data_practical.R` in the `2_Code` folder. At the top of the script, using comments, write your name and the date. 
-Then, load all package(s) listed in the Packages section above with `library()`. Make sure that each of the datasets listed above lie in your `1_Data` folder.
+2. Using `library()` load the set of packages for this practical listed in the Functions section.
+
+```{r, eval = FALSE, echo = TRUE}
+## Name
+## Date
+## Data practical
+
+library(XX)     
+library(XX)
+library(XX)
+library(XX)
+```
+
 
 ### B - Creating vectors
 

@@ -42,6 +42,7 @@ knitr::opts_chunk$set(dpi = 300, echo = FALSE, warning = FALSE, fig.align = 'cen
 
 ```
 
+
 # General Linear Models
 
 .pull-left4[
@@ -69,6 +70,525 @@ knitr::opts_chunk$set(dpi = 300, echo = FALSE, warning = FALSE, fig.align = 'cen
 
 </p>
 ]
+
+
+---
+
+# Simple linear regression
+
+.pull-left4[
+
+
+<ul>
+  <li class="m1"><span>How well does a <high>linear function using one predictor (x)</high> account for the criterion (y)?</span></li>
+  <li class="m2"><span>Parameters:</span></li>
+  <ul class="level">
+    <li><span>&beta;<sub>0</sub>: <high>Intercept</high> of y-axis</span></li>
+    <li><span>&beta;<sub>1</sub>: <high>Slope</high></span></li>
+  </ul>
+</ul>
+
+<br>
+
+$$\Large \hat{y} = b_0 + b_1  * x$$
+
+]
+
+.pull-right5[
+
+```{r, echo = FALSE, fig.width = 3.5, fig.height = 3}
+
+library(tidyverse) ; library(ggrepel)
+
+# Lade Tourismus Daten
+tour <- read_csv('1_Data/Tourismus.csv') 
+europa <- read_csv('1_Data/Europa.csv') 
+
+# Berechne Nächte per Region
+d = tour %>%
+  mutate(Nächte = Besucher * Dauer) %>%
+  left_join(europa) %>% 
+  rename(Nights = Nächte,
+         `Equivalent income` = Äquivalenzeinkommen)
+
+m = coef(lm(log2(Nights) ~ `Equivalent income`, data = d))
+
+ggplot(d, 
+       aes(x = `Equivalent income`, 
+           y = Nights,
+           label = Land)) +
+  scale_y_continuous(trans = 'log2') + 
+  geom_point() +
+  geom_abline(intercept = m[1], slope = m[2], col = '#EA4B68', size = 1.5) + 
+  theme_bw()
+
+```
+
+]
+
+
+---
+
+# Simple linear regression
+
+.pull-left4[
+
+
+<ul>
+  <li class="m1"><span>How well does a <high>linear function using one predictor (x)</high> account for the criterion (y)?</span></li>
+  <li class="m2"><span>Parameters:</span></li>
+  <ul class="level">
+    <li><span>&beta;<sub>0</sub>: <high>Intercept</high> of y-axis</span></li>
+    <li><span>&beta;<sub>1</sub>: <high>Slope</high></span></li>
+  </ul>
+</ul>
+
+<br>
+
+$$\Large \hat{Nächte} = b_0 + b_1  * Äquiv.eink.$$
+
+]
+
+.pull-right5[
+
+```{r, echo = FALSE, fig.width = 3.5, fig.height = 3}
+
+library(tidyverse) ; library(ggrepel)
+
+# Lade Tourismus Daten
+tour <- read_csv('1_Data/Tourismus.csv') 
+europa <- read_csv('1_Data/Europa.csv') 
+
+# Berechne Nächte per Region
+d = tour %>%
+  mutate(Nächte = Besucher * Dauer) %>%
+  left_join(europa) %>% 
+  rename(Nights = Nächte,
+         `Equivalent income` = Äquivalenzeinkommen)
+
+m = coef(lm(log2(Nights) ~ `Equivalent income`, data = d))
+
+ggplot(d, 
+       aes(x = `Equivalent income`, 
+           y = Nights,
+           label = Land)) +
+  scale_y_continuous(trans = 'log2') + 
+  geom_point() +
+  geom_abline(intercept = m[1], slope = m[2], col = '#EA4B68', size = 1.5) + 
+  theme_bw()
+
+```
+
+]
+
+---
+
+# Multiple lineare regression
+
+.pull-left4[
+
+<ul>
+  <li class="m1"><span>How well does a <high>linear function using multiple predictors (x)</high> account for the criterion (y)?</span></li>
+  <li class="m2"><span>Parameter:</span></li>
+  <ul class="level">
+    <li><span>&beta;<sub>0</sub>: <high>Intercept</high> of y-axis</span></li>
+    <li><span>&beta;<sub>1</sub>: <high>Slope</high> for x<sub>1</sub></span></li>
+    <li><span>&beta;<sub>2</sub>: <high>Slope</high> for x<sub>2</sub></span></li>
+    <li><span>&beta;<sub>3</sub>: <high>Slope</high> for x<sub>k</sub></span></li>
+  </ul>
+</ul>
+
+<br>
+
+$$\Large \hat{y} = b_0 + b_1  \cdot x_1 + ... b_k \cdot x_k$$
+
+]
+
+.pull-right5[
+
+```{r, echo = FALSE, fig.width = 3.5, fig.height = 3}
+
+library(tidyverse) ; library(ggrepel)
+
+# Lade Tourismus Daten
+tour <- read_csv('1_Data/Tourismus.csv') 
+europa <- read_csv('1_Data/Europa.csv') 
+
+# Berechne Nächte per Region
+d = tour %>%
+  mutate(Nächte = Besucher * Dauer) %>%
+  left_join(europa) %>% 
+  filter(!is.na(Äquivalenzeinkommen)) %>% 
+  rename(Nights = Nächte,
+         `Equivalent income` = Äquivalenzeinkommen,
+         Population = Bevölkerung)
+
+
+m = lm(Nights_log2 ~ `Equivalent income` + Population, data = d %>% mutate(Nights_log2 = log2(Nights)))
+
+res <- 1000
+
+#Setup Axis
+x <- seq(min(d$`Equivalent income`), max(d$`Equivalent income`), by = res)
+y <- seq(min(d$Population), max(d$Population), by = res)
+
+#Sample points
+surface <- expand.grid(`Equivalent income` = x,
+                       Population = y, 
+                       KEEP.OUT.ATTRS = F)
+surface$Nights_log2 <- predict.lm(m, newdata = surface)
+surface <- reshape2::acast(surface, Population ~ `Equivalent income`, value.var = "Nights_log2")
+
+require(plotly)
+plt = plot_ly(d %>% mutate(Nights_log2 = log2(Nights)), 
+        x = ~`Equivalent income`, 
+        y = ~Population, 
+        z = ~Nights_log2,
+        type = "scatter3d",
+        width = 500, height = 420)
+
+plt = add_trace(p = plt,
+          z = surface,
+          x = x,
+          y = y,
+          type = "surface",
+        showscale=FALSE) 
+plt %>%  layout(showlegend = FALSE)
+   
+
+```
+
+]
+
+---
+
+# Formulas
+
+.pull-left4[
+
+<ul>
+  <li class="m1"><span>Models in R are defined using <highm>formula</highm> expressions.</span></li>
+</ul>
+
+<font style="font-size:20px"><u>Syntax</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>+</mono> / <mono>-</mono>
+  </td>
+  <td bgcolor="white">
+  Add / remove predictor.
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>*</mono> / <mono>:</mono> 
+  </td>
+  <td bgcolor="white">
+   Add interactions with or w/o main effects.    
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>1</mono> / <mono>0</mono> 
+  </td>
+  <td bgcolor="white">
+  Add / remove intercept
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>.</mono> 
+  </td>
+  <td bgcolor="white">
+  Add all predictors.
+  </td> 
+</tr>
+</table>
+
+]
+
+<br>
+
+.pull-right5[
+
+<p align="center">
+<img src="image/formula.png">
+</p>
+]
+
+
+---
+
+# <mono>lm()</mono>
+
+.pull-left35[
+
+<font style="font-size:20px"><u>Fitting</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+    <mono>lm(formula, data)</mono>
+  </td>
+  <td bgcolor="white">
+    Fit a <high>linear model</high>.
+  </td> 
+</tr>
+</table>
+
+<font style="font-size:20px"><u>Evaluation</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>summary()</mono>
+  </td>
+  <td bgcolor="white">
+  Show <high>result overview</high>.
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+   <mono>coef(mod)</mono>   
+  </td>
+  <td bgcolor="white">
+   Extract <high>coefficients</high>.    
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+   <mono>predict(mod)</mono>, <mono>resid(mod)</mono>
+  </td>
+  <td bgcolor="white">
+    Extract <high>fitted values</high> / <high>residuals</high>.
+  </td> 
+</tr>
+</table>
+
+]
+
+.pull-right6[
+
+```{r}
+nights = tour %>%
+  mutate(Nights = Besucher * Dauer) %>%
+  left_join(europa) %>% 
+  filter(!is.na(Äquivalenzeinkommen)) %>% 
+  mutate(Nights_log2 = log2(Nights)) %>% 
+  rename(`Equivalent income` = Äquivalenzeinkommen,
+         Population = Bevölkerung)
+
+```
+
+
+```{r, echo = TRUE}
+# Fit model
+nights_lm <- lm(
+  formula = Nights ~ `Equivalent income` + Population,
+  data = nights)
+```
+
+]
+
+
+---
+
+# <mono>lm()</mono>
+
+.pull-left35[
+
+<font style="font-size:20px"><u>Fitting</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+    <mono>lm(formula, data)</mono>
+  </td>
+  <td bgcolor="white">
+    Fit a <high>linear model</high>.
+  </td> 
+</tr>
+</table>
+
+<font style="font-size:20px"><u>Evaluation</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>summary()</mono>
+  </td>
+  <td bgcolor="white">
+  Show <high>result overview</high>.
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+   <mono>coef(mod)</mono>   
+  </td>
+  <td bgcolor="white">
+   Extract <high>coefficients</high>.    
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+   <mono>predict(mod)</mono>, <mono>resid(mod)</mono>
+  </td>
+  <td bgcolor="white">
+    Extract <high>fitted values</high> / <high>residuals</high>.
+  </td> 
+</tr>
+</table>
+
+]
+
+.pull-right6[
+
+
+```{r, echo = TRUE}
+# Printe naechte_lm
+nights_lm
+```
+
+]
+
+
+---
+
+# <mono>summary()</mono>
+
+.pull-left35[
+
+<font style="font-size:20px"><u>Fitting</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+    <mono>lm(formula, data)</mono>
+  </td>
+  <td bgcolor="white">
+    Fit a <high>linear model</high>.
+  </td> 
+</tr>
+</table>
+
+<font style="font-size:20px"><u>Evaluation</u></p>
+
+<table style="cellspacing:0; cellpadding:0; border:none; padding-top:10px" width=100%>
+  <col width="40%">
+  <col width="60%">
+<tr>
+  <td bgcolor="white">
+    <b>Function</b>
+  </td>
+  <td bgcolor="white">
+    <b>Description</b>
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+  <mono>summary()</mono>
+  </td>
+  <td bgcolor="white">
+  Show <high>result overview</high>.
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+   <mono>coef(mod)</mono>   
+  </td>
+  <td bgcolor="white">
+   Extract <high>coefficients</high>.    
+  </td> 
+</tr>
+<tr>
+  <td bgcolor="white">
+   <mono>predict(mod)</mono>, <mono>resid(mod)</mono>
+  </td>
+  <td bgcolor="white">
+    Extract <high>fitted values</high> / <high>residuals</high>.
+  </td> 
+</tr>
+</table>
+
+]
+
+
+.pull-right6[
+
+```{r, echo = TRUE, eval = F}
+# Show results
+summary(nights_lm)
+```
+
+```{r, echo = FALSE}
+# Show results
+print2(summary(nights_lm),15)
+```
+
+]
+
 
 ---
 
@@ -100,14 +620,14 @@ europa <- read_csv('1_Data/Europa.csv')
 
 # Berechne Nächte per Region
 tour = tour %>%
-  mutate(Nächte = Besucher * Dauer) %>%
+  mutate(Nights = Besucher * Dauer) %>%
   left_join(europa) %>% 
-  mutate(Nächte_log = log2(Nächte),
+  mutate(Nights_log = log2(Nights),
          Region = stringr::str_trunc(Region, 7, ellipsis = "."))
 
 tour %>%  filter(Region %in% c('Europa','Asien')) %>% 
   ggplot(aes(x = Region, 
-             y = Nächte)) +
+             y = Nights)) +
   scale_y_continuous(trans = 'log2') + 
   geom_boxplot() +
   theme_minimal() 
@@ -137,9 +657,9 @@ tour %>%  filter(Region %in% c('Europa','Asien')) %>%
 .pull-right5[
 
 ```{r, echo = T, fig.width = 3.5, fig.height = 3}
-
-t.test(tour$Nächte_log[tour$Region == 'Europa'],
-       tour$Nächte_log[tour$Region == 'Asien'])
+# t-test
+t.test(tour$Nights_log[tour$Region == 'Europa'],
+       tour$Nights_log[tour$Region == 'Asien'])
 ```
 
 
@@ -165,7 +685,7 @@ t.test(tour$Nächte_log[tour$Region == 'Europa'],
 .pull-right5[
 
 ```{r, echo = T, fig.width = 3.5, fig.height = 3}
-lm(Nächte_log ~ Region, 
+lm(Nights_log ~ Region, 
    tour %>% 
      filter(Region %in% c('Europa', 'Asien')))
 ```
@@ -201,87 +721,6 @@ lm(Nächte_log ~ Region,
 
 ---
 
-# Designmatrix
-
-.pull-left4[
-
-<ul>
-  <li class="m1"><span>Categorical variables have to be recoded into <high>k-1 new variables</high>.</span></li>
-  <li class="m2"><span>Two ways to code this:</span></li>
-  <ul>
-    <li><span><high>Dummy coding</high> recodes values of one category into 1, else 0<br>&rarr; <high>intercept = 0-category</high></span></li><br>
-    <li><span><high>Effect coding</high> recodes values of one category into 1, else -1<br>&rarr; <high>Intercept  =  &#563;  </high></span></li>
-  </ul>
-</ul>
-
-]
-
-.pull-right5[
-
-<p align="center">
-
-<img src="image/design.png">
-
-</p>
-]
-
-
-
----
-
-# Designmatrix
-
-.pull-left4[
-
-<ul>
-  <li class="m1"><span>Categorical variables have to be recoded into <high>k-1 new variables</high>.</span></li>
-  <li class="m2"><span>Two ways to code this:</span></li>
-  <ul>
-    <li><span><high>Dummy coding</high> recodes values of one category into 1, else 0<br>&rarr; <high>intercept = 0-category</high></span></li><br>
-    <li><span><high>Effect coding</high> recodes values of one category into 1, else -1<br>&rarr; <high>Intercept  =  &#563;  </high></span></li>
-  </ul>
-</ul>
-
-]
-
-.pull-right5[
-
-<p align="center">
-
-<img src="image/design2.png">
-
-</p>
-]
-
----
-
-# Designmatrix
-
-.pull-left4[
-
-<ul>
-  <li class="m1"><span>Categorical variables have to be recoded into <high>k-1 new variables</high>.</span></li>
-  <li class="m2"><span>Two ways to code this:</span></li>
-  <ul>
-    <li><span><high>Dummy coding</high> recodes values of one category into 1, else 0<br>&rarr; <high>intercept = 0-category</high></span></li><br>
-    <li><span><high>Effect coding</high> recodes values of one category into 1, else -1<br>&rarr; <high>Intercept  =  &#563;  </high></span></li>
-  </ul>
-</ul>
-
-]
-
-.pull-right5[
-
-<p align="center">
-
-<img src="image/design3.png">
-
-</p>
-]
-
-
----
-
 # t-Test - three types
 
 .pull-left4[
@@ -300,20 +739,21 @@ lm(Nächte_log ~ Region,
 .pull-right5[
 
 ```{r, echo = T, fig.width = 3.5, fig.height = 3}
-# Regulärer t-test
+# Regular t-test
 t_test <- 
-t.test(tour$Nächte_log[tour$Region == 'Europa'],
-       tour$Nächte_log[tour$Region == 'Asien'])
+t.test(tour$Nights_log[tour$Region == 'Europa'],
+       tour$Nights_log[tour$Region == 'Asien'], 
+       var.equal = TRUE)
 
-# Regression mit dummy
+# Regression with dummy
 lm_dummy <- lm(
-  Nächte_log ~ Region, 
+  Nights_log ~ Region, 
   tour %>% 
     filter(Region %in% c('Europa', 'Asien')))
 
-# Regression mit effect
+# Regression with effect
 lm_effect <- lm(
-  Nächte_log ~ Region, 
+  Nights_log ~ Region, 
   tour %>% 
     filter(Region %in% c('Europa', 'Asien')),
   contrasts = list(Region = contr.sum))
@@ -357,7 +797,7 @@ summary(lm_effect)$coef
 
 .pull-left4[
 <ul>
-  <li class="m1"><span>If there are more than two categories <high><mono>k - 1</mono> dummyvariables</high> will be constructed.</span></li>
+  <li class="m1"><span>If there are more than two categories <high><mono>k - 1</mono> dummy variables</high> will be constructed.</span></li>
   <li class="m2"><span>Everything else stays the same.</span></li>
 </ul>
 ]
@@ -367,7 +807,7 @@ summary(lm_effect)$coef
 
 tour %>%
   ggplot(aes(x = Region, 
-             y = Nächte)) +
+             y = Nights)) +
   scale_y_continuous(trans = 'log2') + 
   geom_boxplot() +
   theme_minimal() +
@@ -417,8 +857,8 @@ options(width=55)
 ```
 
 ```{r, echo = T, fig.width = 3.5, fig.height = 3}
-# Regression mit allen Regionen
-lm(Nächte_log ~ Region, 
+# Regression with all regions
+lm(Nights_log ~ Region, 
    tour)
 ```
 
@@ -440,11 +880,11 @@ lm(Nächte_log ~ Region,
 .pull-right55[
 
 ```{r, echo = T, fig.width = 3.5, fig.height = 3}
-# Regression mit allen Regionen
-mod <- lm(Nächte_log ~ Region, 
+# Regression with all regions
+mod <- lm(Nights_log ~ Region, 
           tour)
 
-# Regressionstests
+# Show results
 summary(mod)$coef
 ```
 
@@ -465,243 +905,16 @@ summary(mod)$coef
 .pull-right55[
 
 ```{r, echo = T, fig.width = 3.5, fig.height = 3}
-# Regression mit allen Regionen
-mod <- lm(Nächte_log ~ Region, 
-   tour)
+# Regression with all regions
+mod <- lm(Nights_log ~ Region, 
+          tour)
 
-# ANOVA tests
+# Show ANOVA results
 anova(mod)
 ```
 
 ]
 
-
----
-
-# Post-hoc 
-
-.pull-left35[
-<ul>
-  <li class="m1"><span>After calulating an ANOVA post-hoc tests identify <high>pairwise group differences</high>.</span></li>
-  <li class="m2"><span>Controls for <high>multiple testing</high>.</span></li>
-  </ul>
-</ul>
-
-<br>
-
-$$q = \frac{\bar{y}_{max}-\bar{y}_{min}}{SE}$$
-]
-
-.pull-right55[
-
-```{r, echo = T, fig.width = 3.5, fig.height = 3,message(mosaic)}
-# Post-hoc mit Tukey
-library(mosaic)
-TukeyHSD(mod)$Region
-```
-
-]
-
----
-
-# Interactions
-
-.pull-left35[
-<ul>
-  <li class="m1"><span>Interactions model <high>moderation effects</high>.</span></li>
-  <li class="m2"><span>Moderation: effect of one variable is moderated through another variable.</span></li>
-</ul>
-]
-
-
-
-.pull-right5[
-
-```{r, echo = FALSE, fig.width = 3.5, fig.height = 3}
-
-library(tidyverse) ; library(ggrepel)
-
-# Berechne Nächte per Region
-d = read_csv('1_Data/Tourismus.csv') %>%
-  mutate(Nächte = Besucher * Dauer) %>%
-  left_join(read_csv('1_Data/Europa.csv')) %>% 
-  filter(!is.na(Äquivalenzeinkommen)) %>% 
-  mutate(Nächte_log = log2(Nächte))
-
-m = lm(Nächte_log ~ Äquivalenzeinkommen + Bevölkerung, data = d %>% mutate(Nächte_log = log2(Nächte)))
-
-res <- 1000
-
-#Setup Axis
-x <- seq(min(d$Äquivalenzeinkommen), max(d$Äquivalenzeinkommen), by = res)
-y <- seq(min(d$Bevölkerung), max(d$Bevölkerung), by = res)
-
-#Sample points
-surface <- expand.grid(Äquivalenzeinkommen = x,
-                       Bevölkerung = y, 
-                       KEEP.OUT.ATTRS = F)
-surface$Nächte_log2 <- predict.lm(m, newdata = surface)
-surface <- reshape2::acast(surface, Bevölkerung ~ Äquivalenzeinkommen, value.var = "Nächte_log2")
-
-require(plotly)
-plt = plot_ly(d %>% mutate(Nächte_log = log2(Nächte)), 
-        x = ~Äquivalenzeinkommen, 
-        y = ~Bevölkerung, 
-        z = ~Nächte_log,
-        type = "scatter3d",
-        width = 500, height = 420)
-
-plt = add_trace(p = plt,
-          z = surface,
-          x = x,
-          y = y,
-          type = "surface",
-        showscale=FALSE) 
-plt %>%  layout(showlegend = FALSE)
-   
-
-```
-
-]
-
----
-
-# Interactions
-
-.pull-left35[
-<ul>
-  <li class="m1"><span>Interactions model <high>moderation effects</high>.</span></li>
-  <li class="m2"><span>Moderation: effect of one variable is moderated through another variable.</span></li>
-</ul>
-]
-
-
-.pull-right55[
-
-```{r, echo = T, eval = F, fig.width = 3.5, fig.height = 3}
-# Regression mit Interaktion
-mod <- 
-  lm(Nächte_log ~ Äquivalenzeinkommen * Bevölkerung, 
-     tour)
-
-# Regressionstests
-summary(mod)$coef
-```
-
-```{r, echo = F, fig.width = 3.5, fig.height = 3}
-# Regression mit Interaktion
-mod <- 
-  lm(Nächte_log ~ Äq.Eink. +
-                  Bevölk. + 
-                  Äq.Eink.:Bevölk. , 
-   tour %>% rename(Äq.Eink. = Äquivalenzeinkommen,
-                          Bevölk. = Bevölkerung))
-
-# Regressionstests
-round(summary(mod)$coef,6)
-```
-
-
-]
-
----
-
-# Interactions
-
-.pull-left35[
-<ul>
-  <li class="m1"><span>Interactions model <high>moderation effects</high>.</span></li>
-  <li class="m2"><span>Moderation: effect of one variable is moderated through another variable.</span></li>
-</ul>
-]
-
-
-.pull-right55[
-
-```{r, echo = T, eval=FALSE, fig.width = 3.5, fig.height = 3}
-# Regression mit Interaktion
-mod <- 
-  lm(Nächte_log ~ Äquivalenzeinkommen +
-                  Bevölkerung + 
-                  Äquivalenzeinkommen:Bevölkerung, 
-     tour)
-
-# Regressionstests
-summary(mod)$coef
-```
-
-```{r, echo = F, fig.width = 3.5, fig.height = 3}
-# Regression mit Interaktion
-mod <- 
-  lm(Nächte_log ~ Äq.Eink. +
-                  Bevölk. + 
-                  Äq.Eink.:Bevölk. , 
-     tour %>% rename(Äq.Eink. = Äquivalenzeinkommen,
-                     Bevölk. = Bevölkerung))
-
-# Regressionstests
-round(summary(mod)$coef,6)
-```
-
-
-]
-
----
-
-# z-standardization
-
-.pull-left35[
-<ul>
-  <li class="m1"><span>z-Standardization, i.e., <high>to center and standadize</high>, helps to correctly interpret the data.</span></li>
-  <li class="m2"><span>Standardization</span></li>
-  <ul class="level">
-    <li><span>Standarddeviation = 1</span></li>
-    <li><span>Helps to <high>compare effects</high></li></span>
-  </ul>
-  <li class="m3"><span>Centering</span></li>
-  <ul class="level">
-    <li><span>Mean = 0</span></li>
-    <li><span>Creates <high>independence of the interaction effects</high></li></span>
-  </ul>
-</ul>
-
-<br>
-
-$$z(x) = \frac{x - \bar{x}}{s}$$
-]
-
-
-.pull-right55[
-
-```{r, echo = T, eval=F, fig.width = 3.5, fig.height = 3}
-# Regression mit allen Regionen
-mod <- 
-  lm(Nächte_log ~ Äquivalenzeinkommen * Bevölkerung, 
-     tour %>% mutate_if(is.numeric, scale))
-
-# Regressionstests
-summary(mod)$coef
-```
-
-
-```{r, echo = F, fig.width = 3.5, fig.height = 3}
-# Regression mit Interaktion
-mod <- 
-  lm(Nächte_log ~ Äq.Eink. +
-                  Bevölk. + 
-                  Äq.Eink.:Bevölk. , 
-   tour %>% 
-     rename(Äq.Eink. = Äquivalenzeinkommen,
-                          Bevölk. = Bevölkerung) %>% 
-     mutate_if(is.numeric, scale)
-     )
-
-# Regressionstests
-round(summary(mod)$coef,6)
-```
-
-
-]
 
 ---
 

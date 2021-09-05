@@ -170,7 +170,7 @@ pre code {
 <col width='10%'>
 <tr style="border:none">
 <td style="display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none" nowrap>
-<font style='font-style:normal'>Introduction to R</font><br> <a href='https://therbootcamp.github.io/SmR_2021Apr/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>The R Bootcamp</font> </a>
+<font style='font-style:normal'>Introduction to Data Science with R</font><br> <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'> <i class='fas fa-clock' style='font-size:.9em;' ></i> </a> <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;'></i> </a> <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a> <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a> <a href='https://therbootcamp.github.io'> <font style='font-style:normal'>The R Bootcamp</font> </a>
 </td>
 <td style="width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none">
 <img src='https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png' style='height:15px;width:80px'/>
@@ -190,8 +190,8 @@ pre code {
 <h2>Overview</h2>
 <p>At the end of this practical you will be able to …</p>
 <ol style="list-style-type: decimal">
-<li>use categorical variables as predictors in a regression</li>
-<li>know how to add an interaction effect and understand why it might be important to standardize your variables</li>
+<li>run simple and multiple regressions.</li>
+<li>use categorical variables for group comparisons.</li>
 </ol>
 </div>
 <div id="tasks" class="section level2">
@@ -199,8 +199,8 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>BernRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</p></li>
-<li><p>Using <code>library()</code> load the set of packages for this practical listed in the Functions section above.</p></li>
+<li><p>Open your <code>TheRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> tab are in your <code>1_Data</code> folder.</p></li>
+<li><p>Using <code>library()</code> load the set of packages for this practical listed in the Functions section.</p></li>
 </ol>
 <pre class="r"><code>## Name
 ## Date
@@ -209,20 +209,75 @@ pre code {
 library(XX)     
 library(XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>For this practical we will use a dataset called <code>wine.csv</code> which you will now import with <code>read_csv()</code>.</li>
+<li>In this practical, you will analyze a dataset called <code>wine.csv</code>. Read it in with <code>read_csv()</code>.</li>
 </ol>
 <pre class="r"><code># Read in the data
 wine &lt;- read_csv(file = &quot;1_Data/wine.csv&quot;)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>Execute the code below to ensure that all <code>character</code> variables are converte to factors. This will help the statistical model to interpret categorical variables correctly.</li>
+<li>Execute the code below to ensure that all <code>character</code> variables are converted to factors. This will help the statistical model to interpret categorical variables correctly.</li>
 </ol>
 <pre class="r"><code># convert character to factor
 wine &lt;- wine %&gt;% mutate_if(is.character, factor)</code></pre>
 </div>
-<div id="b---comparing-groups-t-test-versus-regression" class="section level3">
-<h3>B - Comparing groups: <i>t</i>-test versus regression</h3>
+<div id="b---einfache-regression" class="section level3">
+<h3>B - Einfache Regression</h3>
 <ol style="list-style-type: decimal">
-<li>In this part we will inspect the effect of <code>Color</code> of the wine, red or white, as a predictor for <code>Quality</code>. Use the code below to generate two vectors that include quality ratings for white and red wine.</li>
+<li>In this section, you will test the effect of <code>Residual_Sugar</code> (predictor) on the perceived <code>Quality</code> (criterion) of wines. Use the template below, to run a simple linear regression testing the relationship and save it in an object called <code>wine_lm</code>.</li>
+</ol>
+<pre class="r"><code># Simple regression
+wine_lm &lt;- lm(formula = XX ~ XX,
+              data = XX)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Print the fitted model <code>wine_lm</code>. Which information does it show? Can you make sense of it?</p></li>
+<li><p>The deafult output of <code>lm</code> is not very informative. It only shows the code and the estimates for the mdoel’s parameters: the inetrcept and the coefficient for <code>Residual_Sugar</code>. Use <code>summary()</code> to obtain a more informative output.</p></li>
+</ol>
+<pre class="r"><code># Show results
+summary(XX)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><code>summary()</code> shows a detailed output with five sections:</li>
+</ol>
+<ul>
+<li>Call: The code specifying the model.</li>
+<li>Residuals: Statistics of the distribution of residuals.</li>
+<li>Coefficients: Estimates and tests of model parameters.</li>
+<li>Signif. codes: Conventional coding of significances.</li>
+<li>Schluss: Statistics of the overall model fit.</li>
+</ul>
+<p>Which sections shows you, whether <code>Residual_Sugar</code> has an impact on the perceived <code>Quality</code> of wine?</p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>The section <code>Coefficients</code> shows the estimates of the model parameters and whether they are significantly different from 0. What value was estimated for <code>Residual_Sugar</code>? What does this value tell you?</p></li>
+<li><p>An increase of <code>1</code> (g/ml) is associated with a change of <code>-.0067</code> in the quality of wine. This means that the sweeter the wine, the lower the perceived quality of the wine. But is this relationship significant? Have a look at the corresponding p-value.</p></li>
+<li><p>Now direct your attention to the final section. There you see a summary of the overall fit of the model to the data. Of particular interest is the <code>Multiple R-squared</code>. It shows you how much the criterion’s variance is accounted by the model. How do you assess the values magnitude? Is it large or small?</p></li>
+<li><p>The value is small. Only .1% of the variance is accounted for. It is time to include additional predictors.</p></li>
+</ol>
+</div>
+<div id="c---multiple-regression" class="section level3">
+<h3>C - Multiple Regression</h3>
+<ol style="list-style-type: decimal">
+<li>Test the effect of multiple predictors on the perceived <code>Quality</code> (criterion) of the wine. Include, in addition to <code>Residual_sugar</code>, the <code>PH_Value</code>, <code>Alcohol</code>, and <code>Sulphate</code>. Use the template below, to run a multiple regression with these variables and save it as <code>wine_lm</code>.</li>
+</ol>
+<pre class="r"><code># Multiple regression
+wine_lm &lt;- lm(formula = XX ~ XX + XX + XX + XX,
+              data = XX)</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Print the fitted mdoel. How do you interpret the coefficients? Do they tell you, which predictor is most important?</p></li>
+<li><p>Raw coefficients tell little about the importance of predictors, as they are also affect by the scale of the precictors. For instance, was <code>Alcohol</code> coded in per thousand (rather than percent), then its coefficient would be exactly ten times larger. You can tests this using the template below. Add the four predictors using above such that <code>Alcohol</code> is placed within of <code>I()</code> and run the model. Do not save it, only inspect the coefficients printed in the console.</p></li>
+</ol>
+<pre class="r"><code># Multiple regression
+lm(formula = XX ~ XX + XX + I(XX / 10) + XX,
+   data = XX)</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Regression coefficients must always be interpreted with the scaling of variables in mind. Nevertheless, the coefficients reveal some interesting results. Take a look at the coefficient of <code>Residual_sugar</code>. Wasn’t the effect negative, when it was the only predictor? How come it has changed?</p></li>
+<li><p>In multiple regressison, all predictors depend on each other. This means that one coefficient can only be interpreted in reference to the whole set of predictors. Now, take a look at the <code>summary()</code>. Which effects are significant and what is their direction?</p></li>
+<li><p><code>Alcohol</code>, <code>Sulphate</code>, and <code>Residual_Sugar</code> all show a significant positive relationship with perceived quality of wines, whereas <code>PH_Value</code> shows a non-significant negative relationship. Using the summary, you can now evaluate, which predictor is most important. Which values would you rely on to make that call?</p></li>
+<li><p>The best value to evaluate the importance of predictors is the t-value. The larger the t-value, the stronger the signal for the corresponding predictor. Now, take a look at <code>R-squared</code>. Has it increased relative to the simple regression?</p></li>
+<li><p>The <code>R-squared</code> increased substantially. About 22% of the criterion’s variance is accounted for by a linear model of the four predictors.</p></li>
+</ol>
+</div>
+<div id="d---comparing-groups-t-test-versus-regression" class="section level3">
+<h3>D - Comparing groups: <i>t</i>-test versus regression</h3>
+<ol style="list-style-type: decimal">
+<li>In this part, you will analyze the effect of <code>Color</code> of the wine, red or white, as a predictor for <code>Quality</code>. Use the code below to generate two vectors that include quality ratings for white and red wine.</li>
 </ol>
 <pre class="r"><code># Qualitiy vectors by color
 white &lt;- wine %&gt;% filter(Color == &#39;white&#39;) %&gt;% pull(Quality)
@@ -233,103 +288,56 @@ red &lt;- wine %&gt;% filter(Color == &#39;red&#39;) %&gt;% pull(Quality)</code>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>What does the output of the <i>t</i>-tests tell you about the difference between white and red wine in perceived quality? You will find the answer in the second line of the output that starts with <code>t=..</code> and in the last line.</p></li>
-<li><p>White wine got a higher rating with <code>0.2419</code> (difference of the two means) points more than red wine, this difference is significant. Now, try to get the same result with a regression. Predict <code>Quality</code> with <code>Color</code>.</p></li>
+<li><p>What does the output of the <i>t</i>-tests tell you about the difference between white and red wine in perceived quality? You can find the answer in the second line of the output that starts with <code>t=..</code> together with the last line.</p></li>
+<li><p>White wine were rated <code>0.2419</code> (difference of the two means) points higher than red wine and this difference is significant. Now, try to get the same result with a regression. Predict <code>Quality</code> with <code>Color</code>.</p></li>
 </ol>
 <pre class="r"><code># Regression
 wine_lm &lt;- lm(formula = XX ~ XX, 
               data = XX)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Print the object and inspect the regression weights. Do you recognize some of these numbers?</p></li>
-<li><p>Exactly! The regression weight for <code>Color</code> is the mean difference of red and white wines. What does the intercept represent? It represents the value of the category that got assigned 0 by R. As this variable is <code>character</code> the default is assigned to the category that comes earlier in the alphabet, i.e., <code>'red' &lt; 'white'</code>.</p></li>
-<li><p>Now use the <code>summary()</code> function on your model object and compare the degrees of freedom, <i>t</i>- and p-values with the ones from the <i>t</i>-test above.</p></li>
-<li><p>The values from the t-test do not exactly match the estimations for the weights in the regression. This stems from the fact that the <code>t.test()</code> function allows the variance of the groups (red and white) to be different. In contrast regression always assumes that the variances between groups are the same. Re-calculate the <i>t</i>-test with the argument <code>var.equal = TRUE</code>.</p></li>
+<li><p>Print the object and inspect the regression coefficients. Do you recognize some of these numbers?</p></li>
+<li><p>Exactly! The regression coefficient for <code>Color</code> is the difference of red and white wines. What does the intercept represent? It represents the value of the category that got assigned 0 by R. For <code>character</code> variables the default is assigned to the category that comes earlier in the alphabet, i.e., <code>'red' &lt; 'white'</code>.</p></li>
+<li><p>Now take a look at the <code>summary()</code> of your model object and compare the degrees of freedom, <i>t</i>- and p-values with the ones from the <i>t</i>-test above.</p></li>
+<li><p>The values from the t-test do not exactly match the estimates for the coefficients in the regression. The reason is that the <code>t.test()</code> function permits different variances in the groups (red and white). In contrast, regression always assumes that the variances between groups are the identical. Re-calculate the <i>t</i>-test using the additional argument <code>var.equal = TRUE</code>.</p></li>
 </ol>
 <pre class="r"><code># t-test
 t.test(x = XX, y = XX, var.equal = XX)</code></pre>
 <ol start="9" style="list-style-type: decimal">
-<li>Order has been resumed! All values in the <i>t</i>-test and the regression should be identical now.</li>
+<li>Order has been restored! All values in the <i>t</i>-test and the regression should now be identical.</li>
 </ol>
 </div>
-<div id="c---comparing-groups-coding" class="section level3">
-<h3>C - Comparing groups: Coding</h3>
+<div id="e---comparing-groups-coding" class="section level3">
+<h3>E - Comparing groups: Coding</h3>
 <ol style="list-style-type: decimal">
-<li>The default in R for dummy coding is 0 for one feature and 1 for the other. Alternatively you can code effects, with the values -1 and 1. To see the difference and consequences of these different codings generate two new varibales in your dataset using the code below.</li>
+<li>The default in R is dummy coding, which assigns 0 to one feature and 1 for to another. Alternatively, you can code effects, by assigning -1 to one value and 1 to another. To see the difference between these codings generate two new varibales in your dataset using the code below.</li>
 </ol>
 <pre class="r"><code># Kodierungen der Color
 wine &lt;- wine %&gt;% mutate(Color_dummy = ifelse(Color == &#39;red&#39;, 0, 1),
                         Color_effect = ifelse(Color == &#39;red&#39;, -1, 1))</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>Calculate two regressions now, one with dummy coding and the other with effect coding as the predictor and save them as new objects called <code>wine_dummy</code> and <code>wine_effect</code>.</li>
+<li>Now, calculate two regressions, one with dummy coding and the other with effect coding as the predictor, and save them as new objects called <code>wine_dummy</code> and <code>wine_effect</code>.</li>
 </ol>
 <pre class="r"><code># Regression dummy
 wine_dummy &lt;- lm(formula = XX ~ XX, 
                  data = XX)
 
-# Regression effekt
+# Regression effect
 wine_effect &lt;- lm(formula = XX ~ XX, 
                   data = XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Print these objects now and compare the weights. The dummy coding weights should be familiar. How do they compare to the effect coding? Do you see the connection?</p></li>
-<li><p>The weights for color using effect coding is exactly half of the weight for dummy coding, to compensate for this change the intercept changed for exactly the same value. Verify the weights with the calculations done in the code snippet below.</p></li>
+<li><p>Print these objects and compare the coeffcients. The dummy coding coefficients should be familiar. How do they compare to the effect coding? Do you see the connection?</p></li>
+<li><p>The coefficient for color using effect coding is exactly half of the coefficient for the dummy coding. To compensate for this change, the intercept has also changed for exactly the same value. Verify the weights with the calculations done in the code chunk below.</p></li>
 </ol>
-<pre class="r"><code># Dummy-Kodierung
+<pre class="r"><code># Dummy-coding
 mean(red) # intercept
-mean(white) - mean(red) # gewicht Color
+mean(white) - mean(red) # coeffcient color
 
 # EffekKodierung
 (mean(red) + mean(white))/2 # intercept
-mean(white) - (mean(red) + mean(white))/2 # gewicht Color</code></pre>
+mean(white) - (mean(red) + mean(white))/2 # coeffcient color</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Compare the models now with <code>summary()</code>. Where can you find differences, what stays the same?</p></li>
-<li><p>The coding (dummy or effect) has, with the exception of the weights scaling and the standard error, no influence on the <i>t</i>-value and the <i>p</i>-value. Only the intercept changes dramatically, because in the effect coding the intercept is further away from zero.</p></li>
-</ol>
-</div>
-<div id="d---interactions" class="section level3">
-<h3>D - Interactions</h3>
-<ol style="list-style-type: decimal">
-<li>In the sections above we learned that white wine is preferred over red wine. Could it be the case that controlling for other variables might change this? Or could it be the case that this difference only excists under special circumstances, i.e., that there are moderators for the effect of color? Calculate a regression, that adds <code>Alcohol</code> as a predictor using <code>*</code>. This will also calculate the interactions between the predictors.</li>
-</ol>
-<pre class="r"><code># Regression mit Interaktion
-wine_lm &lt;- lm(formula = XX ~ XX * XX, 
-              data = XX)</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Print the object and inspect the weights. How do you interpret these values?</p></li>
-<li><p>You can interprete the weights in the following manner: Considering <code>Alcohol</code> and the interaction white wines are rated <code>.7</code> points better than red wines. Considering <code>Color</code> and the interaction results an increase of one volume percent results in an increase of perceived quality of <code>.36</code>. Considering <code>Color</code> and <code>Alcohol</code> the interaction, i.e., the product of the two predictors, leads to a change of <code>-.05</code>. This means that the effect of <code>Alcohol</code> considering white wine is reduced for exactly this value. In other words, the effect of <code>Color</code> for wine with a lot of alcohol is smaller. Use the code below to visualize your results. Yellow means white wine, black red wine.</p></li>
-</ol>
-<pre class="r"><code># Visualisierung
-ggplot(data = wine, 
-       aes(x = Alcohol, y = Quality, col = Color, alpha = .01)) + 
-  scale_color_manual(values = viridis::cividis(2)) + 
-  geom_jitter(width=2,height=1.5,size=.1) + theme_minimal() + theme(legend.position = &#39;none&#39;) +
-  geom_smooth(data = wine %&gt;% filter(Color == &#39;white&#39;), method = &#39;lm&#39;) + 
-  geom_smooth(data = wine %&gt;% filter(Color == &#39;red&#39;), method = &#39;lm&#39;)</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li><p>Using <code>summary()</code> check the <i>t</i>-values and p-values. Which predictors are significant?</p></li>
-<li><p>Yes - all three predictors are significant! <i>t</i>- and p-values are the most extreme for <code>Alcohol</code>, but the weight for <code>Alcohol</code> is halfed. How can you explain this?</p></li>
-<li><p>Exactly! The weights are dependent on the scaling of the predictors! Re-calculate the regression, but with scaled predictors using the code below.</p></li>
-</ol>
-<pre class="r"><code># Skalierungsfunktion
-scale_it = function(x) (x - mean(x))/sd(x)
-
-# Regression mit skalierten Prädiktoren
-wine_lm &lt;- lm(formula = XX ~ XX * XX, 
-              data = XX %&gt;% mutate_if(is.numeric, scale_it))</code></pre>
-<ol start="7" style="list-style-type: decimal">
-<li><p>Print the object and inspect the weights. All values changed quite substantially. Especially <code>Alcohol</code> doubled its weight. How do you interpret these new weights, keeping in mind, that the scaling results in all variables having a standard deviation of 1?</p></li>
-<li><p>After scaling the weight can be interpreted as the changes in the standard deviation. For examples, a change of 1 standard deviation in <code>Alcohol</code> results in a change of <code>.4928</code> standard deviations in <code>Quality</code>. The intercept shows the biggest changes, how do you interpret this change?</p></li>
-<li><p>The intercept is the estimated mean of the criterion, given that all predictors are zero. Without scaling it is tricky to interpret, cause zero does not necessarily have to be included in any of the predictors. After scaling this changes and all predictors, with the exception of <code>Color</code> have a mean of zero. This means the intercept represents a mean level of <code>Alcohol</code>, red wine and no interaction through the standard deviation. You can see this in the visualization. Use the code below and find the point on the line where <code>Alcohol</code> equals zero.</p></li>
-</ol>
-<pre class="r"><code># Visualisierung
-ggplot(data = wine %&gt;% mutate_if(is.numeric, scale_it), 
-       aes(x = Alcohol, y = Quality, col = Color, alpha = .01)) + 
-  scale_color_manual(values = viridis::cividis(2))  +
-  geom_jitter(width=2,height=1.5,size=.1) + theme_minimal() + theme(legend.position = &#39;none&#39;) +
-  geom_smooth(data = wine %&gt;% mutate_if(is.numeric, scale_it) %&gt;% filter(Color == &#39;white&#39;), method = &#39;lm&#39;) + 
-  geom_smooth(data = wine %&gt;% mutate_if(is.numeric, scale_it) %&gt;% filter(Color == &#39;red&#39;), method = &#39;lm&#39;)</code></pre>
-<ol start="10" style="list-style-type: decimal">
-<li><p>Using <code>summary()</code> identify what changed regarding <i>t</i>-, p-values, standard error and R-squared?</p></li>
-<li><p>The main changes can be found for the variable <code>Color</code>, which was not scaled! Before scaling of <code>Alcohol</code>, <code>Color</code> was nearly perfectly correlated with the interaction, leading to an inflated standard error. Scaling reduced this correlation and the standard error is now of the level of the other predictors. In most models it is worth scaling the predictors (sometimes also the criterion), given that you are interested in the weights and significance levels.</p></li>
+<li><p>Now, compare the models with <code>summary()</code>. Where is different, what the same?</p></li>
+<li><p>The coding (dummy or effect) has, with the exception of the coefficient scaling and the standard error, no influence on the <i>t</i>-value and the <i>p</i>-value for predictors. However, the intercept changed dramatically, because for the effect coding the intercept is considerably further away from zero.</p></li>
 </ol>
 </div>
 </div>
@@ -340,20 +348,20 @@ ggplot(data = wine %&gt;% mutate_if(is.numeric, scale_it),
 library(tidyverse)
 
 # Model:
-# Sagt der Hubraum (displ) die pro gallone 
-# fahrbaren Meilen voraus?
+# Does engine displacement predict
+# highway miles per gallon?
 hwy_mod &lt;- lm(formula = hwy ~ displ,
                data = mpg)
 
-# Ergebnisse 
+# Results 
 summary(hwy_mod)
 coef(hwy_mod)
 
-# Gefittete Werte
+# Fitted values
 hwy_fit &lt;- fitted(hwy_mod)
 hwy_fit
 
-# Residuums 
+# Resdiuals 
 hwy_resid &lt;- residuals(hwy_mod)
 hwy_resid</code></pre>
 </div>
@@ -496,7 +504,7 @@ hwy_resid</code></pre>
 <div id="books" class="section level3">
 <h3>Books</h3>
 <ul>
-<li><a href="https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469">Discovering Statistics with R</a> excellent and entertaining overview on statistics</li>
+<li><a href="https://www.amazon.com/Discovering-Statistics-Using-Andy-Field/dp/1446200469">Discovering Statistics with R</a> excellent and entertaining book on statistics.</li>
 </ul>
 </div>
 </div>
