@@ -1081,24 +1081,24 @@ DATA %&gt;%
 
 
 ```r
-baselers %&gt;%
+combined %&gt;%
   
   # Group by sex
-  group_by(sex) %&gt;%
+  group_by(arm_lab) %&gt;%
   
   # Calculate summary stats
   summarise(
     age_mean = mean(age),
-    height_median = median(height)
+    age_sd = sd(age)
   )
 ```
 
 ```
 # A tibble: 2 × 3
-  sex    age_mean height_median
-  &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-1 female     45.4          164 
-2 male       43.8          178.
+  arm_lab age_mean age_sd
+  &lt;chr&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+1 drug        55.7  10.1 
+2 placebo     35.5   2.12
 ```
 
 ]
@@ -1129,10 +1129,10 @@ DATA %&gt;%
 
 
 ```r
-baselers %&gt;%
+combined %&gt;%
   
   # Group by sex
-  group_by(sex) %&gt;%
+  group_by(arm_lab) %&gt;%
   
   # Calculate stats
   summarise(
@@ -1142,10 +1142,10 @@ baselers %&gt;%
 
 ```
 # A tibble: 2 × 2
-  sex        N
-  &lt;chr&gt;  &lt;int&gt;
-1 female  5000
-2 male    5000
+  arm_lab     N
+  &lt;chr&gt;   &lt;int&gt;
+1 drug        3
+2 placebo     2
 ```
 
 ]
