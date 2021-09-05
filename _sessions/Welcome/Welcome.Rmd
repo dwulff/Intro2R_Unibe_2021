@@ -1,60 +1,20 @@
 ---
 title: "Welcome!"
-author: "
-  Introduction to R<br>
-  <a href='https://therbootcamp.github.io'>
-    Bern R Bootcamp
-  </a>
-  <br>
-  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
-    <i class='fas fa-clock' style='font-size:.9em;'></i>
-  </a>&#8239; 
-  <a href='https://therbootcamp.github.io'>
-    <i class='fas fa-home' style='font-size:.9em;' ></i>
-  </a>&#8239;
-  <a href='mailto:therbootcamp@gmail.com'>
-    <i class='fas fa-envelope' style='font-size: .9em;'></i>
-  </a>&#8239;
-  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
-    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
-  </a>"
-date: "September 2021"
+
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
-    lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
 ---
 
-layout: true
-
-<div class="my-footer">
-  <span style="text-align:center">
-    <span> 
-      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
-    </span>
-    <a href="https://therbootcamp.github.io/">
-      <span style="padding-left:82px"> 
-        <font color="#7E7E7E">
-          www.therbootcamp.com
-        </font>
-      </span>
-    </a>
-    <a href="https://therbootcamp.github.io/">
-      <font color="#7E7E7E">
-       Introduction to R | September 2021
-      </font>
-    </a>
-    </span>
-  </div> 
-
 ---
-
-
 .pull-left45[
 <br><br><br><br><br>
 #  Schedule and Materials
@@ -228,6 +188,8 @@ Sometimes, you may find yourself in need of some <high>intensive help</high>. <b
   <tr>    
   <td>
   <p align = 'center'>RStudio<br><br>
+
+  
   <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/rstudio_cheat_ss.png?raw=true" height="180"></a></p>
   </td>
  

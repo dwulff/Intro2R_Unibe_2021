@@ -3,9 +3,9 @@
   <head>
     <title>Wrangling</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Introduction to R   Bern R Bootcamp                  " />
-    <script src="libs/header-attrs/header-attrs.js"></script>
-    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <meta name="author" content="  Introduction to Datascience with R   The R Bootcamp                  " />
+    <script src="Wrangling_files/header-attrs/header-attrs.js"></script>
+    <link href="Wrangling_files/remark-css/default.css" rel="stylesheet" />
     <link rel="stylesheet" href="baselrbootcamp.css" type="text/css" />
   </head>
   <body>
@@ -13,54 +13,45 @@
 class: center, middle, inverse, title-slide
 
 # Wrangling
-### Introduction to R<br> <a href='https://therbootcamp.github.io'> Bern R Bootcamp </a> <br> <a href='https://dwulff.github.io/Intro2R_Unibe/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
+### <br> Introduction to Datascience with R<br> <a href='https://therbootcamp.github.io'> The R Bootcamp </a> <br> <a href='https://dwulff.github.io/Intro2R_Unibe/'> <i class='fas fa-clock' style='font-size:.9em;'></i> </a>  <a href='https://therbootcamp.github.io'> <i class='fas fa-home' style='font-size:.9em;' ></i> </a>  <a href='mailto:therbootcamp@gmail.com'> <i class='fas fa-envelope' style='font-size: .9em;'></i> </a>  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'> <i class='fab fa-linkedin' style='font-size: .9em;'></i> </a>
 ### September 2021
 
 ---
 
-
 layout: true
 
-&lt;div class="my-footer"&gt;
-  &lt;span style="text-align:center"&gt;
-    &lt;span&gt; 
-      &lt;img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/&gt;
-    &lt;/span&gt;
-    &lt;a href="https://therbootcamp.github.io/"&gt;
-      &lt;span style="padding-left:82px"&gt; 
-        &lt;font color="#7E7E7E"&gt;
+<div class="my-footer">
+  <span style="text-align:center">
+    <span> 
+      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
+    </span>
+    <a href="https://therbootcamp.github.io/">
+      <span style="padding-left:82px"> 
+        <font color="#7E7E7E">
           www.therbootcamp.com
-        &lt;/font&gt;
-      &lt;/span&gt;
-    &lt;/a&gt;
-    &lt;a href="https://therbootcamp.github.io/"&gt;
-      &lt;font color="#7E7E7E"&gt;
-       Introduction to R | September 2021
-      &lt;/font&gt;
-    &lt;/a&gt;
-    &lt;/span&gt;
-  &lt;/div&gt; 
+        </font>
+      </span>
+    </a>
+    <a href="https://therbootcamp.github.io/">
+      <font color="#7E7E7E">
+       The R Bootcamp | September 2021
+      </font>
+    </a>
+    </span>
+  </div> 
 
 ---
+
   
 
 
 
 
 
-# What is wrangling?
-
-&lt;p align = "center"&gt;
-&lt;img src="image/wrangling.jpeg" height=450px&gt;&lt;br&gt;
-&lt;font style="font-size:10px"&gt;from &lt;a href="https://datasciencebe.com/tag/data-wrangling/"&gt;datasciencebe.com&lt;/a&gt;&lt;/font&gt;
-&lt;/p&gt;
-
-
----
 
 .pull-left45[
 
-# This is wrangling!
+# What is wrangling?
 
 &lt;div style="padding-bottom:10px"&gt;&lt;/div&gt;
 
@@ -96,32 +87,6 @@ Group data and calculate and summary stats
 
 ---
 
-
-# `dplyr` + `tidyr`
-
-.pull-left5[
-
-To wrangle data in R, we will use the &lt;high&gt;&lt;mono&gt;dplyr&lt;/mono&gt;&lt;/high&gt; and &lt;high&gt;&lt;mono&gt;tidyr&lt;/mono&gt;&lt;/high&gt; packages, which are part of the &lt;high&gt;&lt;mono&gt;tidyverse&lt;/mono&gt;&lt;/high&gt;.
-
-| Package | Function| Function|
-|:-------------|:----|
-|&lt;b&gt;dplyr&lt;/b&gt; | Transformation | `rename()`, `mutate()`, `case_when()`, `*_join()`  |
-|&lt;b&gt;dplyr&lt;/b&gt; | Organisation | `arrange()`, `slice()`, `filter()`, `select()`  |
-|&lt;b&gt;tidyr&lt;/b&gt; | Organisation | `pivot_longer()`, `pivot_wider()` |
-|&lt;b&gt;dplyr&lt;/b&gt; | Aggregation | `group_by()`, `summarise()` |
-
-]
- 
-.pull-right4[
-
-&lt;p align = "center"&gt;
-&lt;img src="image/packages.png" height=320px&gt;
-&lt;/p&gt;
-
-
-]
-
----
 
 # The Pipe!  &lt;high&gt;`%&gt;%`&lt;/high&gt;
 
@@ -1217,7 +1182,106 @@ long %&gt;%
 
 ]
 
+---
 
+# Grouped aggregation
+
+&lt;p align="center"&gt;
+  &lt;img src="image/summarsed_data_diagram.png" height="470px"&gt;
+&lt;/p&gt; 
+
+
+---
+
+# `group_by()`, `summarise()`
+
+.pull-left4[
+
+
+```r
+DATA %&gt;%
+  group_by(GROUP_VAR) %&gt;%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
+
+
+]
+
+.pull-right5[
+
+
+```r
+baselers %&gt;%
+  
+  # Group by sex
+  group_by(sex) %&gt;%
+  
+  # Calculate summary stats
+  summarise(
+    age_mean = mean(age),
+    height_median = median(height)
+  )
+```
+
+```
+# A tibble: 2 × 3
+  sex    age_mean height_median
+  &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;
+1 female     45.4          164 
+2 male       43.8          178.
+```
+
+]
+
+---
+
+# `n()`
+
+.pull-left4[
+
+
+```r
+DATA %&gt;%
+  group_by(GROUP_VAR) %&gt;%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
+
+
+]
+
+.pull-right5[
+
+
+
+
+
+```r
+baselers %&gt;%
+  
+  # Group by sex
+  group_by(sex) %&gt;%
+  
+  # Calculate stats
+  summarise(
+    N = n()
+  )
+```
+
+```
+# A tibble: 2 × 2
+  sex        N
+  &lt;chr&gt;  &lt;int&gt;
+1 female  5000
+2 male    5000
+```
+
+]
 ---
 
 class: middle, center

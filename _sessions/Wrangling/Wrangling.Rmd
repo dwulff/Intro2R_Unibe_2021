@@ -1,58 +1,20 @@
 ---
 title: "Wrangling"
-author: "
-  Introduction to R<br>
-  <a href='https://therbootcamp.github.io'>
-    Bern R Bootcamp
-  </a>
-  <br>
-  <a href='https://dwulff.github.io/Intro2R_Unibe/'>
-    <i class='fas fa-clock' style='font-size:.9em;'></i>
-  </a>&#8239; 
-  <a href='https://therbootcamp.github.io'>
-    <i class='fas fa-home' style='font-size:.9em;' ></i>
-  </a>&#8239;
-  <a href='mailto:therbootcamp@gmail.com'>
-    <i class='fas fa-envelope' style='font-size: .9em;'></i>
-  </a>&#8239;
-  <a href='https://www.linkedin.com/company/basel-r-bootcamp/'>
-    <i class='fab fa-linkedin' style='font-size: .9em;'></i>
-  </a>"
-date: "September 2021"
 output:
   xaringan::moon_reader:
     css: ["default", "baselrbootcamp.css"]
-    lib_dir: libs
     nature:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
       ratio: '16:9'
+    pandoc_args: '../_header.yaml'
+    includes:
+      before_body: '../_before.html'
 ---
 
-layout: true
-
-<div class="my-footer">
-  <span style="text-align:center">
-    <span> 
-      <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/by-sa.png" height=14 style="vertical-align: middle"/>
-    </span>
-    <a href="https://therbootcamp.github.io/">
-      <span style="padding-left:82px"> 
-        <font color="#7E7E7E">
-          www.therbootcamp.com
-        </font>
-      </span>
-    </a>
-    <a href="https://therbootcamp.github.io/">
-      <font color="#7E7E7E">
-       Introduction to R | September 2021
-      </font>
-    </a>
-    </span>
-  </div> 
-
 ---
+
   
 ```{r, eval = FALSE, echo = FALSE}
 # Code to knit slides
@@ -72,19 +34,10 @@ baselers <- read_csv("https://raw.githubusercontent.com/therbootcamp/baselers/ma
 ```
 
 
-# What is wrangling?
-
-<p align = "center">
-<img src="image/wrangling.jpeg" height=450px><br>
-<font style="font-size:10px">from <a href="https://datasciencebe.com/tag/data-wrangling/">datasciencebe.com</a></font>
-</p>
-
-
----
 
 .pull-left45[
 
-# This is wrangling!
+# What is wrangling?
 
 <div style="padding-bottom:10px"></div>
 
@@ -120,32 +73,6 @@ Group data and calculate and summary stats
 
 ---
 
-
-# `dplyr` + `tidyr`
-
-.pull-left5[
-
-To wrangle data in R, we will use the <high><mono>dplyr</mono></high> and <high><mono>tidyr</mono></high> packages, which are part of the <high><mono>tidyverse</mono></high>.
-
-| Package | Function| Function|
-|:-------------|:----|
-|<b>dplyr</b> | Transformation | `rename()`, `mutate()`, `case_when()`, `*_join()`  |
-|<b>dplyr</b> | Organisation | `arrange()`, `slice()`, `filter()`, `select()`  |
-|<b>tidyr</b> | Organisation | `pivot_longer()`, `pivot_wider()` |
-|<b>dplyr</b> | Aggregation | `group_by()`, `summarise()` |
-
-]
- 
-.pull-right4[
-
-<p align = "center">
-<img src="image/packages.png" height=320px>
-</p>
-
-
-]
-
----
 
 # The Pipe!  <high>`%>%`</high>
 
@@ -926,7 +853,88 @@ long %>%
 
 ]
 
+---
 
+# Grouped aggregation
+
+<p align="center">
+  <img src="image/summarsed_data_diagram.png" height="470px">
+</p> 
+
+
+---
+
+# `group_by()`, `summarise()`
+
+.pull-left4[
+
+```{r, eval = F}
+DATA %>%
+  group_by(GROUP_VAR) %>%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
+
+
+]
+
+.pull-right5[
+
+```{r}
+baselers %>%
+  
+  # Group by sex
+  group_by(sex) %>%
+  
+  # Calculate summary stats
+  summarise(
+    age_mean = mean(age),
+    height_median = median(height)
+  )
+```
+
+]
+
+---
+
+# `n()`
+
+.pull-left4[
+
+```{r, eval = F}
+DATA %>%
+  group_by(GROUP_VAR) %>%
+  summarise(
+    NAME1 = SUMMARY_FUN(VAR1),
+    NAME2 = SUMMARY_FUN(VAR2)
+  )
+```
+
+
+]
+
+.pull-right5[
+
+```{r, echo=F}
+options(tibble.width=50, tibble.print_max=5, tibble.print_min=5, tibble.max_extra_cols=10)
+```
+
+
+```{r}
+baselers %>%
+  
+  # Group by sex
+  group_by(sex) %>%
+  
+  # Calculate stats
+  summarise(
+    N = n()
+  )
+```
+
+]
 ---
 
 class: middle, center

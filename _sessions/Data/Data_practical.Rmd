@@ -33,8 +33,8 @@ output:
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-                      eval = TRUE,
+knitr::opts_chunk$set(echo = FALSE,
+                      eval = FALSE,
                       message = FALSE,
                       warning = FALSE,
                       error = FALSE)
@@ -434,7 +434,8 @@ mean(diamonds$carat > 1)
 #### Excel
 
 ```{r, out.width = "8%", fig.align = 'left', eval = TRUE, echo = FALSE}
-knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Microsoft_Excel_2013_logo.svg/2000px-Microsoft_Excel_2013_logo.svg.png")
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/8/8d/Microsoft_Excel_Logo_%282013-2019%29.svg")
+
 ```
 
 1. Using `read_excel()`, read in the `titanic.xls` dataset as a new object called `titanic` (Make sure you have alredy loaded the `readxl` package at the beginning of your script).
@@ -514,49 +515,6 @@ mean(x = sleep, na.rm = TRUE)
 ```{r, eval = FALSE}
 # write data to .csv
 write_csv("1_Data/sleep.csv")
-```
-
-
-#### SAS
-
-```{r, out.width = "8%", fig.align = 'left', eval = TRUE, echo = FALSE}
-knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/1/10/SAS_logo_horiz.svg")
-```
-
-9. Using `read_sas()`, read in `airbnb_zuerich.sas7bdat` containing AirBnB listings in Zürich, Switzerland and call the object `airbnb_zuerich`.
-
-```{r, eval = F, echo = T}
-# read sas data
-XX <- read_sas(data_file = "XX")
-```
-
-```{r}
-# read airbnb_zuerich.sas7bdat
-airbnb_zuerich <- read_sas(data_file = here::here("1_Data/airbnb_zuerich.sas7bdat"))
-```
-
-
-10. Print `airbnb_zuerich` and then evaluate its dimensions using `dim()`.
-
-```{r}
-# print and show dimenisons
-airbnb_zuerich
-dim(airbnb_zuerich)
-```
-
-11. How many AirBnB listings were there of each `room_type` in Zürich? (Hint: use `table()`)
-
-```{r}
-# table room type
-table(airbnb_zuerich$room_type)
-```
-
-12. Using `write_csv()` write your `airbnb_zuerich` data frame to as new comma-separated text file called `airbnb_zuerich.csv` in your `1_Data` folder.
-
-```{r}
-# write data to .csv
-write_csv(x = airbnb_zuerich, 
-          path = "1_Data/airbnb_zuerich.csv")
 ```
 
 ### G - Creating data frames

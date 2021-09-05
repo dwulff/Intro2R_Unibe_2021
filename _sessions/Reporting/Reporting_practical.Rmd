@@ -61,7 +61,7 @@ mcdonalds <- read_csv("https://raw.githubusercontent.com/therbootcamp/BaselRBoot
 By the end of this practical you will know how to:
 
 1. Create a new R Markdown file (`.Rmd`)
-2. "Knit" an R Markdown file to an `.html` or `.pdf` report
+2. "Knit" an R Markdown file to a `.html` report
 3. Format text using formatting tags
 4. Create code chunks
 5. Add plots and tables
@@ -72,7 +72,7 @@ By the end of this practical you will know how to:
 
 ### A - Setup
 
-1. Open your `bernrbootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the Datasets section above are in your `2_Data` folder
+1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the Datasets section above are in your `2_Data` folder
 
 ```{r}
 # Done!
@@ -90,37 +90,21 @@ knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therboot
 knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_B.png")
 ```
 
-4. A new file that looks like this should open up. This is your first R Markdown document!
+4. A new file with the information you just entered will pop up. This is your first R Markdown document!
 
-```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "60%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_C.png")
-```
+5. Save your markdown file in `2_Code` under the name `reporting_practical.Rmd`
 
-5. Save your markdown file *in your main project directory* (not a sub-folder -- you'll put it there later!) under the name `dynamicreports_practical.Rmd`
+6. Now *knit* your document to an HTML file. To do this, click the *knit* button (or use the Command|Ctrl + Shift + K shortcut)
 
-6. Now *knit* your document to an HTML file. To do this, click the *knit* button (or use the Command + Shift + K shortcut)
-
-```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "60%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_D.png")
-```
- 
-7. Now you should see your final, HTML document! Scroll up and down the document and see how she looks!
-
-```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "60%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/rmarkdown_ss_E.png")
-```
+7. Now you should see your final, HTML document!
 
 ### B - Here's your goal!
 
-In this practical you will create as much of [this html document](https://dwulff.github.io/Intro2R_Unibe/_sessions/Reporting/Reporting_answers.html) as you can! Open the document and keep it open in a separate window as you work through the practical!
+1. In this practical you will create as much of [this html document](https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Reporting/Reporting_answers.html) as you can! Open the document and keep it open in a separate window as you work through the practical!
 
 ### C - Load packages, data and set default chunk options
 
 1. The first chunk in your document already has the label `setup`. This is your setup chunk. This is a good place to load your packages and import your data. Inside of this chunk, write the comment `# Load Packages -------------`. Then, using the `library()` function, load the packages listed in the `Packages` section above. 
-
-```{r, echo = FALSE, fig.align = 'center', eval = TRUE, out.width = "50%"}
-knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/setup_chunk.jpg")
-```
 
 2. Knit your document! Make sure you don't get any errors!
 
@@ -165,14 +149,13 @@ options(digits = 2)  # Round all output to 2 digits
 
 3. Knit the document!
 
-4. Create a new code chunk by either clicking the "Insert - R" button, or by using the "Command + Option + I"" shortcut on Mac
+4. Create a new code chunk by either clicking the "Insert - R" button, or by using the "Command|Ctrl + Option + I"" shortcut on Mac
 
 5. Now it's time to add an image to your document! In the chunk you just created, use the following template to include an image of a burger in your document. You can find the image here: [link](https://dwulff.github.io/Intro2R_Unibe/_sessions/PlottingI/image/burgers.jpg). (Tip: Use right click and copy link address to copy the link)
 
 
-
 ```{r, out.width = "30%", fig.cap="Source: Wikipedia", echo = TRUE, eval = FALSE}
-# Include a buger image
+# Include a burger image
 
 include_graphics(path = "XXX")
 ```
