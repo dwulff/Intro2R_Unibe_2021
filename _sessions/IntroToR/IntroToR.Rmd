@@ -33,20 +33,6 @@ knitr::opts_chunk$set(comment = NA)
 require(tidyverse)
 ```
 
-<!---
-# R
-
-From [Wikipedia](https://en.wikipedia.org/wiki/Statistical_model) (emphasis added):
-
-> R is an **open source programming language** and software environment for **statistical computing and graphics** that is supported by the **R Foundation for Statistical Computing**. The R language is **widely used among statisticians and data miners** for developing statistical software and data analysis. Polls, surveys of data miners, and studies of scholarly literature databases show that **R's popularity has increased substantially in recent years**.
-
-> R is a GNU package. The source code for the R software environment is written primarily in **C, Fortran, and R**. R is freely available under the GNU General Public License, and pre-compiled binary versions are provided for various operating systems. While R has a command line interface, there are several **graphical front-ends available**.
-
-
-GNU's Not Unix!
-GPL guarantees end users the freedom to run, study, share and modify the software
---->
-
 
 # R is a programming language
 
@@ -104,300 +90,510 @@ In many sciences it becomes the de factor **lingua franca** for statistics.
 
 ---
 
-# R is so popular because
+.pull-left3[
 
-There are many good reasons to prefer R over superficially more user friendly software such as **Excel** or **SPSS** or more complex programming languages like **C++** or **Python**. 
+# Tidyverse
 
-.pull-left45[
-### Pro
-1. **It's free**
-2. Relatively **easy**
-3. **Extensibility** ([CRAN](https://cran.r-project.org/), packages)
-4. **User base** (e.g., [stackoverflow](https://stackoverflow.com/))
-5. [**Tidyverse**](https://www.tidyverse.org/) (`dplyr`, `ggplot`, etc.)
-6. [**RStudio**](https://www.rstudio.com/)
-7. **Productivity** options: [Latex](https://www.latex-project.org/), [Markdown](https://daringfireball.net/projects/markdown/), [GitHub](https://github.com/)
+<ul>
+  <li class="m1"><span>The tidyverse is...</span></li><br>
+  <ul class="level">
+    <li><span>A collection of user-friendly <high>packages</high> for analyzing <high>tidy data</high></span></li><br>
+    <li><span>An <high>ecosystem</high> for analytics and data science with common design principles</span></li><br>
+    <li><span>A <high>dialect</high> of the R language</span></li>
+  </ul>
+</ul>
+
 ]
 
-.pull-right45[
-### Con
-Some consider it slow and convuluted, but... 
-
-[Tidyverse](https://www.tidyverse.org/)
-[Rcpp](http://www.rcpp.org/), [BH](https://cran.r-project.org/web/packages/BH/index.html): Links R to C++ and high-performance C++ libraries<br>
-[rPython](http://rpython.r-forge.r-project.org/): Links R to Python<br>
-[RHadoop](https://github.com/RevolutionAnalytics/RHadoop/wiki): Links R to Hadoop for big data applications.<br>
-]
-
----
-
-# The almighty `tidyverse`
-
-Among its many packages, R newly contains a collection of high-performance, user-friendly packages (libraries)  known as the [tidyverse](https://www.tidyverse.org/). The tidyverse includes:
-1. `ggplot2` -- creating graphics.
-2. `dplyr` -- data manipulation.
-3. `tidyr` -- tidying data.
-4. `readr` -- read wild data.
-5. `purrr` -- functional programming.
-6. `tibble` -- modern data frame.
+.pull-right65[
 <br><br>
-
-```{r, out.height = "200px", echo = F}
-knitr::include_graphics("http://d33wubrfki0l68.cloudfront.net/0ab849ed51b0b866ef6895c253d3899f4926d397/dbf0f/images/hex-ggplot2.png")
-knitr::include_graphics("http://d33wubrfki0l68.cloudfront.net/071952491ec4a6a532a3f70ecfa2507af4d341f9/c167c/images/hex-dplyr.png")
-knitr::include_graphics("http://d33wubrfki0l68.cloudfront.net/5f8c22ec53a1ac61684f3e8d59c623d09227d6b9/b15de/images/hex-tidyr.png")
-knitr::include_graphics("http://d33wubrfki0l68.cloudfront.net/66d3133b4a19949d0b9ddb95fc48da074b69fb07/7dfb6/images/hex-readr.png")
-knitr::include_graphics("http://d33wubrfki0l68.cloudfront.net/9221ddead578362bd17bafae5b85935334984429/37a68/images/hex-purrr.png")
-knitr::include_graphics("http://d33wubrfki0l68.cloudfront.net/f55c43407ae8944b985e2547fe868e5e2b3f9621/720bb/images/hex-tibble.png")
-```
-
-
----
-
-# Packages
-
-.pull-left35[
-
-  R features a vast and cutting-edge collection of **packages** provided on [**CRAN**](https://cran.r-project.org/) and [**Git/GitHub**](https://github.com/hadley) by R's large and highly active user base and the work of .         
-
-```{r, eval = F}
-# To install a package
-install.packages('package_name')
-
-# load a package
-library(package_name)
-require(package_name)
-
-
-#Note: 
-# Don't forget that packages 
-# must also be loaded.
-```
-
-]
-
-.pull-right55[
-
-<iframe src="https://www.rdocumentation.org/trends?page1=1&sort1=total&page2=1&sort2=total&page3=1&page4=1" width="600" height="400" frameborder="0" marginheight="0" marginwidth="0" zoom="0.5"></iframe>
-
-<font size=2>
-  <a href="https://www.rdocumentation.org/trends">
-  www.rdocumentation.org/trends
-  </a>
-</font>
+<p align="center">
+<img src="image/tidyverse.png" height = "520px">
+</p>
 ]
 
 
 ---
 
-# Packages
 
-.pull-left35[
+.pull-left3[
 
-  R features a vast and cutting-edge collection of **packages** provided on [**CRAN**](https://cran.r-project.org/) and [**Git/GitHub**](https://github.com/hadley) by R's large and highly active user base and the work of .         
+# Tidyverse
 
-```{r, eval = F}
-# To install a package
-install.packages('package_name')
-
-# load a package
-library(package_name)
-require(package_name)
-
-
-#Note: 
-# Don't forget that packages 
-# must also be loaded.
-```
+<ul>
+  <li class="m1"><span>The tidyverse is...</span></li><br>
+  <ul class="level">
+    <li><span>A collection of user-friendly <high>packages</high> for analyzing <high>tidy data</high></span></li><br>
+    <li><span>An <high>ecosystem</high> for analytics and data science with common design principles</span></li><br>
+    <li><span>A <high>dialect</high> of the R language</span></li>
+  </ul>
+</ul>
 
 ]
 
-.pull-right45[
+.pull-right65[
+<br><br>
+<p align="center">
+<img src="image/tidyverse_highlight.png" height = "520px">
+</p>
+]
 
-<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/packages.png" height="350"></img>
+---
+
+# RStudio
+
+.pull-left3[
+
+<ul>
+  <li class="m1"><span>RStudio is...</span></li><br>
+  <ul class="level">
+    <li><span>A high-productivity <high>data science IDE.</high></span></li><br>
+    <li><span>The <high>company</high> behind the tidyverse.</span></li><br>
+    <li><span>Designed for R tidyverse with <high>good integration</high> for Python, Markdown, or C++.</span></li><br>
+  </ul>
+</ul>
 
 ]
+
+.pull-right6[
+<p align="center">
+<img src="image/rstudio.png">
+</p>
+]
+
 
 ---
 
 <div class="center_text">
   <span>
-  12 basic R lessons
+  Intro 2 Base R
   </span>
 </div> 
 
 
 ---
 
-# Essentials: 12 basic R lessons
-
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+
+# Part 1: Assignments
+
+
+<ul>
+  <li class="m1"><span><high>Assignments</high><br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><mono><-</mono> creates objects</span></li>
+    <li><span><mono><-</mono> changes objects</span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
 ]
 
+.pull-right5[
+<br><br>
+<p align = "center">
+<img src="image/goodcode.png" height=500px><br>
+<font style="font-size:10px">from <a href="https://xkcd.com//">xkcd.com</a></font>
+</p>
+
+]
 
 ---
 
-# Essentials: 12 basic R lessons
+# Object <mono><-</mono> function
 
-.pull-left4[
-1. <high>Everything is an object</high>
-2. <high>Use `<-` to create/change objects</high>
-3. <high>Name objects using `_`</high>
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span><high>Object <mono><-</mono> function</high></span></li>
+    <li><span><mono><-</mono> creates objects</span></li>
+    <li><span><mono><-</mono> changes objects</span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
 ]
 
+.pull-right5[
+
+<p align="center">
+  <img src="image/assignment_eng.png">
+</p>
+
+
+]
+
+---
+
+# <mono><-</mono> creates objects
+
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> functio</span></li>
+    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span><mono><-</mono> changes objects</span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
+]
 
 .pull-right5[
 ```{r}
-# an object called some_name
-some_name <- c(1, 2, 3)
+# an object named one_two_three
+one_two_three <- c(1, 2, 3)
 
-# add 2 to the object's numbers
-some_name + 2
+# print the object
+print(one_two_three)
 
-# print object
-some_name
-
-# make change permanent
-some_name <- some_name + 2
-
-# print object
-some_name
+# print the object
+one_two_three
 
 ```
+
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# <mono><-</mono> creates objects
 
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. <high>Objects have classes</high>
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> functio</span></li>
+    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span><mono><-</mono> changes objects</span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
 ]
-
-
 
 .pull-right5[
-```{r, echo=F,message=F,warning=F}
-require(tibble)
-```
-
 ```{r}
-# an object called some_name
-class(some_name)
-typeof(some_name)
+# an object named one_two_three
+one_two_three <- c(1, 2, 3)
 
-# an object called some_name
-class(list())
-
-# an object called some_name
-class(tibble())
-
-
+# calculate the mean
+mean(one_two_three)
 ```
+
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# <mono><-</mono> creates objects
 
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. <high>Everything happens through functions</high>
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> functio</span></li>
+    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span><mono><-</mono> changes objects</span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
+]
+
+.pull-right5[
+```{r}
+# an object named one_two_three
+one_two_three <- c(1, 2, 3)
+
+# calculate the mean
+result <- mean(one_two_three)
+
+# print result
+result
+```
+
+]
+
+---
+
+# <mono><-</mono> creates objects
+
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> functio</span></li>
+    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span><mono><-</mono> changes objects</span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
+]
+
+.pull-right5[
+```{r}
+# an object named one_two_three
+one_two_three <- c(1, 2, 3)
+
+# calculate the mean
+result <- mean(one_two_three)
+
+# use result
+result * 10
+```
+
 ]
 
 
+---
+
+# <mono><-</mono> changes objects
+
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> functio</span></li>
+    <li><span><mono><-</mono> creates objectsn</span></li>
+    <li><span><high><mono><-</mono> changes objects</high></span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
+]
+
+.pull-right5[
+```{r}
+# an object named one_two_three
+one_two_three <- c(1, 2, 3)
+
+# print the object
+one_two_three
+
+# use the object
+one_two_three + 100
+
+# print the object
+one_two_three
+
+```
+
+]
+
+
+---
+
+# <mono><-</mono> changes objects
+
+.pull-left5[
+
+<ul>
+  <li class="m1"><span>Assignments<br></span></li>
+  <ul class="level">
+    <li><span>Object <mono><-</mono> functio</span></li>
+    <li><span><mono><-</mono> creates objectsn</span></li>
+    <li><span><high><mono><-</mono> changes objects</high></span></li>
+  </ul>
+  </span><br>
+  <li class="m2g"><span>Functions</span></li>
+  <li class="m3g"><span>Pipes</span></li>
+</ul>
+
+]
+
+.pull-right5[
+```{r}
+# an object named one_two_three
+one_two_three <- c(1, 2, 3)
+
+# print the object
+one_two_three
+
+# use the object
+one_two_three <- one_two_three + 100
+
+# print the object
+one_two_three
+
+```
+
+]
+
+
+---
+
+# Part 2: Functions
+
+.pull-left4[
+
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span><high>Functions</high></span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+
+]
+
+.pull-right5[
+<p align = "center">
+<img src="image/automation.png" ><br>
+<font style="font-size:10px">from <a href="https://xkcd.com//">xkcd.com</a></font>
+</p>
+
+]
+
+---
+
+# Functions 
+
+.pull-left4[
+
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span><high>Functions</high></span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
+.pull-right5[
+<p align="center"><img src="image/input_output.png" height="400"></p>
+]
+
+---
+
+# Functions 
+
+.pull-left4[
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span><high>Everything happens using functions</high></span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
 
 .pull-right5[
 ```{r}
 # function c()
-some_name <- c(1, 2, 3)
+one_two_three <- c(1, 2, 3)
 
 # function `+`()
-some_name + 2
+one_two_three + 100
 
 # function print()
-some_name
+one_two_three
 
-# function class()
-class(some_name)
+# function mean()
+mean(one_two_three)
 
 ```
 ]
 
+
 ---
 
-# Essentials: 12 basic R lessons
+# Arguments 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. <high>Functions have (default) arguments</high>
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span><high>Functions have (default) arguments</high></span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
 ]
-
 
 .pull-right5[
 ```{r, error=TRUE,tidy=T}
 # no argument
 mean()
 
-# required argument
+# one (necessary) argument
 mean(c(1, 2, 3))
 
-# introducing NA
+# add missing value (NA)
 mean(c(1, 2, 3, NA))
+```
+]
 
-# changing default to handle NA
+
+---
+
+# Arguments
+
+.pull-left4[
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span><high>Functions have (default) arguments</high></span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
+.pull-right5[
+```{r, error=TRUE,tidy=T}
+# no argument
+mean()
+
+# one (necessary) argument
+mean(c(1, 2, 3))
+
+# change default to remove NAs
 mean(c(1, 2, 3, NA), na.rm = TRUE)
 
 ```
@@ -405,82 +601,203 @@ mean(c(1, 2, 3, NA), na.rm = TRUE)
 
 ---
 
-# Essentials: 12 basic R lessons
+# Arguments
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. <high>Functions expect certain object classes</high>
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span><high>Functions have (default) arguments</high></span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
+.pull-right5[
+```{r, error=TRUE,tidy=T}
+# explicit argument names
+mean(x = c(1, 2, 3, NA), na.rm = TRUE)
+
+# with names order does not matter
+mean(na.rm = TRUE, x = c(1, 2, 3, NA))
+
+# without names order matters
+mean(TRUE, c(1, 2, 3, NA))
+
+```
 ]
 
 
+---
+
+# Classes 
+
+.pull-left4[
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span><high>The class of functions matters</high></span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
 .pull-right5[
-```{r, error=TRUE,warning=F}
-# mean works also for logical
-mean(c(TRUE, FALSE, TRUE))
 
-# but not for character
-mean(c("a", "b", "c"))
+<p align = "center">
+<img src="image/types.png"><br>
+</p>
 
-# classes relevant for all arg's
-mean(c(1, 2, 3), na.rm = "test")
+]
 
+
+---
+
+# Classes 
+
+.pull-left4[
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span><high>The class of functions matters</high></span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
+.pull-right5[
+```{r, error=TRUE,tidy=T}
+
+# calculate mean of c(1, 2, 3)
+mean(c(1, 2, 3))
+
+# calculate mean of c("1", "2", "3")
+mean(c("1", "2", "3"))
 ```
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# Classes 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. <high>View help files using `?`</high>
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span><high>The class of functions matters</high></span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
+.pull-right5[
+```{r, error=TRUE,tidy=T}
+
+# calculate sum of c(1, 2, 3)
+sum(c(1, 2, 3))
+
+# calculate sum of c("1", "2", "3")
+sum(c("1", "2", "3"))
+```
 ]
 
 
+
+---
+
+# Packages 
+
+.pull-left4[
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span><high>Functions "live" in packages</high></span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
 .pull-right5[
-```{r}
-?mean
-```
-<p align="center"><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/help.png" width="500"></p>
+<p align="center"><img src="image/pakete.png" height="400"></p>
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# Packages 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. <high>View help files using `?`</high>
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span><high>Functions "live" in packages</high></span></li>
+    <li><span>Receive help using <mono>?</span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
+]
+
+.pull-right5[
+
+<high>Install</high> Packages <high>once</high> with `install.packages()`
+
+```{r, eval = FALSE}
+install.packages("tidyverse")
+```
+<br2>
+<high>Load</high> installed Pakete <high>every time</high> with `library()`
+
+```{r, eval = FALSE}
+library(tidyverse)
+```
+
+<p align="left"><img src="image/tidyverse_load.png" height="180"></p>
+]
+---
+
+# Help 
+
+.pull-left4[
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2"><span>Functions</span></li>
+  <ul class="level">
+    <li><span>Everything happens using functions</span></li>
+    <li><span>Functions have (default) arguments</span></li>
+    <li><span>The class of functions matters</span></li>
+    <li><span>Functions "live" in packages</span></li>
+    <li><span><high>Receive help using <mono>?</high></span></li>
+  </ul><br>
+  <li class="m3g"><span>Pipes<br></span></li>
+</ul>
 ]
 
 .pull-right5[
@@ -492,375 +809,150 @@ mean(c(1, 2, 3), na.rm = "test")
 
 ---
 
-# Essentials: 12 basic R lessons
+# Part 3: Pipes 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. <high>Study errors and warnings</high>
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2g"><span>Functions<br></span></li>
+  <li class="m3"><span><high>Pipes</high><br></span></li>
+  <ul class="level">
+    <li><span>Swap object and function</span></li>
+    <li><span>Make chaining easy</span></li>
+  </ul>
+</ul>
 ]
 
 .pull-right5[
 
-```{r, eval=F}
-# message - attend
-basel <- type_convert(baselers)
-```
-
-```{r, echo=F, error=T}
-# message - attend
-basel <- type_convert(baselers[1:6])
-```
-
-```{r, error=T}
-# warning - attend closely
-result <- mean('NA')
-
-# error - fix
-lenth(1)
-
-```
-
+<p align = "center">
+<img src="image/magrittebrother.jpeg" height=400px><br>
+<font style="font-size:10px">from <a href="https://knowyourmeme.com/photos/1217327-this-is-not-a-pipe-parodies">knowyourmeme.com</a></font>
+</p>
 
 
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# Pipes 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. <high>Study errors and warnings</high>
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2g"><span>Functions<br></span></li>
+  <li class="m3"><span>Pipes<br></span></li>
+  <ul class="level">
+    <li><span><high>Swap object and function</high></span></li>
+    <li><span>Make chaining easy</span></li>
+  </ul>
+</ul>
 ]
 
 .pull-right5[
+```{r}
+# Numeric vector
+score <- c(8, 4, 6, 3, 7, 3)
+score
 
-```{r, error=T}
-lenth(1)
+# Mean: Base-R-style
+mean(score)
+
+# Mean: dplyr-style
+score %>%  
+  mean()  
 ```
-
-| Error | Description|
-|:------|:--------------------------------------------|
-|     `'could not find function'`| Typo or package not loaded|
-|     `'error in eval'`| An object is used in function that does not exist.|
-| `'cannot open()'`| Typo or missing path.|
-| `'no applicable method'`| Function inapplicable for type |
-| package errors | Unable to install, compile, or load package. |
-
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# Pipes 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. <high>Use RStudio and projects</high>
-11. Use editor and auto-complete
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2g"><span>Functions<br></span></li>
+  <li class="m3"><span>Pipes<br></span></li>
+  <ul class="level">
+    <li><span><high>Swap object and function</high></span></li>
+    <li><span>Make chaining easy</span></li>
+  </ul>
+</ul>
 ]
 
 .pull-right5[
-### Projects help ... USE projects!
-save workspace and history &#9679; set project specific options &#9679; access files &#9679; version control &#9679; etc.
-<p align="left"><img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/projects_1.png" width="360"></p>
-]
 
----
-
-# Essentials: 12 basic R lessons
-
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. <high>Use RStudio and projects</high>
-11. Use editor and auto-complete
-12. Comment and format for readability
-]
-
-.pull-right5[
-### Folder structure
-Complement projects by a <high>folder structure</high> appropriate for your project.
-<br><br>
-<p align="left">
-  <img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/folder_structure.png">
+<p align="center">
+  <img src="image/pipe_en.png" height = "400px">
 </p>
 
 ]
 
 ---
 
-# Essentials: 12 basic R lessons
+# Pipes 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. <high>Use editor and auto-complete</high>
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2g"><span>Functions<br></span></li>
+  <li class="m3"><span>Pipes<br></span></li>
+  <ul class="level">
+    <li><span>Swap object and function</span></li>
+    <li><span><high>Make chaining easy</high></span></li>
+  </ul>
+</ul>
 ]
 
 .pull-right5[
+```{r}
+# Numeric vector
+score <- c(8, 4, 6, 3, 7, 3)
+score
 
-<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/editor_edit.png"></img>
-<br><br><br>
-Shortcut to <high>send to console</high>:<br><br2><font size = 6>&#8984;/ctrl + &#9166;</font><br><br2><br2>
-Shortcut to <high>rerun chunk</high>:<br><br2><font size = 6>  &#8984;/ctrl + &#8679; + p</font>
+# Chainig
+score %>%  
+  mean() %>% 
+  round(digits = 2)
+```
 ]
-
 
 ---
 
-# Essentials: 12 basic R lessons
+# Pipes 
 
 .pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. <high>Use editor and auto-complete</high>
-12. Comment and format for readability
+<ul>
+  <li class="m1g"><span>Assignments<br></span></li>
+  <li class="m2g"><span>Functions<br></span></li>
+  <li class="m3"><span>Pipes<br></span></li>
+  <ul class="level">
+    <li><span>Swap object and function</span></li>
+    <li><span><high>Make chaining easy</high></span></li>
+  </ul>
+</ul>
 ]
 
 .pull-right5[
+```{r}
+# Numeric vector
+score <- c(8, 4, 6, 3, 7, 3)
+score
 
-```{r, eval=F}
-# import packages
-library(tidyverse)
-library(yarrr)
-library(lme4)
-
-# import data
-baselers <- read_delim("baselers.txt",
-                       delim = '\t')
-
+# Chainig
+score %>%  
+  mean() %>% 
+  round(digits = 2) %>% 
+  as.character()
 ```
-<br>
-### The goal is...
-... to create self-contained scripts that run uninterrupted from  beginning to end.
 ]
 
----
-
-# Essentials: 12 basic R lessons
-
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. <high>Use editor and auto-complete</high>
-12. Comment and format for readability
-]
-
-.pull-right55[
-
-<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/auto_complete_1.png"></img>
-
-]
-
----
-
-# Essentials: 12 basic R lessons
-
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. <high>Use editor and auto-complete</high>
-12. Comment and format for readability
-]
-
-.pull-right55[
-
-<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/auto_complete_2.png"></img>
-
-]
-
----
-
-# Essentials: 12 basic R lessons
-
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. <high>Use editor and auto-complete</high>
-12. Comment and format for readability
-]
-
-
-.pull-right55[
-
-<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/auto_complete_3.png"></img>
-
-]
-
----
-
-# Essentials: 12 basic R lessons
-
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. <high>Comment and format for readability</high>
-]
-
-
-.pull-right5[
-## Bad
-```{r, eval=F}
-mean(subset((tibble(c('a','b'),runif(1000,
-0,1))),c..a....b..=='a')[,'runif.1000..0..1.'])
-```
-
-## Good
-```{r, eval=F}
-# create my data.frame
-my_data <- tibble('group' = c('a','b'), 
-                  'value' = runif(1000, 0, 1))
-
-# subset data to group a
-# and compute average value
-my_data %>% 
-  filter(group == 'a') %>%
-  summarize(mean(value))
-```
-
-]
-
----
-
-# Essentials: 12 basic R lessons
-
-.pull-left4[
-1. Everything is an object
-2. Use `<-` to create/change objects
-3. Name objects using `_`
-4. Objects have classes
-5. Everything happens through functions
-6. Functions have (default) arguments
-7. Functions expect certain object classes
-8. View help files using `?`
-9. Study errors and warnings
-10. Use RStudio and projects
-11. Use editor and auto-complete
-12. <high>Comment and format for readability</high>
-]
-
-.pull-right5[
-### Short style guide
-
-```{r, eval=F}
-# Choose appropriate names
-analyze_baselers.R
-trial_id
-
-# Leave spaces around operators
-var_rt <- var(rt, na.rm = TRUE)
-
-# indent code
-if (var_rt < 2){
-  print('small variance')
-} else {
-  print('large variance')
-}
-
-# Create sections using
-# Data wrangling section ---------
-```
-See also <a href="http://style.tidyverse.org/">style.tidyverse.org/</a>
-]
-
-
----
-
-class: middle, center
-
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/1_Data/BernRBootcamp_Day1.zip">Downloads</a></h1>
 
 ---
 
 class: middle, center
 
 <h1><a>Interactive</a></h1>
-<h2>Open RStudio</h2>
+<h2>Open the TheRBootcamp project file</h2>
 
 

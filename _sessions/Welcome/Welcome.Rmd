@@ -19,10 +19,7 @@ output:
 <br><br><br><br><br>
 #  Schedule and Materials
 
-Click the "Start Bootcamp" link in Ilias!
-
-
-<font size="6" color="#F62D73"><a href="https://dwulff.github.io/Intro2R_Unibe_2021/"><b>www.therbootcamp.com</b></a></font><br><br>
+Use the "Start Bootcamp" link in Ilias!
 
 ]
 
@@ -61,9 +58,7 @@ Click the "Start Bootcamp" link in Ilias!
 .pull-left5[
 # Schedule 
 
-We have an <high>ambitious schedule</high>!
-
-3 days, <high>3 sessions per day</high>, <high>2 hours per session</high>, on a variety of topics.
+3 days, <high>3 sessions per day</high>, <high>2 hours per session</high>.
 
 Each session contains a slide-based <high>introduction</high> and a hands-on <high>programming practical</high>
 
@@ -99,8 +94,6 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 <br><br>
 <a href="https://dwulff.github.io/Intro2R_Unibe_2021/">This is a Link to our materials</a>.
 <br><br>
-
-<high>Be interactive! Ask questions!</high>
 
 ]
 
@@ -154,91 +147,24 @@ Each session contains a slide-based <high>introduction</high> and a hands-on <hi
 
 ]
 
----
-
-.pull-left45[
-<br>
-# 1:1 Coaching
-
-Learning a computer language is <high>hard</high>.
-
-<high>Take breaks when you need them</high>, and don't get discouraged!
-
-Sometimes, you may find yourself in need of some <high>intensive help</high>. <br>That's ok! We're here to help!
-
-]
- 
-
-.pull-right5[
-
-
-<br><br>
-
-<p align="center">
-<img src="image/yesterdayitworked.jpg" height="500px">
-<br>
-<font style="font-size:10px">from <a href="www.geek-and-poke.com">geek-and-poke.com</a></font>
-</p>
-]
-
----
-# Cheatsheets
-
-<table width="100%" style="cellspacing:0; cellpadding:0; border:none">
-  <tr>    
-  <td>
-  <p align = 'center'>RStudio<br><br>
-
-  
-  <a href="https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/rstudio_cheat_ss.png?raw=true" height="180"></a></p>
-  </td>
- 
-  <td>
-   <p align = 'center'>Base R<br><br>
-  <a href="http://github.com/rstudio/cheatsheets/raw/master/base-r.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/baser_cheat_ss.png?raw=true" height="180"></a></p>
-  </td>  
-  
-  <td> 
-   <p align = 'center'>Data Import<br><br>
-  <a href="https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/dataimport_cheat_ss.png?raw=true" height="180"></a></p>
-  </td>
-  
-  <td>
-  <p align = 'center'>Data Wrangling<br><br>
-  <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/datatransform_cheat_ss.png?raw=true" height="180"></a></p>
-  </td>
-
-  <td>
-  <p align = 'center'>Data Visualization<br><br>
-  <a href="https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf"><img border="0" alt="W3Schools" src="https://github.com/therbootcamp/therbootcamp.github.io/blob/master/_sessions/_image/datavis_cheat_ss.png?raw=true" height="180" ></a></p>
-  </td>
-  
-
-  </tr>
-</table>
-<br>
-
 
 ---
 
 .pull-left45[
 # Introductions
 
-1. What is your name?
+1. Who are you?
 
 2. What is your study subject?
 
-3. What is your programming experience in general and with R?
+3. Why do you want to learn R?
 
-4. Why do you want to learn R?
+4. Mac or PC?
 
-5. Mac or PC?
+5. Coffee or tea?
 
-6. Coffee or tea?
+6. Berlin or Paris?
 
-7. Beer or wine?
-
-8. Berlin or Paris?
 
 ]
 
