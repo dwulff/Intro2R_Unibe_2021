@@ -786,7 +786,7 @@ DATA %>%
 ```{r}
 combined %>%
   
-  # Group by sex
+  # Group by study arm
   group_by(arm_lab) %>%
   
   # Calculate summary stats
@@ -826,11 +826,13 @@ options(tibble.width=50, tibble.print_max=5, tibble.print_min=5, tibble.max_extr
 ```{r}
 combined %>%
   
-  # Group by sex
+  # Group by study arm
   group_by(arm_lab) %>%
   
   # Calculate stats
   summarise(
+    age_mean = mean(age),
+    age_sd = sd(age),
     N = n()
   )
 ```

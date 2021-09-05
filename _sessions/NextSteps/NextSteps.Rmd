@@ -30,7 +30,7 @@ knitr::opts_chunk$set(comment = NA)
 
 .pull-left45[
 <br><br><br><br><br>
-#  Hello Data Scientist!
+#  Hello Data Scientists!
 
 In 3 days, 9 sessions, and 21 hours you have come a long way.
 
@@ -43,27 +43,6 @@ In 3 days, 9 sessions, and 21 hours you have come a long way.
 
 ---
 
-.pull-left35[
-
-#  Data Scientist
-
-> *80% of a data scientist’s valuable time is spent simply finding, cleaning, and organizing data, leaving only 20% to actually perform analysis.*
-
-> Harvard Business Review
-
-]
-
-.pull-right6[
-<br><br>
-<p align = "center">
-<img src="https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_image/data_scientist_activities.jpg" height = 500><br>
-<font size=2><a href="https://www.wsj.com">Wall Street Journal</a>
-</p>
-
-]
-
----
-
 # How to continue
 
 .pull-left5[
@@ -72,8 +51,7 @@ In 3 days, 9 sessions, and 21 hours you have come a long way.
 1. Practice<br>
 2. Read books<br>
 3. Consult websites<br>
-4. Get support<br>
-5. Take courses<br>
+4. Take courses<br>
 ]
 
 </font>
@@ -90,7 +68,7 @@ In 3 days, 9 sessions, and 21 hours you have come a long way.
 Here is a series of useful good books ordered by complexity.
 
 
-<table width="80%" style="cellspacing:0; cellpadding:0; border:none; padding-top:30px">
+<table width="80%" style="cellspacing:0; cellpadding:0; border:none;">
 
   <tr>    
 
@@ -141,12 +119,12 @@ Here is a series of useful good books ordered by complexity.
   </td>
 
   <td>
-  <a href="www.rcpp.org/"><img border="0" alt="W3Schools" src="http://t3.gstatic.com/images?q=tbn:ANd9GcSO9T6JQYtpQgcaCXudbqMB-fnvTjGowsnmeh9-BQku3zveR4-J" height="180" ></a>
+  <a href="www.rcpp.org/"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/31Y8QSFEMJL._SX328_BO1,204,203,200_.jpg" height="180" ></a>
   </td>
   
   
   <td>
-  <a href="http://adv-r.had.co.nz/"><img border="0" alt="W3Schools" src="https://images.tandf.co.uk/common/jackets/amazon/978146658/9781466586963.jpg" height="180" ></a>
+  <a href="http://adv-r.had.co.nz/"><img border="0" alt="W3Schools" src="https://images-na.ssl-images-amazon.com/images/I/41RJLhZ32VL._SX329_BO1,204,203,200_.jpg" height="180" ></a>
   </td>
 
 
@@ -186,100 +164,66 @@ The web is a great place to learn about R.
 ]
 
 
-
 ---
 
-# Support
-
-<table class="tg"  style="cellspacing:0; cellpadding:0; border:none">
-  <col width="22%">
-  <col width="22%">
-  <col width="22%">
-  <tr>
-    <th class="tg-yw4l" valign='top'>
-    <p align="center"><br>
-    <a href="www.dirkwulff.org"><img border="0" alt="W3Schools" src="https://therbootcamp.github.io/img/team/1.png" height="230" style="border-radius:50%"></a><br>
-    <p align="center">
-    <font size = 5>Dr. Dirk Wulff</font><br><br>
-    <a href="www.dirkwulff.org"><b>dirkwulff.org</b></a><br>
-    <a href="https://github.com/dwulff"><b>github.com/dwulff</b></a><br>
-    <font size=4><i>packages: </i></font> 
-    <a href="https://cran.r-project.org/web/packages/cstab/index.html"><b>cstab</b></a>, <br>
-    <a href="https://cran.r-project.org/web/packages/mousetrap/index.html"><b>mousetrap</b></a>, <a href="https://cran.r-project.org/web/packages/memnet/index.html"><b>memnet</b> <a href="https://github.com/dwulff/choicepp"><b>choicepp</b>
-    </p>  
-  </th>
-  
-  <th class="tg-yw4l" valign='top'><p align="center"><br>
-    <a href="https://psychologie.unibas.ch/en/persons/markus-steiner/about-me/"><img border="0" alt="W3Schools" src="https://therbootcamp.github.io/img/team/2.png" height="230" style="border-radius:50%"></a><br>
-    <p align="center">
-    <font size = 5>Markus Steiner</font><br><br>
-    <a href="https://github.com/mdsteiner"><b>github.com/mdsteiner</b></a><br>
-    <font size=4><i>packages: </i></font> 
-    <a href="https://github.com/mdsteiner/ShinyPsych"><b>ShinyPsych</b></a>, <br>
-    <a href="https://github.com/mdsteiner/EFAtools"><b>EFAtools</b></a> <br><br>
-    </p>
-  </th>
-  
-  <th class="tg-yw4l" valign='top'>
-    <p align="center">
-    <p align="center"><br>
-    <a href="https://www.schulte-mecklenbeck.com/"><img border="0" alt="W3Schools" src="https://therbootcamp.github.io/img/team/3.png" height="230" style="border-radius:50%"></a><br>
-    <p align="center">
-    <font size = 5>Prof. Dr. Michael Schulte-<br>Mecklenbeck</font><br><br>
-    <a href="www.schulte-mecklenbeck.com"><b>schulte-mecklenbeck.com</b></a><br>
-    <a href="https://github.com/schultem"><b>github.com/schultem</b></a><br><br>
-    </p>
-  </th>
-
-
-</tr>
-
-</table>
-
----
-
-# Weiterführende Kurse
+# Other courses
 
 
 <table class="tg"  style="cellspacing:0; cellpadding:0; border:none;">
 <tr valign="top">
-  <col width="25%">
-  <col width="25%">
-  <col width="25%">
-
+  <col width="20%">
+  <col width="20%">
+  <col width="20%">
+  <col width="20%">
+  <col width="20%">
   <td>
     <p align="center">
-      <a class="project-link" href="http://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Reporting mit R<br></font><br>
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Einführung in die moderne Datenanalyse mit R</font><br>
       <br>
-      <img src="https://therbootcamp.github.io/img/courses/4.png" height="230px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>Juni 5/6, 2020</high><br><br><br>
-      </a>
+      <img src="https://therbootcamp.github.io/img/courses/0.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Oct 15,<br>2021</high><br><br><br><br>
     </p>
   </td>
-  
   <td>
     <p align="center">
-      <a class="project-link" href="http://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Statistik mit R<br></font><br>
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Explorative Datenanalyse mit R<br></font><br>
       <br>
-      <img src="https://therbootcamp.github.io/img/courses/2.png" height="230px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>September 25/26, 2020</high><br><br><br>
-      </a>
+      <img src="https://therbootcamp.github.io/img/courses/1.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Sep 24-25,<br>2021</high><br><br><br><br>
     </p>
   </td>
-  
-    <td>
+  <td>
     <p align="center">
-      <a class="project-link" href="http://therbootcamp.github.io/#courses" align="center">
-      <font style="font-size:20px;weight:700"><br>Machine Learning mit R<br></font><br>
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Statistik mit R<br><br></font><br>
       <br>
-      <img src="https://therbootcamp.github.io/img/courses/1.png" height="230px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
-      <high>Okt 23/24, 2020</high><br><br><br>
+      <img src="https://therbootcamp.github.io/img/courses/2.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Oct 22-23,<br>2021</high><br><br><br><br>
       </a>
     </p>
   </td>
-  
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Maschinelles Lernen mit R<br></font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/3.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>Nov 19-20,<br>2021</high><br><br><br><br>
+      </a>
+    </p>
+  </td>
+  <td>
+    <p align="center">
+      <a class="project-link" href="https://therbootcamp.github.io/#courses" align="center">
+      <font style="font-size:20px;weight:700"><br>Reporting mit R<br><br></font><br>
+      <br>
+      <img src="https://therbootcamp.github.io/img/courses/4.png" height="180px" style="border-radius:50%;border:10px solid #E9ECEF"></img><br><br>
+      <high>tba<br>2021</high><br><br><br><br>
+      </a>
+    </p>
+  </td>
   </tr>
 
 ---

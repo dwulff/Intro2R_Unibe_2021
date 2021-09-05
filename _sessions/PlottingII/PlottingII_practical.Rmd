@@ -3,7 +3,7 @@ title: "Plotting II"
 author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0'><col width='10%'><col width='10%'>
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
-      <font style='font-style:normal'>Introduction to R</font><br>
+      <font style='font-style:normal'>Introduction to Data Science R</font><br>
       <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
@@ -17,7 +17,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
         <i class='fab fa-linkedin' style='font-size: .9em;'></i>
       </a>
       <a href='https://therbootcamp.github.io'>
-        <font style='font-style:normal'>Bern R Bootcamp</font>
+        <font style='font-style:normal'>The R Bootcamp</font>
       </a>
     </td>
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
@@ -86,7 +86,7 @@ In this practical you'll practice customizing plots created using the `ggplot2` 
 ```{r, eval = FALSE, echo = TRUE}
 ## NAME
 ## DATE
-## Plotting Practical
+## Plotting II Practical
 
 library(XX)
 library(XX)
@@ -512,89 +512,6 @@ ggsave(filename = "crime_plot",
 4. Play around with the `width` and `height` arguments to change the dimensions of the plot.
 
 5. Customize the code to create a `.png` image.
-
-
-### X - Advanced: Maps 
-
-1. `ggplot2` also allows you to work with maps. The code below, plots a simple globe representation of the world.
-
-```{r, echo = TRUE, eval = TRUE, fig.width = 8, fig.height = 4}
-world <- map_data("world")
-map <- ggplot() +
-  geom_polygon(data = world,  aes(long, lat, group = group), fill = "grey") +
-  coord_map("ortho", orientation = c(30, 55, 0)) +
-  theme_void()
-map
-```
-
-2. You can add points to the map by creating a `locations` tibble containing longitude (`lon`) and latitude (`lat`) values and then using it in, e.g., `geom_points()`.    
-
-```{r, echo = TRUE, fig.width = 8, fig.height = 4}
-# define locations tibble
-locations <- tibble(
-  city = c('Basel', 'New Delhi'),
-  lon = c(7.58,  77.21),
-  lat = c(47.55, 28.64))
-
-# add locations to map
-map + 
-  geom_point(data = locations, 
-             mapping = aes(x = lon, y = lat), 
-             color = "steelblue", size = 4)
-
-```
-
-3. In a similar fashion you can also add lines. Though, for lines it is required to plot the map in flat manner.
-
-```{r, echo = TRUE, fig.width = 8, fig.height = 4}
-# define locations tibble
-itineraries <- tibble(
-  city = c('Basel-New Delhi'),
-  lon_start = 7.58,
-  lon_end = 77.21,
-  lat_start = 47.55,
-  lat_end = 28.64)
-
-# flat map
-map <- ggplot() +
-  geom_polygon(data = world,  aes(long, lat, group = group), fill = "grey") +
-  theme_void()
-
-# add locations to map
-map + 
-  geom_curve(data = itineraries,
-             mapping = aes(x = lon_start, y = lat_start,
-                           xend = lon_end, yend = lat_end),
-                           col = 'steelblue', lty = 2, lwd = 1.2) +
-  geom_point(data = locations, 
-             mapping = aes(x = lon, y = lat), 
-             color = "steelblue", size = 4)
-
-```
-
-
-### X - Advanced: Interactive with `plotly::ggplotly()`
-
-1. With the `ggplotly()`-function from the `plotly` package, you can turn any `ggplot` object into an interactive plot like the one below! Run the following code to see it in action.
-
-```{r, echo = TRUE, eval = TRUE, fig.width = 8, fig.height = 4}
-# Create a standard ggplot object
-crime_plot <- ggplot(data = crime_long,
-                     mapping = aes(x = PctUsePubTrans, y = frequency,
-                     color = state, size = population)) + 
-  geom_point() + 
-  scale_y_log10()
-  geom_point()
-
-
-# Make it interactive with ggplotly()!
-library(plotly)
-ggplotly(crime_plot)
-```
-
-2. Play around with your plot! See what happens when you hover over the points with your mouse. You can even zoom in by dragging your mouse.
-
-3. Try turning one of your favorite previous plots into an interactive `plotly` plot using the `ggplotly()` function!
 
 
 

@@ -4,7 +4,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
       <font style='font-style:normal'>Introduction to R</font><br>
-      <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+      <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
       <a href='https://therbootcamp.github.io'>
@@ -17,7 +17,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
         <i class='fab fa-linkedin' style='font-size: .9em;'></i>
       </a>
       <a href='https://therbootcamp.github.io'>
-        <font style='font-style:normal'>Bern R Bootcamp</font>
+        <font style='font-style:normal'>The R Bootcamp</font>
       </a>
     </td>
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
@@ -72,7 +72,7 @@ By the end of this practical you will know how to:
 
 ### A - Setup
 
-1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the Datasets section above are in your `2_Data` folder
+1. Open your `TheRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the Datasets section above are in your `2_Data` folder
 
 ```{r}
 # Done!
@@ -92,7 +92,7 @@ knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therboot
 
 4. A new file with the information you just entered will pop up. This is your first R Markdown document!
 
-5. Save your markdown file in `2_Code` under the name `reporting_practical.Rmd`
+5. Save your markdown file in `2_Code` under the name `reporting_practical.Rmd`.
 
 6. Now *knit* your document to an HTML file. To do this, click the *knit* button (or use the Command|Ctrl + Shift + K shortcut)
 
@@ -111,12 +111,12 @@ knitr::include_graphics("https://raw.githubusercontent.com/therbootcamp/therboot
 3. Now it's time to load your datafiles. In the *same* `setup` chunk, load the  `Mcdonalds` dataset. 
 
 ```{r, eval = FALSE, echo = TRUE}
-# --- Load packages
+# Load packages
 library(XX)
 library(XX)
 
-# --- Load data
-XXX <- read_csv()
+# Load data
+XXX <- read_csv("XX")
 ```
 
 4. Knit your document! Make sure you don't get any errors!

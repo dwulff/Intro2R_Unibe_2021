@@ -4,7 +4,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
   <tr style='border:none'>
     <td style='display:block;width:100%;text-align:left;vertical-align:bottom;padding:0;margin:0;border:none' nowrap>
       <font style='font-style:normal'>Introduction to R</font><br>
-      <a href='https://dwulff.github.io/Intro2R_Unibe/'>
+      <a href='https://dwulff.github.io/Intro2R_Unibe_2021/'>
         <i class='fas fa-clock' style='font-size:.9em;' ></i>
       </a>
       <a href='https://therbootcamp.github.io'>
@@ -17,7 +17,7 @@ author: "<table style='table-layout:fixed;width:100%;border:0;padding:0;margin:0
         <i class='fab fa-linkedin' style='font-size: .9em;'></i>
       </a>
       <a href='https://therbootcamp.github.io'>
-        <font style='font-style:normal'>Bern R Bootcamp</font>
+        <font style='font-style:normal'>The R Bootcamp</font>
       </a>
     </td>
     <td style='width:100%;vertical-align:bottom;text-align:right;padding:0;margin:0;border:none'>
@@ -126,14 +126,11 @@ In addition to exploring the effects of the three medications, the researchers a
 
 ### A - Getting Setup
 
-1. Open your `bernrbootcamp` R project. It should already have the folders `1_Data` and `2_Code`.
+1. Open your `TheRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`.
 
-2. We want to generate an R Markdown document for this case study. In RStudio, click File -- New File -- R Markdown -- Document -- Html. 
-Save your markdown file *in your main project directory* under the name `dimarta_casestudy.Rmd`. 
+2. Create and work in an R Markdown document for this case study. Save your markdown file `2_Code` under the name `clinical_casestudy.Rmd`. 
 
-3. At the top of the script load the `tidyverse` package. 
-
-4. From time to time - don't forget to `Knit` your code with the Knit-Button.
+3. At the top of the script, load the `tidyverse` package. 
 
 ### B - Data I/O
 
