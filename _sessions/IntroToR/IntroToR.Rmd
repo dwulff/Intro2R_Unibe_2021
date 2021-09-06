@@ -239,8 +239,8 @@ In many sciences it becomes the de factor **lingua franca** for statistics.
 <ul>
   <li class="m1"><span>Assignments<br></span></li>
   <ul class="level">
-    <li><span>Object <mono><-</mono> functio</span></li>
-    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><high><mono><-</mono> creates objects</high></span></li>
     <li><span><mono><-</mono> changes objects</span></li>
   </ul>
   </span><br>
@@ -274,8 +274,8 @@ one_two_three
 <ul>
   <li class="m1"><span>Assignments<br></span></li>
   <ul class="level">
-    <li><span>Object <mono><-</mono> functio</span></li>
-    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><high><mono><-</mono> creates objects</high></span></li>
     <li><span><mono><-</mono> changes objects</span></li>
   </ul>
   </span><br>
@@ -305,8 +305,8 @@ mean(one_two_three)
 <ul>
   <li class="m1"><span>Assignments<br></span></li>
   <ul class="level">
-    <li><span>Object <mono><-</mono> functio</span></li>
-    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><high><mono><-</mono> creates objects</high></span></li>
     <li><span><mono><-</mono> changes objects</span></li>
   </ul>
   </span><br>
@@ -339,8 +339,8 @@ result
 <ul>
   <li class="m1"><span>Assignments<br></span></li>
   <ul class="level">
-    <li><span>Object <mono><-</mono> functio</span></li>
-    <li><span><high><mono><-</mono> creates objectsn</high></span></li>
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><high><mono><-</mono> creates objects</high></span></li>
     <li><span><mono><-</mono> changes objects</span></li>
   </ul>
   </span><br>
@@ -374,8 +374,8 @@ result * 10
 <ul>
   <li class="m1"><span>Assignments<br></span></li>
   <ul class="level">
-    <li><span>Object <mono><-</mono> functio</span></li>
-    <li><span><mono><-</mono> creates objectsn</span></li>
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><mono><-</mono> creates objects</span></li>
     <li><span><high><mono><-</mono> changes objects</high></span></li>
   </ul>
   </span><br>
@@ -413,8 +413,8 @@ one_two_three
 <ul>
   <li class="m1"><span>Assignments<br></span></li>
   <ul class="level">
-    <li><span>Object <mono><-</mono> functio</span></li>
-    <li><span><mono><-</mono> creates objectsn</span></li>
+    <li><span>Object <mono><-</mono> function</span></li>
+    <li><span><mono><-</mono> creates objects</span></li>
     <li><span><high><mono><-</mono> changes objects</high></span></li>
   </ul>
   </span><br>
