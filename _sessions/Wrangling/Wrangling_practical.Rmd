@@ -30,7 +30,7 @@ output:
     self_contained: no
 ---
 
-```{r setup, echo = FALSE}
+```{r setup, echo = FALSE, warning = FALSE, message=FALSE}
 knitr::opts_chunk$set(comment = NA, 
                       fig.width = 6, 
                       fig.height = 6,
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(comment = NA,
 
 options(digits = 3)
 
-require(tidyverse)
+suppressMessages(require(tidyverse))
 
 trial_act <- read_csv(file = "https://raw.githubusercontent.com/therbootcamp/BaselRBootcamp_2018July/master/_sessions/_data/baselrbootcamp_data/trial_act.csv")
 
