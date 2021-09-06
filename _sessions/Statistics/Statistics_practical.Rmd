@@ -67,7 +67,7 @@ library(tidyverse)
 # generate english version
 
 # Load packages
-wine <- read_csv("1_Data/wine.csv") 
+wine <- read_csv("https://raw.githubusercontent.com/dwulff/Intro2R_Unibe_2021/main/_sessions/Statistics/1_Data/wine.csv") 
 ```
 
 <p align="center" width="100%">
@@ -103,11 +103,11 @@ library(XX)
 library(XX)
 ```
 
-3. In this practical, you will analyze a dataset called `wine.csv`. Read it in with `read_csv()`.
+3. In this practical, you will analyze a dataset called `wine.csv`. Read it in with `read_csv()` from its location on a website. Copy the link of the  [wine.csv](https://bit.ly/3zV98fi) file into your `read_csv()` function.
 
 ```{r, echo=T, eval = T, message = F}
 # Read in the data
-wine <- read_csv(file = "1_Data/wine.csv")
+wine <- read_csv(file = "https://bit.ly/3zV98fi")
 ```
 
 4. Execute the code below to ensure that all `character` variables are converted to factors. This will help the statistical model to interpret categorical variables correctly. 
