@@ -34,6 +34,36 @@ require(tidyverse)
 ```
 
 
+# R is a programming language
+
+From [Wikipedia](https://en.wikipedia.org/wiki/Statistical_model) (emphasis added):
+
+> A programming language is a **formal language** that specifies a set of instructions that can be used to produce various kinds of output. Programming languages generally consist of **instructions for a computer**. Programming languages can be used to create programs that **implement specific algorithms**.
+
+.pull-left4[
+### Algorithm
+1. Load data
+2. Extract variables
+3. Run analysis
+4. Print result
+]
+
+.pull-right6[
+### Implementation in R
+```{r,echo=F}
+link = 'https://raw.githubusercontent.com/therbootcamp/therbootcamp.github.io/master/_sessions/_data/my_data.txt'
+```
+
+```{r, results='hide'}
+data <- read.table("data/my_data.txt")
+variables <- data[,c('group','variable')]
+analysis <- lm(variable ~ group, data = variables)
+summary(analysis)
+```
+]
+
+---
+
 # Why R?
 
 .pull-left3[
