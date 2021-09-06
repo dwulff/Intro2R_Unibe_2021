@@ -199,7 +199,7 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>TheRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> tab are in your <code>1_Data</code> folder.</p></li>
+<li><p>Open your <code>TheRBootcamp</code> R project. Make sure that the data files listed in the <code>Datasets</code> tab are in your <code>1_Data</code> folder.</p></li>
 <li><p>Using <code>library()</code> load the set of packages for this practical listed in the Functions section.</p></li>
 </ol>
 <pre class="r"><code>## Name
@@ -209,10 +209,10 @@ pre code {
 library(XX)     
 library(XX)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>In this practical, you will analyze a dataset called <code>wine.csv</code>. Read it in with <code>read_csv()</code>.</li>
+<li>In this practical, you will analyze a dataset called <code>wine.csv</code>. Read it in with <code>read_csv()</code> from its location on a website. Copy the link of the <a href="https://bit.ly/3zV98fi">wine.csv</a> file into your <code>read_csv()</code> function.</li>
 </ol>
 <pre class="r"><code># Read in the data
-wine &lt;- read_csv(file = &quot;1_Data/wine.csv&quot;)</code></pre>
+wine &lt;- read_csv(file = &quot;https://bit.ly/3zV98fi&quot;)</code></pre>
 <ol start="4" style="list-style-type: decimal">
 <li>Execute the code below to ensure that all <code>character</code> variables are converted to factors. This will help the statistical model to interpret categorical variables correctly.</li>
 </ol>
