@@ -66,14 +66,14 @@ In this practical you'll practice customizing plots created using the `ggplot2` 
 1. Use facetting to create multiple plots.
 2. Use scaling to alter the plots dimensions.
 3. Alter and store themes to adjust a plots appearance.
-4. Create multiple plots in one using `grid.arrange()`.
+4. Create multiple plots in one using the `patchwork` package.
 5. Create image files using `ggsave()`.
 
 ## Tasks
 
 ### A - Setup
 
-1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
+1. Open your `TheRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
 
 ```{r}
 # Done!
