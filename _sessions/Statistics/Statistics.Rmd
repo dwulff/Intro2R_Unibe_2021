@@ -56,7 +56,7 @@ knitr::opts_chunk$set(dpi = 300, echo = FALSE, warning = FALSE, fig.align = 'cen
     <li><span><high>Analysis of variance (ANOVA)</high></li></span>
     <li><span>Mediationanalysis</li></span>
     <li><span>Factoranalysis</li></span>
-    <li><span>Structural Equatuin Modeling</li></span>
+    <li><span>Structural Equation Modeling</li></span>
   </ul>
 </ul>
 
@@ -920,7 +920,7 @@ anova(mod)
 
 class: middle, center
 
-<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/LinearModelsII/LinearModelsII_practical.html">Practical</a></h1>
+<h1><a href="https://dwulff.github.io/Intro2R_Unibe_2021/_sessions/Statistics/Statistics_practical.html">Practical</a></h1>
 
 
 
