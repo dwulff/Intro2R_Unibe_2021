@@ -59,7 +59,9 @@ library(gridExtra)
 <br><br>
 <b>4</b> Create your <high>own themes</high>.
 <br><br>
-<b>5</b> Create <high>image files</high> in <mono>.pdf</mono>, <mono>.png</mono>, etc.
+<b>5</b> Combine <high>multiple plots</high>.
+<br><br>
+<b>6</b> Create <high>image files</high> in <mono>.pdf</mono>, <mono>.png</mono>, etc.
 </font>
 ]
 
@@ -245,7 +247,7 @@ ggplot(data = mpg,
 
 To <high>customize the appearance of your plot use `theme()`.
 
-`theme()` has <high>87 arguments</high> allowing to fine-tune, e.g., the background, the axes, the legend, etc. 
+`theme()` has <high>94 arguments</high> allowing to fine-tune, e.g., the background, the axes, the legend, etc. 
 
 Arguments are specified via `element_*()` helper functions, mostly `element_rect()` or `element_line()`.
 
