@@ -66,14 +66,14 @@ In this practical you'll practice customizing plots created using the `ggplot2` 
 1. Use facetting to create multiple plots.
 2. Use scaling to alter the plots dimensions.
 3. Alter and store themes to adjust a plots appearance.
-4. Create multiple plots in one using `grid.arrange()`.
+4. Create multiple plots in one using the `patchwork` package.
 5. Create image files using `ggsave()`.
 
 ## Tasks
 
 ### A - Setup
 
-1. Open your `BernRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
+1. Open your `TheRBootcamp` R project. It should already have the folders `1_Data` and `2_Code`. Make sure that the data files listed in the `Datasets` section above are in your `1_Data` folder.
 
 ```{r}
 # Done!
@@ -513,6 +513,20 @@ ggsave(filename = "crime_plot",
 
 5. Customize the code to create a `.png` image.
 
+### X - Challenges: Multiple Plots
+
+In this section, you can play around with the `patchwork` package (don't forget to load it) do combine multiple plots into a single one. 
+
+1. Create three different plots that plot `frequency` against different variables in our data set and call these three `crime_a`, `crime_b`, und `crime_c` 
+
+2. Now, combine all three plots horizontally using `verbrechen_a + verbrechen_b + verbrechen_c`. 
+
+3. Or, place the third plot below the first two `verbrechen_a + verbrechen_b / verbrechen_c`.
+
+4. Now change the theme by applying `theme_void()` to all three using the `&`-Operator.
+
+5. Finally, save your plot as a pdf using `ggsave()`.
+
 
 
 ## Examples
@@ -682,14 +696,14 @@ The `crime` data set is subsets of the Communities and Crime Unnormalized Data S
 |Package| Installation|
 |:------|:------|
 |`tidyverse`|`install.packages("tidyverse")`|
+|`patchwork`|`install.packages("patchwork")`|
 
 #### Optional
 
 |Package| Installation|
 |:------|:------|
 |`viridis`|`install.packages("viridis")`|
-|`ggmap`|`install.packages("ggmap")`|
-|`plotly`|`install.packages("plotly")`|
+
 
 ### Functions
 
@@ -725,21 +739,6 @@ The `crime` data set is subsets of the Communities and Crime Unnormalized Data S
 | Function| Package | Description |
 |:---|:------|:---------------------------------------------|
 | `viridis()` | `viridis` | Generate colors from the viridis palette | 
-
-*maps*
-
-| Function| Package | Description |
-|:---|:------|:---------------------------------------------|
-| `geom_polygon()` | `ggplot2` | Geom used to draw map elements |
-| `register_google()` | `ggmap` | Register Google API |
-| `geocode()` | `ggmap` | Extract geocode for location (e.g., city) |
-
-*plotly*
-
-| Function| Package | Description |
-|:---|:------|:---------------------------------------------|
-| `ggplotly()` | `plotly` | Plotlify any `ggplot` plot (i.e., make it interactive) |
-
 
 ## Resources
 

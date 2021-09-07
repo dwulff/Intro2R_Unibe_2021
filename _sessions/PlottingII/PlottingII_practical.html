@@ -193,7 +193,7 @@ pre code {
 <li>Use facetting to create multiple plots.</li>
 <li>Use scaling to alter the plots dimensions.</li>
 <li>Alter and store themes to adjust a plots appearance.</li>
-<li>Create multiple plots in one using <code>grid.arrange()</code>.</li>
+<li>Create multiple plots in one using the <code>patchwork</code> package.</li>
 <li>Create image files using <code>ggsave()</code>.</li>
 </ol>
 </div>
@@ -202,7 +202,7 @@ pre code {
 <div id="a---setup" class="section level3">
 <h3>A - Setup</h3>
 <ol style="list-style-type: decimal">
-<li><p>Open your <code>BernRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</p></li>
+<li><p>Open your <code>TheRBootcamp</code> R project. It should already have the folders <code>1_Data</code> and <code>2_Code</code>. Make sure that the data files listed in the <code>Datasets</code> section above are in your <code>1_Data</code> folder.</p></li>
 <li><p>Open a new R script. At the top of the script, using comments, write your name and the date. Save it as a new file called <code>plottingII_practical.R</code> in the <code>2_Code</code> folder.</p></li>
 <li><p>Using <code>library()</code> load the set of packages for this practical listed in the functions section above.</p></li>
 </ol>
@@ -429,6 +429,17 @@ ggsave(filename = &quot;crime_plot&quot;,
 <ol start="4" style="list-style-type: decimal">
 <li><p>Play around with the <code>width</code> and <code>height</code> arguments to change the dimensions of the plot.</p></li>
 <li><p>Customize the code to create a <code>.png</code> image.</p></li>
+</ol>
+</div>
+<div id="x---challenges-multiple-plots" class="section level3">
+<h3>X - Challenges: Multiple Plots</h3>
+<p>In this section, you can play around with the <code>patchwork</code> package (don’t forget to load it) do combine multiple plots into a single one.</p>
+<ol style="list-style-type: decimal">
+<li><p>Create three different plots that plot <code>frequency</code> against different variables in our data set and call these three <code>crime_a</code>, <code>crime_b</code>, und <code>crime_c</code></p></li>
+<li><p>Now, combine all three plots horizontally using <code>verbrechen_a + verbrechen_b + verbrechen_c</code>.</p></li>
+<li><p>Or, place the third plot below the first two <code>verbrechen_a + verbrechen_b / verbrechen_c</code>.</p></li>
+<li><p>Now change the theme by applying <code>theme_void()</code> to all three using the <code>&amp;</code>-Operator.</p></li>
+<li><p>Finally, save your plot as a pdf using <code>ggsave()</code>.</p></li>
 </ol>
 </div>
 </div>
@@ -735,6 +746,10 @@ ggsave(filename = &quot;my_plot_name&quot;,
 <td align="left"><code>tidyverse</code></td>
 <td align="left"><code>install.packages("tidyverse")</code></td>
 </tr>
+<tr class="even">
+<td align="left"><code>patchwork</code></td>
+<td align="left"><code>install.packages("patchwork")</code></td>
+</tr>
 </tbody>
 </table>
 <div id="optional" class="section level4">
@@ -750,14 +765,6 @@ ggsave(filename = &quot;my_plot_name&quot;,
 <tr class="odd">
 <td align="left"><code>viridis</code></td>
 <td align="left"><code>install.packages("viridis")</code></td>
-</tr>
-<tr class="even">
-<td align="left"><code>ggmap</code></td>
-<td align="left"><code>install.packages("ggmap")</code></td>
-</tr>
-<tr class="odd">
-<td align="left"><code>plotly</code></td>
-<td align="left"><code>install.packages("plotly")</code></td>
 </tr>
 </tbody>
 </table>
@@ -880,50 +887,6 @@ ggsave(filename = &quot;my_plot_name&quot;,
 <td align="left"><code>viridis()</code></td>
 <td align="left"><code>viridis</code></td>
 <td align="left">Generate colors from the viridis palette</td>
-</tr>
-</tbody>
-</table>
-<p><em>maps</em></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Function</th>
-<th align="left">Package</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><code>geom_polygon()</code></td>
-<td align="left"><code>ggplot2</code></td>
-<td align="left">Geom used to draw map elements</td>
-</tr>
-<tr class="even">
-<td align="left"><code>register_google()</code></td>
-<td align="left"><code>ggmap</code></td>
-<td align="left">Register Google API</td>
-</tr>
-<tr class="odd">
-<td align="left"><code>geocode()</code></td>
-<td align="left"><code>ggmap</code></td>
-<td align="left">Extract geocode for location (e.g., city)</td>
-</tr>
-</tbody>
-</table>
-<p><em>plotly</em></p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Function</th>
-<th align="left">Package</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left"><code>ggplotly()</code></td>
-<td align="left"><code>plotly</code></td>
-<td align="left">Plotlify any <code>ggplot</code> plot (i.e., make it interactive)</td>
 </tr>
 </tbody>
 </table>
