@@ -1119,14 +1119,14 @@ ugly <- my_plot + my_theme
 .pull-left45[
 
 <ul>
-  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
   <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
   <ul class="level">
-    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
-    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
-    <li><span><mono>/</mono> | untereinander stellen</span></li>
-    <li><span><mono>()</mono> | zusammenfassen</span></li>
-    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
   </ul>
 </ul>
 
@@ -1143,7 +1143,7 @@ require(patchwork)
 <br>
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-# Speichere plots
+# add themes
 pretty <- my_plot
 ugly <- my_plot + my_theme
 ```
@@ -1166,14 +1166,14 @@ ugly <- my_plot + my_theme
 .pull-left45[
 
 <ul>
-  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m1"><span>The <mono>patchwork</mono> package provide a simple syntax to combine multiple plots.</span></li>
   <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
   <ul class="level">
-    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
-    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
-    <li><span><mono>/</mono> | untereinander stellen</span></li>
-    <li><span><mono>()</mono> | zusammenfassen</span></li>
-    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+    <li><span><mono>+</mono> | generic add</span></li>
+    <li><span><mono>|</mono> | show next to each other</span></li>
+    <li><span><mono>/</mono> | show below each other</span></li>
+    <li><span><mono>()</mono> | combine</span></li>
+    <li><span><mono>&</mono> | apply to all</span></li>
   </ul>
 </ul>
 
@@ -1190,7 +1190,7 @@ require(patchwork)
 <br>
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-# Speichere plots
+# add themes
 pretty <- my_plot
 ugly <- my_plot + my_theme
 ```
