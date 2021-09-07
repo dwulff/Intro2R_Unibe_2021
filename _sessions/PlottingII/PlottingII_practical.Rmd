@@ -139,7 +139,7 @@ crime_vars = c("murders","robberies","assaults","burglaries","larcenies","autoTh
 crime_long <- crime %>% 
   pivot_longer(names_to = "crime_var",
                values_to = "frequency",
-               cols = crime_vars)
+               cols = all_of(crime_vars))
 ```
 
 4. Using the the `crime_long` data set, you can now make use of the amazing power of `ggplot2`'s facet functions, such as `facet_wrap()`. Use `facet_wrap()` to automatically plot crime frequency against the percentage of people using public transportation for each of the crime variables. 
