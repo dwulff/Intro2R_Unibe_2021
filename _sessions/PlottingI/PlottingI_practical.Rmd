@@ -281,7 +281,7 @@ ggplot(mcdonalds, aes(x = Calories, y = SaturatedFat, col = Category)) +
 ```{r, eval = FALSE, echo = TRUE, fig.width = 8, fig.height = 3}
 ggplot(data = mcdonalds, aes(x = XX, y = XX, fill = XX)) +
   geom_violin() +
-  guides(fill = FALSE) +
+  guides(scale = "none") +
   labs(title = "XX",
        subtitle = "XX")
 ```
@@ -290,7 +290,7 @@ ggplot(data = mcdonalds, aes(x = XX, y = XX, fill = XX)) +
 ```{r, eval = TRUE, fig.width = 8, fig.height = 3}
 ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
   geom_violin() +
-  guides(fill = FALSE) +
+  guides(scale = "none") +
   labs(title = "McDonalds",
        subtitle = "Calorie distribution by menu category")
 ```
@@ -301,8 +301,8 @@ ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
 ```{r, fig.width = 8, fig.height = 3}
 ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
   geom_violin() +
-  guides(fill = FALSE) +
-  stat_summary(fun.y = "mean", geom = "point", col = "white", size = 4) +
+  guides(scale = "none") +
+  stat_summary(fun = "mean", geom = "point", col = "white", size = 4) +
   labs(title = "McDonalds",
        subtitle = "Calorie distribution by menu category")
 ```
@@ -313,8 +313,8 @@ ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
 ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
   geom_violin() +
   geom_jitter(width = .1, alpha = .5) +
-  guides(fill = FALSE) +
-  stat_summary(fun.y = "mean", geom = "point", col = "white", size = 4) +
+  guides(scale = "none") +
+  stat_summary(fun = "mean", geom = "point", col = "white", size = 4) +
   labs(title = "McDonalds",
        subtitle = "Calorie distribution by menu category")
 ```
@@ -335,7 +335,7 @@ ggplot(data = mcdonalds, aes(x = Category, y = Calories, fill = Category)) +
 ```{r, eval = FALSE, echo = TRUE}
 ggplot(XX, aes(x = XX, y = X)) +
   stat_summary(geom = "bar", 
-               fun.y = "mean") +
+               fun = "mean") +
   labs(title = "XX",
        subtitle = "XX")
 ```
@@ -343,7 +343,7 @@ ggplot(XX, aes(x = XX, y = X)) +
 ```{r, eval = TRUE, fig.width = 10, fig.height = 4}
 ggplot(mcdonalds, aes(x = Category, y = Calories)) +
   stat_summary(geom = "bar", 
-               fun.y = "mean") +
+               fun = "mean") +
   labs(title = "Calories by McDonalds menu category",
        subtitle = "Bars represent means")
 ```

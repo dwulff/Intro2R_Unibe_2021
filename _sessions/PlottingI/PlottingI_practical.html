@@ -294,7 +294,7 @@ mcdonalds &lt;- mcdonalds %&gt;%
 </ol>
 <pre class="r"><code>ggplot(data = mcdonalds, aes(x = XX, y = XX, fill = XX)) +
   geom_violin() +
-  guides(fill = FALSE) +
+  guides(scale = &quot;none&quot;) +
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-27-1.png" width="768" style="display: block; margin: auto;" /></p>
@@ -318,7 +318,7 @@ mcdonalds &lt;- mcdonalds %&gt;%
 </ol>
 <pre class="r"><code>ggplot(XX, aes(x = XX, y = X)) +
   stat_summary(geom = &quot;bar&quot;, 
-               fun.y = &quot;mean&quot;) +
+               fun = &quot;mean&quot;) +
   labs(title = &quot;XX&quot;,
        subtitle = &quot;XX&quot;)</code></pre>
 <p><img src="PlottingI_practical_files/figure-html/unnamed-chunk-31-1.png" width="960" style="display: block; margin: auto;" /></p>

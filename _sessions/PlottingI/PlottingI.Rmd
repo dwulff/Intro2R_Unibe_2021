@@ -626,7 +626,7 @@ ggplot(data = mpg,
 
 Change how the line is created with `method` (e.g., `method = lm`).
 
-Color the line with `col`
+Color the line with `col`.
 
 <br>
 ```{r, fig.width = 7, fig.height = 5.5, eval = F}
@@ -661,7 +661,7 @@ ggplot(data = mpg,
 
 If you add additional plotting aesthetics, they will <high>override</high> the general plotting aesthetics.
 
-This is what happens, when you don't override...
+This is what happens, when you don't override ...
 
 <br>
 ```{r, fig.width = 7, fig.height = 5.5, eval = F}
@@ -1066,7 +1066,7 @@ ggplot(data = mpg,
                      col = class)) +
   geom_point() + 
   geom_smooth(col = "blue", 
-              method = "lm")+
+              method = "lm") +
   labs(x = "Engine Displ. in Liters",
        y = "Highway miles per gallon",
        title = "MPG data",
