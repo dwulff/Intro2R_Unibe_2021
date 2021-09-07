@@ -83,13 +83,13 @@ library(gridExtra)
 <b>4</b> You can even edit existing <high>`ggplot` objects</high>.<br>
 
 ```{r, fig.width = 8}
-# Create myplot
-myplot <- ggplot(data = mpg,
+# Create my_plot
+my_plot <- ggplot(data = mpg,
                  aes(x = displ,
                      y = hwy)) + 
               geom_point() + 
               theme_bw()
-class(myplot)
+class(my_plot)
 ```
 
 ]
@@ -97,7 +97,7 @@ class(myplot)
 .pull-right45[
 
 ```{r, fig.width = 7, fig.height = 5.5}
-myplot # Evaluate myplot
+my_plot # Evaluate my_plot
 ```
 
 ]
@@ -114,13 +114,13 @@ myplot # Evaluate myplot
 <b>4</b> You can even edit existing <high>`ggplot` objects</high>.<br>
 
 ```{r, fig.width = 7, fig.height = 5.5}
-# Create myplot
-myplot <- ggplot(data = mpg,
+# Create my_plot
+my_plot <- ggplot(data = mpg,
                  aes(x = displ,
                      y = hwy)) + 
               geom_point() + 
               theme_bw()
-class(myplot)
+class(my_plot)
 ```
 
 ]
@@ -128,7 +128,7 @@ class(myplot)
 .pull-right45[
 
 ```{r, fig.width = 7, fig.height = 5.5}
-myplot + 
+my_plot + 
   geom_smooth() # add geom
 ```
 
@@ -251,7 +251,7 @@ Arguments are specified via `element_*()` helper functions, mostly `element_rect
 
 ```{r, eval = F}
 # use theme to change appearance
-myplot + 
+my_plot + 
   theme(argument = element_*(), 
         argument = element_*(),
         etc.)
@@ -278,7 +278,7 @@ Address the <high>panel background</high> using `panel.background` and that of t
 
 ```{r, eval = F}
 # change panel and plot color
-myplot + 
+my_plot + 
   theme(
     panel.background = 
       element_rect(fill = 'tomato'), 
@@ -294,11 +294,11 @@ myplot +
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # change panel and plot color
-myplot = myplot + 
+my_plot = my_plot + 
   theme(
     panel.background = element_rect(fill = 'tomato'), 
     plot.background = element_rect(fill = 'burlywood'))
-myplot
+my_plot
 ```
 
 ]
@@ -313,7 +313,7 @@ Address the <high>grid line colors</high> using `panel.grid.major` (large grid l
 
 ```{r, eval = F}
 # change grid line color
-myplot + 
+my_plot + 
   theme(
     panel.grid.major = 
       element_line(colour = "salmon"),
@@ -330,14 +330,14 @@ myplot +
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # change grid line color
-myplot = myplot + 
+my_plot = my_plot + 
   theme(
     panel.grid.major = 
       element_line(colour = "salmon"),
     panel.grid.minor = 
       element_line(colour = "seagreen")
     )
-myplot
+my_plot
 ```
 
 ]
@@ -352,7 +352,7 @@ Change the <high>grid line sizes</high> using `element_line(size = number)`.
 
 ```{r, eval = F}
 # change grid line color
-myplot + 
+my_plot + 
   theme(
     panel.grid.major = 
       element_line(colour = "salmon",
@@ -371,7 +371,7 @@ myplot +
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # change grid line color
-myplot = myplot + 
+my_plot = my_plot + 
   theme(
     panel.grid.major = 
       element_line(colour = "salmon",
@@ -380,7 +380,7 @@ myplot = myplot +
       element_line(colour = "seagreen",
                    size = 1.5)
     )
-myplot
+my_plot
 ```
 
 ]
@@ -395,7 +395,7 @@ Change the <high>axes</high> using the ` axis.line.x` and ` axis.line.y` argumen
 
 ```{r, eval = F}
 # change grid line color
-myplot + 
+my_plot + 
   theme(
     axis.line.x = 
       element_line(colour = "deeppink", 
@@ -415,7 +415,7 @@ myplot +
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # change grid line color
-myplot = myplot + 
+my_plot = my_plot + 
   theme(
     axis.line.x = 
       element_line(colour = "deeppink", 
@@ -425,7 +425,7 @@ myplot = myplot +
       element_line(colour = "deeppink", 
                    size = 3.5)
     )
-myplot
+my_plot
 ```
 
 ]
@@ -440,7 +440,7 @@ Change the <high>axes labels</high> using the ` axis.title.x` and ` axis.title.y
 
 ```{r, eval = F}
 # change grid line color
-myplot + 
+my_plot + 
   theme(
     axis.title.x = 
       element_text(
@@ -459,7 +459,7 @@ myplot +
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = FALSE}
 # change grid line color
-myplot = myplot + 
+my_plot = my_plot + 
   theme(
     axis.line.x = 
       element_line(colour = "deeppink", 
@@ -476,7 +476,7 @@ myplot = myplot +
       element_text(family = "Comic Sans MS", 
                    size = 30)
     )
-myplot
+my_plot
 ```
 
 ]
@@ -593,7 +593,7 @@ myplot
 
 ```{r}
 # define my theme
-mytheme <- theme(
+my_theme <- theme(
     panel.background = 
       element_rect(fill = 'tomato'), 
     plot.background = 
@@ -619,7 +619,7 @@ mytheme <- theme(
 .pull-right45[
 
 ```{r, echo = F}
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
                  aes(x = displ,
                      y = hwy)) + 
               geom_point() + 
@@ -627,7 +627,7 @@ myplot <- ggplot(data = mpg,
 ```
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-myplot
+my_plot
 ```
 
 ]
@@ -640,7 +640,7 @@ myplot
 
 ```{r}
 # define my theme
-mytheme <- theme(
+my_theme <- theme(
     panel.background = 
       element_rect(fill = 'tomato'), 
     plot.background = 
@@ -666,7 +666,7 @@ mytheme <- theme(
 .pull-right45[
 
 ```{r, echo = F}
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
                  aes(x = displ,
                      y = hwy)) + 
               geom_point() + 
@@ -674,7 +674,7 @@ myplot <- ggplot(data = mpg,
 ```
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-myplot + mytheme
+my_plot + my_theme
 ```
 
 ]
@@ -724,7 +724,7 @@ myplot + mytheme
 
 ```{r, echo = F}
 # orginal plot
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
        aes(x = displ, y = hwy,
            size = cyl, color = class)) + 
   geom_point() + theme_bw()
@@ -732,7 +732,7 @@ myplot <- ggplot(data = mpg,
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
 # Original plot
-myplot
+my_plot
 ```
 
 
@@ -783,14 +783,14 @@ myplot
 
 ```{r, echo = F}
 # orginal plot
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
        aes(x = displ, y = hwy,
            size = cyl, color = class)) + 
   geom_point() + theme_bw()
 ```
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-myplot + 
+my_plot + 
   scale_x_continuous(limits = c(1, 30))
 ```
 
@@ -841,14 +841,14 @@ myplot +
 
 ```{r, echo = F}
 # orginal plot
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
        aes(x = displ, y = hwy,
            size = cyl, color = class)) + 
   geom_point() + theme_bw()
 ```
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-myplot + 
+my_plot + 
   scale_x_reverse()
 ```
 
@@ -899,14 +899,14 @@ myplot +
 
 ```{r, echo = F}
 # orginal plot
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
        aes(x = displ, y = hwy,
            size = cyl, color = class)) + 
   geom_point() + theme_bw()
 ```
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-myplot + 
+my_plot + 
   scale_colour_hue(h = c(160, 260))
 ```
 
@@ -957,14 +957,14 @@ myplot +
 
 ```{r, echo = F}
 # orginal plot
-myplot <- ggplot(data = mpg,
+my_plot <- ggplot(data = mpg,
        aes(x = displ, y = hwy,
            size = cyl, color = class)) + 
   geom_point() + theme_bw()
 ```
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-myplot + 
+my_plot + 
   scale_size(range = c(1, 15))
 ```
 
@@ -974,51 +974,84 @@ myplot +
 
 ---
 
-# Multiple panels
+# Multiple Plots
 
 .pull-left45[
 
-Using `grid.arrange()` from the `gridExtra` package, <high>multiple plots</high> (as `gg` objects) can be placed next to or on top of each other in multiple panels.  
+<ul>
+  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
+    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
+    <li><span><mono>/</mono> | untereinander stellen</span></li>
+    <li><span><mono>()</mono> | zusammenfassen</span></li>
+    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+  </ul>
+</ul>
 
-```{r, eval = F}
-grid.arrange(plot1, 
-             plot2,
-             nrow = number,
-             ncol = number)
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Speichere plots
+pretty <- my_plot
+ugly <- my_plot + my_theme
 ```
 
 ]
 
 .pull-right45[
 
-```{r, echo = F}
-myplot <- ggplot(data = mpg,
-                 aes(x = displ,
-                     y = hwy)) + 
-              geom_point() + 
-              theme_bw()
-```
-
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-grid.arrange(myplot, myplot + mytheme, 
-             nrow = 1)
+pretty + ugly
 ```
 
 ]
 
 ---
 
-# Multiple panels
+# Multiple Plots
 
 .pull-left45[
 
-Using `grid.arrange()` from the `gridExtra` package, <high>multiple plots</high> (as `gg` objects) can be placed next to or on top of each other in multiple panels.  
+<ul>
+  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
+    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
+    <li><span><mono>/</mono> | untereinander stellen</span></li>
+    <li><span><mono>()</mono> | zusammenfassen</span></li>
+    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+  </ul>
+</ul>
 
-```{r, eval = F}
-grid.arrange(plot1, 
-             plot2,
-             nrow = number,
-             ncol = number)
+```{r, echo = F}
+my_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Add themese
+pretty <- my_plot
+ugly <- my_plot + my_theme
 ```
 
 ]
@@ -1026,8 +1059,148 @@ grid.arrange(plot1,
 .pull-right45[
 
 ```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
-grid.arrange(myplot, myplot + mytheme, 
-             ncol = 1)
+pretty | ugly + pretty
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
+    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
+    <li><span><mono>/</mono> | untereinander stellen</span></li>
+    <li><span><mono>()</mono> | zusammenfassen</span></li>
+    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+mein_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Speichere plots
+pretty <- mein_plot
+ugly <- mein_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+(pretty+pretty) / (pretty+pretty)
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
+    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
+    <li><span><mono>/</mono> | untereinander stellen</span></li>
+    <li><span><mono>()</mono> | zusammenfassen</span></li>
+    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+mein_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Speichere plots
+pretty <- mein_plot
+ugly <- mein_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+(pretty+pretty) / (pretty+pretty) &
+  my_theme
+```
+
+]
+
+---
+
+# Multiple Plots
+
+.pull-left45[
+
+<ul>
+  <li class="m1"><span>Das <mono>patchwork</mono> Paket liefert eine einfache Syntax um Plots zu verknüpfen.</span></li>
+  <li class="m2"><span><mono>patchwork</mono> Syntax:</span></li>
+  <ul class="level">
+    <li><span><mono>+</mono> | generisch zusammefügen</span></li>
+    <li><span><mono>|</mono> | nebeneinander stellen</span></li>
+    <li><span><mono>/</mono> | untereinander stellen</span></li>
+    <li><span><mono>()</mono> | zusammenfassen</span></li>
+    <li><span><mono>&</mono> | auf alle anwenden</span></li>
+  </ul>
+</ul>
+
+```{r, echo = F}
+mein_plot <- ggplot(data = mpg,
+                 aes(x = displ,
+                     y = hwy)) + 
+              geom_point() + 
+              theme_bw()
+
+require(patchwork)
+```
+
+<br>
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+# Speichere plots
+pretty <- mein_plot
+ugly <- mein_plot + my_theme
+```
+
+]
+
+.pull-right45[
+
+```{r, fig.width = 7, fig.height = 5.5, echo = TRUE}
+(pretty+pretty) / (pretty+pretty) +
+  plot_annotation(tag_levels = "A") & 
+  theme(legend.position = "none") 
 ```
 
 ]
@@ -1072,15 +1245,15 @@ To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), u
 .pull-right45[
 
 ```{r, eval = FALSE}
-# Create myplot object
-myplot <- ggplot(data = mpg,
+# Create my_plot object
+my_plot <- ggplot(data = mpg,
                  aes(x = displ, y = hwy)) + 
             geom_point() + 
-            mytheme
+            my_theme
 
-# Create "myplot.pdf", from myplot
-ggsave(filename = "myplot.pdf",
-       plot = myplot,
+# Create "my_plot.pdf", from my_plot
+ggsave(filename = "my_plot.pdf",
+       plot = my_plot,
        device = "pdf",
        path = "figures",
        width = 6, 
@@ -1129,15 +1302,15 @@ To create an <high>image file</high> of a plot (e.g., `.jpg`, `.pdf`, `.png`), u
 .pull-right45[
 
 ```{r, eval = FALSE}
-# Create myplot object
-myplot <- ggplot(data = mpg,
+# Create my_plot object
+my_plot <- ggplot(data = mpg,
                  aes(x = displ, y = hwy)) + 
             geom_point() + 
-            mytheme
+            my_theme
 
-# Create "myplot.png", from myplot
-ggsave(filename = "myplot.png",
-       plot = myplot,
+# Create "my_plot.png", from my_plot
+ggsave(filename = "my_plot.png",
+       plot = my_plot,
        device = "png",
        path = "figures",
        width = 6, 
