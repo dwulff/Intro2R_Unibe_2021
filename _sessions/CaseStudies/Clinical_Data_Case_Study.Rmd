@@ -301,7 +301,7 @@ dimarta_df %>%
 ```{r}
 dimarta_df %>%
   group_by(StudyArm, gender_c) %>%
-    mutate(Counts = n())
+    summarise(Counts = n())
 ```
 
 12. Add a new column to the `dimarta_df` data called `histamine_change` that shows the *change* in patient's histamine levels from the start to the end of the trial (Hint: use `mutate()` and just subtract `histamine_start` from `histamine_end`!)
