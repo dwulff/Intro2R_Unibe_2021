@@ -564,4 +564,3 @@ Table: Table3. `dimarta_biomarker.csv` variable description:
 |Package| Installation|
 |:------|:------|
 |`tidyverse`|`install.packages("tidyverse")`|
-|`haven`|`install.packages("haven")`|
