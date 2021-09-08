@@ -232,7 +232,7 @@ dimarta_df <- trial_df %>%
   left_join(demographics_df)
 ```
 
-5. You’ll notice that the biomarker_df dataframe is in the ‘long’ format, where each row is a patient’s biomarker result. Making use of the spread() function, create a new dataframe called biomarker_wide_df where each row is a patient, and the results from different biomarkers are in different columns. When you finish, look at biomarker_wide_df to see how it looks!
+5. You’ll notice that the biomarker_df dataframe is in the ‘long’ format, where each row is a patient’s biomarker result. Making use of the `pivot_wider()` function, create a new dataframe called biomarker_wide_df where each row is a patient, and the results from different biomarkers are in different columns. When you finish, look at biomarker_wide_df to see how it looks!
 
 ```{r, echo = TRUE, eval = FALSE}
 biomarker_wide_df <- 
