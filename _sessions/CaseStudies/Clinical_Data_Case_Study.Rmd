@@ -248,7 +248,7 @@ biomarker_df %>%
               values_from = 'BiomarkerStatus')
 ```
 
-6. Now, using the `left_join` function, add the `biomarker_df` data  to the `dimarta_df` data! Now you should have all of the data in a single dataframe called `dimarta_df`
+6. Now, using the `left_join` function, add the `biomarker_wide_df` data  to the `dimarta_df` data! Now you should have all of the data in a single dataframe called `dimarta_df`
 
 ```{r}
 dimarta_df <- dimarta_df %>% 
