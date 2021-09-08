@@ -533,7 +533,7 @@ Column Descriptions
 |     qol_start| Patient's rated quality of life at the start of the trial|
 |     qol_end| Patient's rated quality of life at the end of the trial|
 
-Table: Table1. `dimarta_trial.csv` variable description:
+Table: Table 1. `dimarta_trial.csv` variable description:
 
 **dimarta_demographics.csv**
 
@@ -543,9 +543,9 @@ Table: Table1. `dimarta_trial.csv` variable description:
 |     age|   Patient age| 
 |     gender| Patient gender, 0 = male, 1 = female|
 |     site| Site where the clinical trial was conducted|
-|     diseasestatus| Status of the patient's disease at start of trial|
+|     disease status| Status of the patient's disease at start of trial|
 
-Table: Table2. `dimarta_demographics.csv` variable description:
+Table: Table 2. `dimarta_demographics.csv` variable description:
 
 **dimarta_biomarker.csv**
 
@@ -555,7 +555,7 @@ Table: Table2. `dimarta_demographics.csv` variable description:
 |     Biomarker|    One of three biomarkers: dw, ms, and np| 
 |     BiomarkerStatus| Result of the test for the biomarker.|
 
-Table: Table3. `dimarta_biomarker.csv` variable description:
+Table: Table 3. `dimarta_biomarker.csv` variable description:
 
 ## Functions
 
