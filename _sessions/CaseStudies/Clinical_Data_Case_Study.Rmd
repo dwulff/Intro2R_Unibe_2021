@@ -399,7 +399,7 @@ dimarta_df %>%
 
 ### D - Plotting
 
-1. Create boxplots showing the relationship between study arm and histamine change.
+1. Create boxplots showing the relationship between study arm and histamine change. (Tip! convert `StudyArm` to a factor with factor(StudyArm))
 
 ```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
@@ -464,7 +464,7 @@ ggplot(data = dimarta_df,
        x = "Gender")
 ```
 
-5. Is there a correlation between patient's starting and ending histamiine levels? Create a scatterplot with a regression line to find out!
+5. Is there a correlation between patient's starting and ending histamine levels? Create a scatterplot with a regression line to find out!
 
 ```{r, echo = FALSE, eval = FALSE}
 ggplot(data = XXX,
