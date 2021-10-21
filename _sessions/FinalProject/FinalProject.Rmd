@@ -199,12 +199,6 @@ appointments %>%
 
 ```
 
-2. Check that you `full_df` dataframe has the following dimension:
-
-```{r eval = TRUE}
-dim(full_df)
-```
-
 ### E - Presenting the results
 
 1. Generate a new file with `File - R Markdown - Document` (with the default: HTML). Save this file to your `BernRBootcamp` folder. 
